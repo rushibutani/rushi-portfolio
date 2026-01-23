@@ -31,7 +31,7 @@ export default function Header() {
           : "bg-transparent py-6"
       }`}
     >
-      <nav className="container max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <nav className="container max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between">
         <a
           href="#"
           className="text-2xl font-bold text-primary font-mono hover:opacity-80 transition-opacity"

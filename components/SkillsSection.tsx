@@ -5,7 +5,7 @@ import { GraduationCap, Code, Wrench } from "@/components/Icons";
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 px-6 bg-secondary/30">
+    <section id="skills" className="py-24 px-0 md:px-6 bg-secondary/30">
       <div className="container max-w-6xl mx-auto">
         <h2 className="section-heading">Skills & Education</h2>
 

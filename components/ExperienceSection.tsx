@@ -5,7 +5,7 @@ import { MapPin, Calendar } from "@/components/Icons";
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 px-6 bg-secondary/30">
+    <section id="experience" className="py-24 px-0 md:px-6 bg-secondary/30">
       <div className="container max-w-6xl mx-auto">
         <h2 className="section-heading">Experience</h2>
 

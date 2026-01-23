@@ -5,7 +5,7 @@ import { MapPin, Mail, Phone, Briefcase } from "@/components/Icons";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-24 px-0 md:px-6">
       <div className="container max-w-6xl mx-auto">
         <h2 className="section-heading">About Me</h2>
 
@@ -45,11 +45,16 @@ export default function AboutSection() {
 
           {/* Info Card */}
           <div className="glass-card p-6 h-fit space-y-4">
-            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-6 mx-auto">
-              <span className="text-3xl font-bold text-primary font-mono">
-                RB
-              </span>
-            </div>
+            {/* <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/30 mb-6 mx-auto relative">
+              <img
+                src="/images/my-Img-bw.webp"
+                alt="Rushi Butani"
+                width="128"
+                height="128"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div> */}
 
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-muted-foreground">

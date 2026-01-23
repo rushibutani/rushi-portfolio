@@ -6,7 +6,7 @@ import SocialLinks from "./SocialLinks";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-24 px-6">
+    <section id="contact" className="py-24 px-0 md:px-6">
       <div className="container max-w-4xl mx-auto text-center">
         <p className="text-primary font-mono text-sm mb-4">05. What's Next?</p>
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">

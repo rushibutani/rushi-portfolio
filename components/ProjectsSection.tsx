@@ -5,7 +5,7 @@ import { ExternalLink, Github, Folder } from "@/components/Icons";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-24 px-0 md:px-6">
       <div className="container max-w-6xl mx-auto">
         <h2 className="section-heading">Projects</h2>
 
