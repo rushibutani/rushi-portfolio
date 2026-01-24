@@ -62,7 +62,8 @@ export default function ProjectsSection() {
                 {project.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="text-xs font-mono text-muted-foreground"
+                    className="px-3 py-1.5 text-xs font-mono text-primary bg-primary/5 border border-primary/20 
+                               rounded-md hover:bg-primary/10 transition-colors"
                   >
                     {tech}
                   </li>

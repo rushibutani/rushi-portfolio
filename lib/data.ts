@@ -53,10 +53,10 @@ export const projects = [
     title: "Personal Portfolio",
     description:
       "A modern, responsive portfolio website showcasing my skills and projects.",
-    stack: ["React.js", "SCSS (Sass)", "JavaScript"],
+    stack: ["React.js", "Next.js", "Tailwind CSS", "JavaScript"],
     repo: "https://github.com/rushibutani/portfolio",
     liveUrl: "https://rushibutani.github.io/portfolio/",
-    image: "/images/RushiLogo.svg",
+    image: "/images/personal-portfolio-preview.webp",
   },
   {
     title: "Weather App",
@@ -65,7 +65,7 @@ export const projects = [
     stack: ["React.js", "SCSS (Sass)", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
-    image: "/images/weather-app-logo.svg",
+    image: "/images/weather-app-preview.webp",
   },
   {
     title: "iEducate Website",
@@ -73,14 +73,14 @@ export const projects = [
       "Educational website clone built with clean HTML, CSS, and JavaScript.",
     stack: ["HTML", "CSS", "JavaScript"],
     repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/iEducate%20Website",
-    image: "/images/edusite-logo.webp",
+    image: "/images/ieducate-website-preview.webp",
   },
   {
     title: "Veterinary PSD Clone",
     description: "Converted PSD design into responsive HTML/CSS layout.",
     stack: ["HTML", "CSS"],
     repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Veterinarian%20Psd%20Clone",
-    image: "/images/vete-logo.webp",
+    image: "/images/veterinary-psd-clone-preview.webp",
   },
   {
     title: "Tesla Website Clone",
@@ -88,7 +88,7 @@ export const projects = [
       "Tesla website clone focusing on responsive layouts and UI accuracy.",
     stack: ["HTML", "CSS", "JavaScript"],
     repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Tesla%20Website%20Clone",
-    image: "/images/tesla-logo.webp",
+    image: "/images/tesla-website-clone-preview.webp",
   },
 ];
 

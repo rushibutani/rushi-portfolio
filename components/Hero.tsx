@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center relative px-4 md:px-6 pt-32 md:pt-20"
+      className="min-h-screen flex flex-col justify-center relative px-4 md:px-6 pt-32 md:pt-25 lg:pt-20"
     >
       <div className="container max-w-6xl mx-auto">
         <div className="grid md:grid-cols-[1fr,auto] gap-8 md:gap-12 items-center">
@@ -16,7 +16,7 @@ export default function Hero() {
             <div className="relative">
               <div className="relative w-64 h-64 md:w-96 md:h-96 grayscale lg:w-[22rem] lg:h-[22rem] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/my-hero-img.png"
+                  src="/images/rushi-butani-profile.png"
                   alt="Rushi Butani - Frontend Developer"
                   width={448}
                   height={448}
