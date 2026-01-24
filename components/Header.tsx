@@ -53,7 +53,9 @@ export default function Header() {
           ))}
           <li>
             <a
-              href="#contact"
+              href="/RushiButani_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 border border-primary text-primary rounded-md text-sm font-medium 
                          hover:bg-primary/10 transition-all duration-300"
             >
@@ -95,7 +97,10 @@ export default function Header() {
           ))}
           <li>
             <a
-              href="#contact"
+              href="/RushiButani_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
               className="px-6 py-3 border border-primary text-primary rounded-md font-medium 
                          hover:bg-primary/10 transition-all duration-300"
             >

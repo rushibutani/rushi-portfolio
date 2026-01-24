@@ -72,7 +72,12 @@ export default function AboutSection() {
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={18} className="text-primary" />
-                <span>{personalInfo.phone}</span>
+                <a
+                  href={`tel:${personalInfo.phone}`}
+                  className="hover:text-primary transition-colors"
+                >
+                  {personalInfo.phone}
+                </a>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Briefcase size={18} className="text-primary" />

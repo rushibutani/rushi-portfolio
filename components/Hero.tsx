@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center relative px-0 md:px-6  pt-32 md:pt-20"
+      className="min-h-screen flex flex-col justify-center relative px-4 md:px-6 pt-32 md:pt-20"
     >
       <div className="container max-w-6xl mx-auto">
         <div className="grid md:grid-cols-[1fr,auto] gap-8 md:gap-12 items-center">
@@ -19,6 +19,7 @@ export default function Hero() {
                   alt="Rushi Butani - Frontend Developer"
                   width="448"
                   height="448"
+                  loading="eager"
                   className="w-full h-full object-cover"
                 />
               </div>

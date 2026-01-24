@@ -12,9 +12,19 @@ export default function ProjectsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div key={index} className="project-card flex flex-col h-full">
+              {/* Project Image */}
+              <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden bg-secondary/50">
+                <img
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
               {/* Header */}
-              <div className="flex items-center justify-between mb-6">
-                <Folder size={40} className="text-primary" />
+              <div className="flex items-center justify-between mb-4">
+                <Folder size={32} className="text-primary" />
                 <div className="flex items-center gap-3">
                   <a
                     href={project.repo}
@@ -25,15 +35,17 @@ export default function ProjectsSection() {
                   >
                     <Github size={20} />
                   </a>
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label="View live project"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="View live project"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
 

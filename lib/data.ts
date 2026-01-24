@@ -55,7 +55,17 @@ export const projects = [
       "A modern, responsive portfolio website showcasing my skills and projects.",
     stack: ["React", "SASS", "JavaScript"],
     repo: "https://github.com/rushibutani/portfolio",
-    image: "/images/RushiLogo.webp",
+    liveUrl: "https://rushibutani.github.io/portfolio/",
+    image: "/images/RushiLogo.webp.svg",
+  },
+  {
+    title: "Weather App",
+    description:
+      "Real-time weather application with search functionality and dynamic UI.",
+    stack: ["React", "SCSS", "JavaScript"],
+    repo: "https://github.com/rushibutani/weather-app",
+    liveUrl: "https://rushibutani.github.io/weather-app/",
+    image: "/images/weather-app-logo.svg",
   },
   {
     title: "iEducate Website",
@@ -64,13 +74,6 @@ export const projects = [
     stack: ["HTML", "CSS", "JavaScript"],
     repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/iEducate%20Website",
     image: "/images/edusite-logo.webp",
-  },
-  {
-    title: "Xiaomi Website Clone",
-    description: "Pixel-perfect clone of Xiaomi's official website.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Xiaomi%20Website%20Clone",
-    image: "/images/mi-logo.webp",
   },
   {
     title: "Veterinary PSD Clone",
@@ -137,5 +140,5 @@ export const siteMetadata = {
     "Next.js",
     "Portfolio",
   ],
-  image: "/images/og-image.jpg",
+  image: "/images/og-image.jpg.svg",
 };

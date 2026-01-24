@@ -1,0 +1,6 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#1a202e"/>
+  <g transform="translate(200, 200)">
+    <text x="0" y="20" font-family="monospace" font-size="90" font-weight="bold" fill="#2dd4bf" text-anchor="middle">&lt;RB /&gt;</text>
+  </g>
+</svg>
