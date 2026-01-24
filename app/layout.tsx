@@ -90,13 +90,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

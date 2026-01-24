@@ -1,5 +1,3 @@
-"use client";
-
 import { experience } from "@/lib/data";
 import { MapPin, Calendar } from "@/components/Icons";
 

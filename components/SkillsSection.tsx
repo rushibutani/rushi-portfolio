@@ -1,5 +1,3 @@
-"use client";
-
 import { skills, education } from "@/lib/data";
 import { GraduationCap, Code, Wrench } from "@/components/Icons";
 

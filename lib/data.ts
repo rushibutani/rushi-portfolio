@@ -1,14 +1,14 @@
 // Personal Information
 export const personalInfo = {
   name: "Rushi Butani",
-  title: "Frontend Developer | React Specialist",
+  title: "Frontend Developer | React & Next.js",
   roles: ["Front-End Developer", "Web Designer"],
   location: "Gujarat, India",
   email: "rushibutani@gmail.com",
   phone: "+91 9638293911",
   bio: `Hi, I'm Rushi Butani, a Frontend Web Developer based in Gujarat, India.
-  I specialize in building fast, responsive, and SEO-friendly web applications
-  using React and modern frontend technologies.`,
+I build fast, responsive, and SEO-friendly web applications using React,
+Next.js, and modern frontend technologies.`,
   availability: "Open to freelance & full-time opportunities",
 };
 
@@ -29,9 +29,9 @@ export const experience = [
     duration: "Jan 2024 - Present",
     location: "Ahmedabad, Gujarat",
     highlights: [
-      "Built scalable React.js interfaces using Material-UI",
+      "Built scalable React.js interfaces using modern UI libraries",
       "Integrated REST APIs and improved UI performance",
-      "Worked in Agile environment using Git version control",
+      "Worked in an Agile environment using Git for version control",
     ],
   },
   {
@@ -53,16 +53,16 @@ export const projects = [
     title: "Personal Portfolio",
     description:
       "A modern, responsive portfolio website showcasing my skills and projects.",
-    stack: ["React", "SASS", "JavaScript"],
+    stack: ["React.js", "SCSS (Sass)", "JavaScript"],
     repo: "https://github.com/rushibutani/portfolio",
     liveUrl: "https://rushibutani.github.io/portfolio/",
-    image: "/images/RushiLogo.webp.svg",
+    image: "/images/RushiLogo.svg",
   },
   {
     title: "Weather App",
     description:
       "Real-time weather application with search functionality and dynamic UI.",
-    stack: ["React", "SCSS", "JavaScript"],
+    stack: ["React.js", "SCSS (Sass)", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
     image: "/images/weather-app-logo.svg",
@@ -94,7 +94,7 @@ export const projects = [
 
 // Education
 export const education = [
-  "Front-End Web Development Course in ReactJs - TOPS Technologies (2023)",
+  "Front-End Web Development Course in React.js - TOPS Technologies (2023)",
   "Complete Front-End Web Development Course - Udemy (2023)",
   "M.Sc. in Organic Chemistry - CCSIT College (2018 - 2020)",
 ];
@@ -103,10 +103,13 @@ export const education = [
 export const skills = {
   core: ["HTML", "CSS", "JavaScript"],
   tools: [
-    "ReactJs",
+    "React.js",
+    "Next.js",
+    "Tailwind CSS",
+    "Git",
     "GitHub",
     "Bootstrap",
-    "SASS",
+    "SCSS (Sass)",
     "jQuery",
     "Responsive Design",
   ],
@@ -126,19 +129,22 @@ export const navLinks = navigation;
 
 // SEO Metadata
 export const siteMetadata = {
-  title: "Rushi Butani - Frontend Developer | React Specialist",
+  title: "Rushi Butani | Frontend Developer",
   description:
-    "Frontend Web Developer specializing in React.js and modern web technologies. Based in Gujarat, India. Open to freelance and full-time opportunities.",
+    "Frontend Web Developer specializing in React.js, Next.js, and modern web technologies. Based in Gujarat, India. Open to freelance and full-time opportunities.",
   siteUrl: "https://rushibutani.com",
   author: "Rushi Butani",
   keywords: [
     "Frontend Developer",
+    "Frontend Engineer",
+    "React.js Developer",
     "React Developer",
+    "Next.js Developer",
     "Web Developer",
     "JavaScript",
     "React.js",
     "Next.js",
     "Portfolio",
   ],
-  image: "/images/og-image.jpg.svg",
+  image: "/images/og-image.svg",
 };

@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import { projects } from "@/lib/data";
 import { ExternalLink, Github, Folder } from "@/components/Icons";
 
@@ -14,11 +13,12 @@ export default function ProjectsSection() {
             <div key={index} className="project-card flex flex-col h-full">
               {/* Project Image */}
               <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden bg-secondary/50">
-                <img
+                <Image
                   src={project.image}
                   alt={`${project.title} preview`}
+                  width={400}
+                  height={192}
                   className="w-full h-full object-cover"
-                  loading="lazy"
                 />
               </div>
 

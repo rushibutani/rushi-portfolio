@@ -1,5 +1,3 @@
-"use client";
-
 import { personalInfo } from "@/lib/data";
 import { Mail, MapPin, Phone } from "@/components/Icons";
 import SocialLinks from "./SocialLinks";

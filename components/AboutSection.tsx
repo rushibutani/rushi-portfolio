@@ -1,5 +1,3 @@
-"use client";
-
 import { personalInfo, skills } from "@/lib/data";
 import { MapPin, Mail, Phone, Briefcase } from "@/components/Icons";
 

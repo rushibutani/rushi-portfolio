@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowDown } from "./Icons";
 import { personalInfo } from "@/lib/data";
 import SocialLinks from "./SocialLinks";
@@ -14,12 +15,12 @@ export default function Hero() {
           <div className="flex justify-center md:block animate-fade-up-delay-1 order-1 md:order-2">
             <div className="relative">
               <div className="relative w-64 h-64 md:w-96 md:h-96 grayscale lg:w-[22rem] lg:h-[22rem] rounded-2xl overflow-hidden">
-                <img
+                <Image
                   src="/images/my-hero-img.png"
                   alt="Rushi Butani - Frontend Developer"
-                  width="448"
-                  height="448"
-                  loading="eager"
+                  width={448}
+                  height={448}
+                  priority
                   className="w-full h-full object-cover"
                 />
               </div>
