@@ -17,7 +17,7 @@ export default function ContactSection() {
         </p>
 
         {/* Contact Info */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-5 mb-12">
           <a
             href={`mailto:${personalInfo.email}`}
             className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
@@ -26,11 +26,6 @@ export default function ContactSection() {
             {personalInfo.email}
           </a>
           <span className="hidden md:block w-px h-6 bg-border" />
-          <span className="flex items-center gap-3 text-muted-foreground">
-            <MapPin size={20} className="text-primary" />
-            {personalInfo.location}
-          </span>
-          <span className="hidden md:block w-px h-6 bg-border" />
           <a
             href={`tel:${personalInfo.phone}`}
             className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
@@ -38,6 +33,11 @@ export default function ContactSection() {
             <Phone size={20} className="text-primary" />
             {personalInfo.phone}
           </a>
+          <span className="hidden md:block w-px h-6 bg-border" />
+          <span className="flex items-center gap-3 text-muted-foreground">
+            <MapPin size={20} className="text-primary" />
+            {personalInfo.location}
+          </span>
         </div>
 
         {/* CTA Button */}
