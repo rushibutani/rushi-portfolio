@@ -1,8 +1,60 @@
+// TypeScript Interfaces
+interface PersonalInfo {
+  name: string;
+  location: string;
+  email: string;
+  phone: string;
+  bio: string;
+  availability: string;
+}
+
+interface SocialLinks {
+  linkedin: string;
+  github: string;
+  instagram: string;
+  twitter: string;
+  facebook: string;
+}
+
+interface Experience {
+  role: string;
+  company: string;
+  duration: string;
+  location: string;
+  highlights: string[];
+}
+
+interface Project {
+  title: string;
+  description: string;
+  stack: string[];
+  repo: string;
+  liveUrl?: string;
+  image: string;
+}
+
+interface Skills {
+  core: string[];
+  tools: string[];
+}
+
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+interface SiteMetadata {
+  title: string;
+  description: string;
+  siteUrl: string;
+  author: string;
+  keywords: string[];
+  image: string;
+}
+
 // Personal Information
-export const personalInfo = {
+export const personalInfo: PersonalInfo = {
   name: "Rushi Butani",
-  title: "Frontend Developer | React & Next.js",
-  roles: ["Front-End Developer", "Web Designer"],
   location: "Gujarat, India",
   email: "rushibutani@gmail.com",
   phone: "+91 9638293911",
@@ -13,7 +65,7 @@ Next.js, and modern frontend technologies.`,
 };
 
 // Social Links
-export const socialLinks = {
+export const socialLinks: SocialLinks = {
   linkedin: "https://in.linkedin.com/in/rushibutani",
   github: "https://github.com/rushibutani",
   instagram: "https://www.instagram.com/rushibutani/",
@@ -22,7 +74,7 @@ export const socialLinks = {
 };
 
 // Experience
-export const experience = [
+export const experience: Experience[] = [
   {
     role: "Software Developer",
     company: "Bankai Informatics Pvt. Ltd.",
@@ -48,7 +100,7 @@ export const experience = [
 ];
 
 // Projects
-export const projects = [
+export const projects: Project[] = [
   {
     title: "Personal Portfolio",
     description:
@@ -93,14 +145,14 @@ export const projects = [
 ];
 
 // Education
-export const education = [
+export const education: string[] = [
   "Front-End Web Development Course in React.js - TOPS Technologies (2023)",
   "Complete Front-End Web Development Course - Udemy (2023)",
   "M.Sc. in Organic Chemistry - CCSIT College (2018 - 2020)",
 ];
 
 // Skills
-export const skills = {
+export const skills: Skills = {
   core: ["HTML", "CSS", "JavaScript"],
   tools: [
     "React.js",
@@ -116,7 +168,7 @@ export const skills = {
 };
 
 // Navigation
-export const navigation = [
+export const navLinks: NavItem[] = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
@@ -125,10 +177,8 @@ export const navigation = [
   { name: "Contact", href: "#contact" },
 ];
 
-export const navLinks = navigation;
-
 // SEO Metadata
-export const siteMetadata = {
+export const siteMetadata: SiteMetadata = {
   title: "Rushi Butani | Frontend Developer",
   description:
     "Frontend Web Developer specializing in React.js, Next.js, and modern web technologies. Based in Gujarat, India. Open to freelance and full-time opportunities.",
