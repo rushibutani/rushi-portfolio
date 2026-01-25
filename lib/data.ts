@@ -61,7 +61,7 @@ export const personalInfo: PersonalInfo = {
   bio: `Hi, I'm Rushi Butani, a Frontend Web Developer based in Gujarat, India.
 I build fast, responsive, and SEO-friendly web applications using React,
 Next.js, and modern frontend technologies.`,
-  availability: "Open to freelance & full-time opportunities",
+  availability: "Available for freelance & collaborations",
 };
 
 // Social Links
@@ -81,7 +81,7 @@ export const experience: Experience[] = [
     duration: "Jan 2024 - Present",
     location: "Ahmedabad, Gujarat",
     highlights: [
-      "Built scalable React.js interfaces using modern UI libraries",
+      "Built scalable React.js interfaces using modern UI libraries, improving maintainability and performance",
       "Integrated REST APIs and improved UI performance",
       "Worked in an Agile environment using Git for version control",
     ],
@@ -113,7 +113,7 @@ export const projects: Project[] = [
   {
     title: "Weather App",
     description:
-      "Real-time weather application with search functionality and dynamic UI.",
+      "Real-time weather application with search functionality, responsive UI, and optimized API handling.",
     stack: ["React.js", "SCSS (Sass)", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
@@ -158,9 +158,9 @@ export const skills: Skills = {
     "React.js",
     "Next.js",
     "Tailwind CSS",
+    "Material UI (MUI)",
     "Git",
     "GitHub",
-    "Bootstrap",
     "SCSS (Sass)",
     "jQuery",
     "Responsive Design",
@@ -181,7 +181,7 @@ export const navLinks: NavItem[] = [
 export const siteMetadata: SiteMetadata = {
   title: "Rushi Butani | Frontend Developer",
   description:
-    "Frontend Web Developer specializing in React.js, Next.js, and modern web technologies. Based in Gujarat, India. Open to freelance and full-time opportunities.",
+    "Frontend Web Developer specializing in React.js, Next.js, and modern web technologies. Based in Gujarat, India. Available for freelance & collaborations.",
   siteUrl: "https://rushibutani.com",
   author: "Rushi Butani",
   keywords: [
