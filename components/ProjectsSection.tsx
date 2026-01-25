@@ -1,20 +1,37 @@
-"use client";
-
+import Image from "next/image";
 import { projects } from "@/lib/data";
 import { ExternalLink, Github, Folder } from "@/components/Icons";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-24 px-0 md:px-6">
       <div className="container max-w-6xl mx-auto">
-        <h2 className="section-heading">Projects</h2>
+        <div className="text-center mb-12">
+          <p className="text-primary font-mono text-sm mb-4">
+            Things I've Built
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Featured Projects
+          </h2>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div key={index} className="project-card flex flex-col h-full">
+              {/* Project Image */}
+              <div className="relative w-full h-48 mb-6 rounded-lg overflow-hidden bg-secondary/50">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  width={400}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               {/* Header */}
-              <div className="flex items-center justify-between mb-6">
-                <Folder size={40} className="text-primary" />
+              <div className="flex items-center justify-between mb-4">
+                <Folder size={32} className="text-primary" />
                 <div className="flex items-center gap-3">
                   <a
                     href={project.repo}
@@ -25,15 +42,17 @@ export default function ProjectsSection() {
                   >
                     <Github size={20} />
                   </a>
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label="View live project"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="View live project"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -50,7 +69,8 @@ export default function ProjectsSection() {
                 {project.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="text-xs font-mono text-muted-foreground"
+                    className="px-3 py-1.5 text-xs font-mono text-primary bg-primary/5 border border-primary/20 
+                               rounded-md hover:bg-primary/10 transition-colors"
                   >
                     {tech}
                   </li>

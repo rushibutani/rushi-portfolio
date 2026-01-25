@@ -1,18 +1,28 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import Footer from "@/components/NewFooter";
+import Footer from "@/components/Footer";
 import { siteMetadata } from "@/lib/data";
 
-const inter = Inter({ subsets: ["latin"] });
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#1a202e",
+};
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rushibutani.com"),
   title: siteMetadata.title,
   description: siteMetadata.description,
   keywords: siteMetadata.keywords,
   authors: [{ name: siteMetadata.author }],
   creator: siteMetadata.author,
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -54,9 +64,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Rushi Butani",
+    url: "https://rushibutani.com",
+    image: "https://rushibutani.com/images/og-image.jpg",
+    jobTitle: "Frontend Developer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Bankai Informatics Pvt. Ltd.",
+    },
+    sameAs: [
+      "https://github.com/rushibutani",
+      "https://in.linkedin.com/in/rushibutani",
+      "https://twitter.com/rushibutani_",
+    ],
+    knowsAbout: [
+      "React",
+      "JavaScript",
+      "Frontend Development",
+      "Web Development",
+    ],
+  };
+
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

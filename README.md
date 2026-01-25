@@ -15,12 +15,14 @@ A modern, high-performance personal portfolio website built with Next.js 14, Typ
 
 ## 📄 Pages
 
-- **Home** - Hero section with introduction and CTAs
-- **About** - Detailed information about background and education
+This is a **single-page application (SPA)** with smooth scrolling between sections:
+
+- **Home/Hero** - Introduction with profile image and CTAs
+- **About** - Background, skills, and contact information
 - **Experience** - Professional work history and achievements
 - **Projects** - Portfolio of web development projects
-- **Skills** - Technical skills and tools
-- **Contact** - Contact form and social media links
+- **Skills** - Technical skills, tools, and education
+- **Contact** - Contact information and social media links
 
 ## 🛠️ Tech Stack
 
@@ -69,25 +71,31 @@ This will generate a static export in the `out` folder, which can be deployed to
 ```
 portfolio/
 ├── app/                    # Next.js app directory
-│   ├── about/             # About page
-│   ├── contact/           # Contact page
-│   ├── experience/        # Experience page
-│   ├── projects/          # Projects page
-│   ├── skills/            # Skills page
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Home page
-│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout with Header & Footer
+│   ├── page.tsx           # Home page (single-page app)
+│   ├── loading.tsx        # Loading component
+│   ├── globals.css        # Global styles and Tailwind
 │   ├── sitemap.ts         # Sitemap generation
-│   └── robots.ts          # Robots.txt generation
-├── components/            # Reusable components
+│   ├── robots.ts          # Robots.txt generation
+│   ├── manifest.ts        # PWA manifest
+│   └── icon.svg           # Favicon
+├── components/            # Reusable React components
 │   ├── Header.tsx         # Navigation header
 │   ├── Footer.tsx         # Footer component
-│   ├── Section.tsx        # Section wrapper
-│   └── SectionTitle.tsx   # Section title component
+│   ├── Hero.tsx           # Hero/landing section
+│   ├── AboutSection.tsx   # About section
+│   ├── ExperienceSection.tsx  # Experience section
+│   ├── ProjectsSection.tsx    # Projects section
+│   ├── SkillsSection.tsx      # Skills section
+│   ├── ContactSection.tsx     # Contact section
+│   ├── SocialLinks.tsx    # Social media links
+│   └── Icons.tsx          # SVG icon components
 ├── lib/                   # Utility functions and data
 │   └── data.ts           # Portfolio data and constants
 ├── public/               # Static assets
-│   └── images/          # Project images
+│   ├── images/          # Project images and photos
+│   ├── favicon.svg      # Favicon
+│   └── RushiButani_Resume.pdf  # Resume PDF
 ├── next.config.js        # Next.js configuration
 ├── tailwind.config.js    # Tailwind CSS configuration
 ├── tsconfig.json         # TypeScript configuration

@@ -5,6 +5,9 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;

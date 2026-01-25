@@ -1,13 +1,18 @@
-"use client";
-
 import { experience } from "@/lib/data";
 import { MapPin, Calendar } from "@/components/Icons";
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 px-6 bg-secondary/30">
+    <section id="experience" className="py-24 px-0 md:px-6 bg-secondary/30">
       <div className="container max-w-6xl mx-auto">
-        <h2 className="section-heading">Experience</h2>
+        <div className="text-center mb-12">
+          <p className="text-primary font-mono text-sm mb-4">
+            My Professional Journey
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Work Experience
+          </h2>
+        </div>
 
         <div className="space-y-8">
           {experience.map((job, index) => (
@@ -17,6 +22,13 @@ export default function ExperienceSection() {
             >
               {/* Accent Line */}
               <div className="absolute left-0 top-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors" />
+
+              {/* Current Position Ribbon */}
+              {job.duration.includes("Present") && (
+                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold rounded-bl-lg shadow-lg">
+                  Currently Working
+                </div>
+              )}
 
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
