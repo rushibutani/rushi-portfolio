@@ -6,7 +6,14 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="py-24 px-0 md:px-6">
       <div className="container max-w-6xl mx-auto">
-        <h2 className="section-heading">Projects</h2>
+        <div className="text-center mb-12">
+          <p className="text-primary font-mono text-sm mb-4">
+            Things I've Built
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Featured Projects
+          </h2>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (

@@ -6,14 +6,14 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 px-0 md:px-6">
       <div className="container max-w-4xl mx-auto text-center">
-        <p className="text-primary font-mono text-sm mb-4">06. What's Next?</p>
+        <p className="text-primary font-mono text-sm mb-4">What's Next?</p>
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
           Get In Touch
         </h2>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-12 leading-relaxed">
-          I'm currently looking for new opportunities. Whether you have a
+          I'm always open to meaningful conversations. Whether you have a
           question, a project idea, or just want to say hi, my inbox is always
-          open. I'll try my best to get back to you!
+          open. I'll do my best to get back to you!
         </p>
 
         {/* Contact Info */}

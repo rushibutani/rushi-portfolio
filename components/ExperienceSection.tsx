@@ -5,7 +5,14 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="py-24 px-0 md:px-6 bg-secondary/30">
       <div className="container max-w-6xl mx-auto">
-        <h2 className="section-heading">Experience</h2>
+        <div className="text-center mb-12">
+          <p className="text-primary font-mono text-sm mb-4">
+            My Professional Journey
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Work Experience
+          </h2>
+        </div>
 
         <div className="space-y-8">
           {experience.map((job, index) => (

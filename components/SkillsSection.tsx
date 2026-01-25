@@ -5,7 +5,14 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-24 px-0 md:px-6 bg-secondary/30">
       <div className="container max-w-6xl mx-auto">
-        <h2 className="section-heading">Skills & Education</h2>
+        <div className="text-center mb-12">
+          <p className="text-primary font-mono text-sm mb-4">
+            My Expertise & Learning
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Skills & Education
+          </h2>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Skills */}
