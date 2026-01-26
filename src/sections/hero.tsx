@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ArrowDown } from "./Icons";
-import { personalInfo } from "@/lib/data";
-import SocialLinks from "./SocialLinks";
+import { ArrowDown } from "@/components/ui/icons";
+import { personalInfo, heroContent } from "@/config/site";
+import SocialLinks from "@/components/layout/social-links";
 
 export default function Hero() {
   return (
@@ -30,7 +30,7 @@ export default function Hero() {
           {/* Text Content - Shows second on mobile, first on desktop */}
           <div className="max-w-3xl order-2 md:order-1">
             <p className="text-primary font-mono text-sm md:text-base mb-4 animate-fade-up">
-              Hi, my name is
+              {heroContent.greeting}
             </p>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 animate-fade-up-delay-1">
@@ -38,7 +38,7 @@ export default function Hero() {
             </h1>
 
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-muted-foreground mb-6 animate-fade-up-delay-2">
-              I build things for the web.
+              {heroContent.subtitle}
             </h2>
 
             <p className="text-muted-foreground text-lg md:text-xl max-w-xl mb-8 leading-relaxed animate-fade-up-delay-3">
@@ -51,14 +51,14 @@ export default function Hero() {
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary/10 border border-primary 
                          text-primary rounded-md font-medium hover:bg-primary/20 transition-all duration-300"
               >
-                Check out my work!
+                {heroContent.cta.primary}
               </a>
               <a
                 href={`mailto:${personalInfo.email}`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground 
                          rounded-md font-medium hover:bg-primary/90 transition-all duration-300"
               >
-                Get In Touch
+                {heroContent.cta.secondary}
               </a>
             </div>
 

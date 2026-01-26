@@ -1,16 +1,17 @@
-import { skills, education } from "@/lib/data";
-import { GraduationCap, Code, Wrench } from "@/components/Icons";
+import { skills, education, skillsContent } from "@/config/site";
+import { GraduationCap, Code, Wrench } from "@/components/ui/icons";
+import { SectionReveal } from "@/components/ui";
 
-export default function SkillsSection() {
+export default function Skills() {
   return (
     <section id="skills" className="py-24 px-0 md:px-6 bg-secondary/30">
-      <div className="container max-w-6xl mx-auto">
+      <SectionReveal className="container max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-primary font-mono text-sm mb-4">
-            My Expertise & Learning
+            {skillsContent.label}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Skills & Education
+            {skillsContent.title}
           </h2>
         </div>
 
@@ -24,7 +25,7 @@ export default function SkillsSection() {
                   <Code size={20} className="text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground">
-                  Core Technologies
+                  {skillsContent.sections.core}
                 </h3>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -43,7 +44,7 @@ export default function SkillsSection() {
                   <Wrench size={20} className="text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground">
-                  Tools & Frameworks
+                  {skillsContent.sections.tools}
                 </h3>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -62,7 +63,9 @@ export default function SkillsSection() {
               <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
                 <GraduationCap size={20} className="text-primary" />
               </div>
-              <h3 className="text-lg font-bold text-foreground">Education</h3>
+              <h3 className="text-lg font-bold text-foreground">
+                {skillsContent.sections.education}
+              </h3>
             </div>
             <ul className="space-y-4">
               {education.map((edu, index) => (
@@ -77,7 +80,7 @@ export default function SkillsSection() {
             </ul>
           </div>
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

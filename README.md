@@ -70,53 +70,63 @@ This will generate a static export in the `out` folder, which can be deployed to
 
 ```
 portfolio/
-├── app/                    # Next.js app directory
-│   ├── layout.tsx         # Root layout with Header & Footer
-│   ├── page.tsx           # Home page (single-page app)
-│   ├── loading.tsx        # Loading component
-│   ├── globals.css        # Global styles and Tailwind
-│   ├── sitemap.ts         # Sitemap generation
-│   ├── robots.ts          # Robots.txt generation
-│   ├── manifest.ts        # PWA manifest
-│   └── icon.svg           # Favicon
-├── components/            # Reusable React components
-│   ├── Header.tsx         # Navigation header
-│   ├── Footer.tsx         # Footer component
-│   ├── Hero.tsx           # Hero/landing section
-│   ├── AboutSection.tsx   # About section
-│   ├── ExperienceSection.tsx  # Experience section
-│   ├── ProjectsSection.tsx    # Projects section
-│   ├── SkillsSection.tsx      # Skills section
-│   ├── ContactSection.tsx     # Contact section
-│   ├── SocialLinks.tsx    # Social media links
-│   └── Icons.tsx          # SVG icon components
-├── lib/                   # Utility functions and data
-│   └── data.ts           # Portfolio data and constants
-├── public/               # Static assets
-│   ├── images/          # Project images and photos
-│   ├── favicon.svg      # Favicon
+├── src/
+│   ├── app/                    # Next.js app directory
+│   │   ├── layout.tsx         # Root layout with Header & Footer
+│   │   ├── page.tsx           # Home page (single-page app)
+│   │   ├── sitemap.ts         # Sitemap generation
+│   │   ├── robots.ts          # Robots.txt generation
+│   │   ├── manifest.ts        # PWA manifest
+│   │   └── icon.svg           # Favicon
+│   ├── components/            # Reusable React components
+│   │   ├── layout/           # Layout components
+│   │   │   ├── header.tsx    # Navigation header
+│   │   │   ├── footer.tsx    # Footer component
+│   │   │   └── social-links.tsx  # Social media links
+│   │   └── ui/               # UI components
+│   │       ├── badge.tsx     # Badge component
+│   │       ├── button.tsx    # Button component
+│   │       ├── card.tsx      # Card component
+│   │       ├── icons.tsx     # SVG icon components
+│   │       ├── link.tsx      # Link component
+│   │       └── section.tsx   # Section component
+│   ├── sections/             # Page sections
+│   │   ├── hero.tsx         # Hero/landing section
+│   │   ├── about.tsx        # About section
+│   │   ├── experience.tsx   # Experience section
+│   │   ├── projects.tsx     # Projects section
+│   │   ├── skills.tsx       # Skills section
+│   │   └── contact.tsx      # Contact section
+│   ├── config/              # Configuration files
+│   │   └── site.ts         # Site configuration and data
+│   ├── styles/              # Global styles
+│   │   └── globals.css     # Global CSS and Tailwind
+│   └── types/               # TypeScript type definitions
+│       └── index.ts        # Type definitions
+├── public/                  # Static assets
+│   ├── images/             # Project images and photos
 │   └── RushiButani_Resume.pdf  # Resume PDF
-├── next.config.js        # Next.js configuration
-├── tailwind.config.js    # Tailwind CSS configuration
-├── tsconfig.json         # TypeScript configuration
-└── package.json          # Project dependencies
+├── next.config.js           # Next.js configuration
+├── tailwind.config.js       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── package.json             # Project dependencies
 ```
 
 ## 🎨 Customization
 
 ### Update Personal Information
 
-Edit `lib/data.ts` to update your personal information, experience, projects, and skills.
+Edit `src/config/site.ts` to update your personal information, experience, projects, and skills.
 
 ### Modify Styling
 
 - **Colors:** Update the color palette in `tailwind.config.js`
-- **Global Styles:** Modify `app/globals.css` for global styling changes
+- **Global Styles:** Modify `src/styles/globals.css` for global styling changes
 - **Component Styles:** Individual component styles are in their respective files
 
 ### Add Images
 
-Place your project images in `public/images/` and update the paths in `lib/data.ts`.
+Place your project images in `public/images/` and update the paths in `src/config/site.ts`.
 
 ## 🚀 Deployment
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "./Icons";
-import { navLinks } from "@/lib/data";
+import { Menu, X } from "@/components/ui/icons";
+import { navLinks, headerLogo } from "@/config/site";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +37,7 @@ export default function Header() {
             href="#"
             className="text-2xl font-bold text-primary font-mono hover:opacity-80 transition-opacity"
           >
-            {"<RB />"}
+            {headerLogo}
           </a>
 
           {/* Desktop Navigation */}
