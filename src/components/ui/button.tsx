@@ -22,14 +22,15 @@ export function Button({
   disabled = false,
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
     primary:
-      "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25",
-    secondary: "bg-secondary text-foreground hover:bg-secondary/80",
+      "bg-gradient-to-r from-primary to-accent text-primary-foreground hover:shadow-md hover:-translate-y-0.5",
+    secondary:
+      "bg-secondary text-foreground hover:bg-secondary/80 hover:shadow-sm",
     outline:
-      "border border-primary text-primary hover:bg-primary/10 transition-all duration-300",
+      "border-2 border-primary text-primary hover:bg-primary/5 hover:-translate-y-0.5",
   };
 
   const sizes = {

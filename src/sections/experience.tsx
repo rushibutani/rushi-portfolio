@@ -22,11 +22,8 @@ export default function Experience() {
             <Card
               key={index}
               variant="glass"
-              className="p-6 md:p-8 relative overflow-hidden group"
+              className="p-6 md:p-8 relative overflow-hidden hover:border-primary/30 transition-all duration-200"
             >
-              {/* Accent Line */}
-              <div className="absolute left-0 top-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors" />
-
               {/* Current Position Badge */}
               {job.duration.includes("Present") && (
                 <div className="absolute top-0 right-0">

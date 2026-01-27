@@ -102,7 +102,7 @@ export interface Project {
   title: string;
   description: string;
   stack: string[];
-  repo: string;
+  repo?: string;
   liveUrl?: string;
   image: string;
 }

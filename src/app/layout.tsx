@@ -3,11 +3,17 @@ import "@/styles/globals.css";
 import { Header, Footer } from "@/components/layout";
 import { siteMetadata } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
+import AnimatedBackground from "@/components/ui/animated-background";
+import {
+  generatePersonSchema,
+  generateWebsiteSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/structured-data";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1a202e",
+  themeColor: "#6366f1",
 };
 
 export const metadata: Metadata = {
@@ -61,29 +67,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Rushi Butani",
-    url: "https://rushibutani.com",
-    image: "https://rushibutani.com/images/og-image.jpg",
-    jobTitle: "Frontend Developer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Bankai Informatics Pvt. Ltd.",
-    },
-    sameAs: [
-      "https://github.com/rushibutani",
-      "https://in.linkedin.com/in/rushibutani",
-      "https://twitter.com/rushibutani_",
-    ],
-    knowsAbout: [
-      "React",
-      "JavaScript",
-      "Frontend Development",
-      "Web Development",
-    ],
-  };
+  const personSchema = generatePersonSchema();
+  const websiteSchema = generateWebsiteSchema();
+  const breadcrumbSchema = generateBreadcrumbSchema();
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -100,12 +86,26 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* Structured Data for SEO */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
+          }}
+        />
+
+        <AnimatedBackground />
+
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen relative z-10">{children}</main>
         <Footer />
         <Analytics />
       </body>

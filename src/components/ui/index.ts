@@ -6,3 +6,6 @@ export * from "./section";
 export * from "./link";
 export * from "./section-reveal";
 export * from "./theme-toggle";
+export * from "./contact-form";
+export * from "./skeleton";
+export * from "./error-boundary";

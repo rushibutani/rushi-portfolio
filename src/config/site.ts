@@ -95,10 +95,8 @@ export const personalInfo: PersonalInfo = {
   location: "Gujarat, India",
   email: "rushibutani@gmail.com",
   phone: "+91 9638293911",
-  bio: `Hi, I'm Rushi Butani, a Frontend Web Developer based in Gujarat, India.
-I build fast, responsive, and SEO-friendly web applications using React,
-Next.js, and modern frontend technologies.`,
-  availability: "Available for freelance & collaborations",
+  bio: `Frontend developer with 2+ years building web applications with React. I enjoy crafting clean interfaces, writing maintainable code, and solving real problems through thoughtful design and engineering.`,
+  availability: "Open to Interesting Projects & Collaborations",
 };
 
 // =============================================================================
@@ -109,11 +107,12 @@ Next.js, and modern frontend technologies.`,
  * Hero section content
  */
 export const heroContent = {
-  greeting: "Hi, my name is",
+  greeting: "Frontend Engineer",
   subtitle: "I build things for the web.",
+  description: "I focus on building responsive interfaces, writing maintainable code, and creating smooth user experiences.",
   cta: {
-    primary: "Check out my work!",
-    secondary: "Get In Touch",
+    primary: "View My Work",
+    secondary: "Let's Talk",
   },
 };
 
@@ -192,45 +191,36 @@ export const projectsContent = {
  */
 export const projects: Project[] = [
   {
-    title: "Personal Portfolio",
+    title: "Healthcare Patient Onboarding System",
     description:
-      "A modern, responsive portfolio website showcasing my skills and projects.",
-    stack: ["React.js", "Next.js", "Tailwind CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/portfolio",
-    liveUrl: "https://rushibutani.github.io/portfolio/",
-    image: "/images/personal-portfolio-preview.webp",
+      "Built patient intake module for h-Case healthcare platform featuring multi-step forms with real-time validation, responsive design, and seamless user experience.",
+    stack: ["React.js", "TypeScript", "Material UI", "React Hook Form"],
+    image: "/images/hcase-project.svg",
   },
   {
-    title: "Weather App",
+    title: "Enterprise UI Component Library",
     description:
-      "Real-time weather application with search functionality, responsive UI, and optimized API handling.",
-    stack: ["React.js", "SCSS (Sass)", "JavaScript"],
+      "Developed reusable component library at Bankai Informatics with modular design system. Created 45+ components ensuring consistency and maintainability across multiple products.",
+    stack: ["React.js", "TypeScript", "Styled Components", "Storybook"],
+    image: "/images/component-library.svg",
+  },
+  {
+    title: "Real-Time Weather Application",
+    description:
+      "Built responsive weather app with real-time data fetching, location-based forecasts, and clean UI. Features include search functionality, weather icons, and detailed forecasts.",
+    stack: ["React.js", "OpenWeather API", "SCSS", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
     image: "/images/weather-app-preview.webp",
   },
   {
-    title: "iEducate Website",
+    title: "Personal Portfolio Website",
     description:
-      "Educational website clone built with clean HTML, CSS, and JavaScript.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/iEducate%20Website",
-    image: "/images/ieducate-website-preview.webp",
-  },
-  {
-    title: "Veterinary PSD Clone",
-    description: "Converted PSD design into responsive HTML/CSS layout.",
-    stack: ["HTML", "CSS"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Veterinarian%20Psd%20Clone",
-    image: "/images/veterinary-psd-clone-preview.webp",
-  },
-  {
-    title: "Tesla Website Clone",
-    description:
-      "Tesla website clone focusing on responsive layouts and UI accuracy.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Tesla%20Website%20Clone",
-    image: "/images/tesla-website-clone-preview.webp",
+      "Modern, responsive portfolio built with Next.js 14 featuring smooth animations, dark/light mode, optimized performance, and SEO-friendly architecture.",
+    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "React"],
+    repo: "https://github.com/rushibutani/portfolio",
+    liveUrl: "https://rushibutani.com",
+    image: "/images/personal-portfolio-preview.webp",
   },
 ];
 
@@ -287,8 +277,8 @@ export const education: string[] = [
  */
 export const contactContent = {
   label: "What's Next?",
-  title: "Get In Touch",
+  title: "Let's Work Together",
   description:
     "I'm always open to meaningful conversations. Whether you have a question, a project idea, or just want to say hi, my inbox is always open. I'll do my best to get back to you!",
-  ctaText: "Say Hello",
+  ctaText: "Get In Touch",
 };

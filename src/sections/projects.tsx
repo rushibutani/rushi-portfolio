@@ -38,11 +38,13 @@ export default function Projects() {
               <div className="flex items-center justify-between mb-4">
                 <Folder size={32} className="text-primary" />
                 <div className="flex items-center gap-3">
-                  <IconLink
-                    href={project.repo}
-                    icon={<Github size={20} />}
-                    label="View GitHub repository"
-                  />
+                  {project.repo && (
+                    <IconLink
+                      href={project.repo}
+                      icon={<Github size={20} />}
+                      label="View GitHub repository"
+                    />
+                  )}
                   {project.liveUrl && (
                     <IconLink
                       href={project.liveUrl}
@@ -57,7 +59,8 @@ export default function Projects() {
               <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
+
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {project.description}
               </p>
 

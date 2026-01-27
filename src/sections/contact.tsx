@@ -1,7 +1,7 @@
 import { personalInfo, contactContent } from "@/config/site";
 import { Mail, MapPin, Phone } from "@/components/ui/icons";
 import SocialLinks from "@/components/layout/social-links";
-import { Section, Button, InfoItem, SectionReveal } from "@/components/ui";
+import { Section, InfoItem, SectionReveal, ContactForm } from "@/components/ui";
 
 export default function Contact() {
   return (
@@ -18,7 +18,7 @@ export default function Contact() {
         </p>
 
         {/* Contact Info */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-5 mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-5 mb-16">
           <InfoItem
             icon={<Mail size={20} className="text-primary" />}
             href={`mailto:${personalInfo.email}`}
@@ -38,15 +38,10 @@ export default function Contact() {
           </InfoItem>
         </div>
 
-        {/* CTA Button */}
-        <Button
-          variant="primary"
-          size="lg"
-          href={`mailto:${personalInfo.email}`}
-          className="mb-12"
-        >
-          {contactContent.ctaText}
-        </Button>
+        {/* Contact Form */}
+        <div className="mb-16">
+          <ContactForm />
+        </div>
 
         {/* Social Links */}
         <div className="flex justify-center">
