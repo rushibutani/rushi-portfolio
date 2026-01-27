@@ -1,32 +1,41 @@
-import { experience } from "@/lib/data";
-import { MapPin, Calendar } from "@/components/Icons";
+import { experience, experienceContent } from "@/config/site";
+import { MapPin, Calendar } from "@/components/ui/icons";
+import {
+  Section,
+  SectionHeader,
+  Card,
+  Badge,
+  SectionReveal,
+} from "@/components/ui";
 
-export default function ExperienceSection() {
+export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-0 md:px-6 bg-secondary/30">
-      <div className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-primary font-mono text-sm mb-4">
-            My Professional Journey
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Work Experience
-          </h2>
-        </div>
+    <Section id="experience" variant="accent">
+      <SectionReveal>
+        <SectionHeader
+          label={experienceContent.label}
+          title={experienceContent.title}
+        />
 
         <div className="space-y-8">
           {experience.map((job, index) => (
-            <div
+            <Card
               key={index}
-              className="glass-card p-6 md:p-8 relative overflow-hidden group"
+              variant="glass"
+              className="p-6 md:p-8 relative overflow-hidden group"
             >
               {/* Accent Line */}
               <div className="absolute left-0 top-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors" />
 
-              {/* Current Position Ribbon */}
+              {/* Current Position Badge */}
               {job.duration.includes("Present") && (
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold rounded-bl-lg shadow-lg">
-                  Currently Working
+                <div className="absolute top-0 right-0">
+                  <Badge
+                    variant="success"
+                    className="rounded-bl-lg rounded-tr-none shadow-lg"
+                  >
+                    Currently Working
+                  </Badge>
                 </div>
               )}
 
@@ -60,10 +69,10 @@ export default function ExperienceSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Card>
           ))}
         </div>
-      </div>
-    </section>
+      </SectionReveal>
+    </Section>
   );
 }

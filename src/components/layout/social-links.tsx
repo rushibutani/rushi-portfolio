@@ -1,5 +1,11 @@
-import { Github, Linkedin, Instagram, Twitter, Facebook } from "./Icons";
-import { socialLinks } from "@/lib/data";
+import {
+  Github,
+  Linkedin,
+  Instagram,
+  Twitter,
+  Facebook,
+} from "@/components/ui/icons";
+import { socialLinks } from "@/config/site";
 
 export default function SocialLinks() {
   const links = [

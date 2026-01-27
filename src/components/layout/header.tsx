@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "./Icons";
-import { navLinks } from "@/lib/data";
+import { Menu, X } from "@/components/ui/icons";
+import { ThemeToggle } from "@/components/ui";
+import { navLinks, headerLogo } from "@/config/site";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +38,7 @@ export default function Header() {
             href="#"
             className="text-2xl font-bold text-primary font-mono hover:opacity-80 transition-opacity"
           >
-            {"<RB />"}
+            {headerLogo}
           </a>
 
           {/* Desktop Navigation */}
@@ -63,16 +64,22 @@ export default function Header() {
                 Resume
               </a>
             </li>
+            <li>
+              <ThemeToggle />
+            </li>
           </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-muted-foreground hover:text-primary transition-colors z-50"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-muted-foreground hover:text-primary transition-colors z-50"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </nav>
       </header>
 

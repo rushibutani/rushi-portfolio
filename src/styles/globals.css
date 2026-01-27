@@ -4,6 +4,43 @@
 
 @layer base {
   :root {
+    /* Light Mode - Comfortable, Modern & Professional */
+    --background: 216 20% 95%;
+    --foreground: 222 47% 15%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 222 47% 15%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 222 47% 15%;
+
+    --primary: 172 66% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 20% 90%;
+    --secondary-foreground: 222 47% 20%;
+
+    --muted: 214 20% 90%;
+    --muted-foreground: 215 16% 35%;
+
+    --accent: 172 66% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 85%;
+    --input: 214 20% 88%;
+    --ring: 172 66% 45%;
+
+    --radius: 0.75rem;
+
+    --shadow-card: 0 2px 12px -4px hsla(222, 47%, 11%, 0.15);
+    --shadow-glow: 0 0 30px hsla(172, 66%, 45%, 0.25);
+  }
+
+  .dark {
+    /* Dark Mode */
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -31,16 +68,6 @@
     --border: 222 30% 25%;
     --input: 222 30% 25%;
     --ring: 172 66% 50%;
-
-    --radius: 0.75rem;
-
-    --navy: 222 47% 11%;
-    --navy-light: 222 47% 14%;
-    --navy-lighter: 222 47% 18%;
-    --slate: 215 20% 65%;
-    --slate-light: 210 40% 80%;
-    --teal: 172 66% 50%;
-    --teal-glow: 172 66% 60%;
 
     --shadow-card: 0 10px 30px -15px hsla(222, 47%, 5%, 0.7);
     --shadow-glow: 0 0 20px hsla(172, 66%, 50%, 0.15);
