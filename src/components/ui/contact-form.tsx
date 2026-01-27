@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "./button";
 import { Mail, User, MessageSquare, Loader2, CheckCircle } from "./icons";
 
@@ -26,26 +26,49 @@ export function ContactForm() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  // Refs for cleanup
+  const successTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (successTimeoutRef.current) clearTimeout(successTimeoutRef.current);
+      if (errorTimeoutRef.current) clearTimeout(errorTimeoutRef.current);
+    };
+  }, []);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.name.trim()) {
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+
+    if (!trimmedName) {
       newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 2) {
+    } else if (trimmedName.length < 2) {
       newErrors.name = "Name must be at least 2 characters";
+    } else if (trimmedName.length > 100) {
+      newErrors.name = "Name must not exceed 100 characters";
     }
 
-    if (!formData.email.trim()) {
+    if (!trimmedEmail) {
       newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      newErrors.email = "Please enter a valid email address";
+    } else if (trimmedEmail.length > 255) {
+      newErrors.email = "Email is too long";
     }
 
-    if (!formData.message.trim()) {
+    if (!trimmedMessage) {
       newErrors.message = "Message is required";
-    } else if (formData.message.trim().length < 10) {
+    } else if (trimmedMessage.length < 10) {
       newErrors.message = "Message must be at least 10 characters";
+    } else if (trimmedMessage.length > 5000) {
+      newErrors.message = "Message must not exceed 5000 characters";
     }
 
     setErrors(newErrors);
@@ -58,21 +81,52 @@ export function ContactForm() {
     if (!validateForm()) return;
 
     setStatus("submitting");
+    setErrorMessage("");
+
+    // Clear any existing timeouts
+    if (successTimeoutRef.current) clearTimeout(successTimeoutRef.current);
+    if (errorTimeoutRef.current) clearTimeout(errorTimeoutRef.current);
 
     try {
-      // Simulate form submission - replace with actual API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        }),
+      });
 
-      // For now, open mailto as fallback
-      const mailtoLink = `mailto:rushibutani@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${encodeURIComponent(formData.email)}`;
-      window.location.href = mailtoLink;
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (data.errors) {
+          setErrors(data.errors);
+        }
+        throw new Error(data.message || "Failed to send message");
+      }
 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 3000);
+
+      // Reset to idle after 5 seconds
+      successTimeoutRef.current = setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again or email me directly.",
+      );
+
+      // Reset error state after 8 seconds
+      errorTimeoutRef.current = setTimeout(() => {
+        setStatus("idle");
+        setErrorMessage("");
+      }, 8000);
     }
   };
 
@@ -88,12 +142,17 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-2xl mx-auto space-y-6"
+      aria-label="Contact form"
+      noValidate
+    >
       {/* Name Field */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
           <span className="flex items-center gap-2">
-            <User size={16} className="text-primary" />
+            <User size={16} className="text-primary" aria-hidden="true" />
             Name
           </span>
         </label>
@@ -104,13 +163,22 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           disabled={status === "submitting"}
+          aria-required="true"
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? "name-error" : undefined}
           className={`w-full px-4 py-3 rounded-md bg-secondary/50 border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed ${
             errors.name ? "border-destructive" : "border-border"
           }`}
           placeholder="Your name"
         />
         {errors.name && (
-          <p className="mt-1 text-sm text-destructive">{errors.name}</p>
+          <p
+            id="name-error"
+            className="mt-1 text-sm text-destructive"
+            role="alert"
+          >
+            {errors.name}
+          </p>
         )}
       </div>
 
@@ -118,7 +186,7 @@ export function ContactForm() {
       <div>
         <label htmlFor="email" className="block text-sm font-medium mb-2">
           <span className="flex items-center gap-2">
-            <Mail size={16} className="text-primary" />
+            <Mail size={16} className="text-primary" aria-hidden="true" />
             Email
           </span>
         </label>
@@ -129,13 +197,22 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           disabled={status === "submitting"}
+          aria-required="true"
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : undefined}
           className={`w-full px-4 py-3 rounded-md bg-secondary/50 border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed ${
             errors.email ? "border-destructive" : "border-border"
           }`}
           placeholder="your.email@example.com"
         />
         {errors.email && (
-          <p className="mt-1 text-sm text-destructive">{errors.email}</p>
+          <p
+            id="email-error"
+            className="mt-1 text-sm text-destructive"
+            role="alert"
+          >
+            {errors.email}
+          </p>
         )}
       </div>
 
@@ -143,7 +220,11 @@ export function ContactForm() {
       <div>
         <label htmlFor="message" className="block text-sm font-medium mb-2">
           <span className="flex items-center gap-2">
-            <MessageSquare size={16} className="text-primary" />
+            <MessageSquare
+              size={16}
+              className="text-primary"
+              aria-hidden="true"
+            />
             Message
           </span>
         </label>
@@ -154,13 +235,22 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           disabled={status === "submitting"}
+          aria-required="true"
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "message-error" : undefined}
           className={`w-full px-4 py-3 rounded-md bg-secondary/50 border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed resize-none ${
             errors.message ? "border-destructive" : "border-border"
           }`}
           placeholder="Your message..."
         />
         {errors.message && (
-          <p className="mt-1 text-sm text-destructive">{errors.message}</p>
+          <p
+            id="message-error"
+            className="mt-1 text-sm text-destructive"
+            role="alert"
+          >
+            {errors.message}
+          </p>
         )}
       </div>
 
@@ -172,11 +262,18 @@ export function ContactForm() {
           size="lg"
           disabled={status === "submitting" || status === "success"}
           className="w-full md:w-auto min-w-[200px]"
+          aria-live="polite"
         >
           {status === "submitting" && (
-            <Loader2 size={20} className="animate-spin mr-2" />
+            <Loader2
+              size={20}
+              className="animate-spin mr-2"
+              aria-hidden="true"
+            />
           )}
-          {status === "success" && <CheckCircle size={20} className="mr-2" />}
+          {status === "success" && (
+            <CheckCircle size={20} className="mr-2" aria-hidden="true" />
+          )}
           {status === "submitting"
             ? "Sending..."
             : status === "success"
@@ -185,8 +282,22 @@ export function ContactForm() {
         </Button>
 
         {status === "error" && (
-          <p className="text-sm text-destructive">
-            Something went wrong. Please try again.
+          <p
+            className="text-sm text-destructive text-center"
+            role="alert"
+            aria-live="assertive"
+          >
+            {errorMessage || "Something went wrong. Please try again."}
+          </p>
+        )}
+
+        {status === "success" && (
+          <p
+            className="text-sm text-primary text-center"
+            role="status"
+            aria-live="polite"
+          >
+            Thanks for reaching out! I'll get back to you soon.
           </p>
         )}
       </div>
