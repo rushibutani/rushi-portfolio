@@ -136,7 +136,7 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-br from-foreground via-foreground to-primary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-primary/80 to-foreground/70 bg-clip-text text-transparent;
   }
 
   .nav-link {
