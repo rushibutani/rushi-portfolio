@@ -33,7 +33,7 @@ export function SectionHeader({
         <span className="absolute -bottom-2 left-0 w-1/3 h-0.5 bg-primary opacity-70" />
       </h2>
       {description && (
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed mt-6">
           {description}
         </p>
       )}

@@ -64,10 +64,25 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "float-slow": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(25px, -25px) scale(1.03)" },
+        },
+        "float-slower": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(-20px, 25px) scale(1.02)" },
+        },
+        "float-reverse": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(30px, -15px) scale(1.04)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float-slow": "float-slow 30s ease-in-out infinite",
+        "float-slower": "float-slower 35s ease-in-out infinite",
+        "float-reverse": "float-reverse 32s ease-in-out infinite",
       },
     },
   },

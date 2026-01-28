@@ -92,8 +92,8 @@ export default function Header() {
         }`}
         style={{ paddingTop: isScrolled ? "80px" : "96px" }}
       >
-        <div className="overflow-y-auto">
-          <ul className="flex flex-col pl-16 gap-6 pt-8 pb-8">
+        <div className="h-full flex items-center justify-center overflow-y-auto">
+          <ul className="flex flex-col items-center gap-8 py-8 px-6">
             {navLinks.map((link, index) => (
               <li
                 key={link.name}
@@ -107,9 +107,9 @@ export default function Header() {
                 <a
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-sm tracking-wider font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className="text-base tracking-wide font-medium text-muted-foreground hover:text-primary transition-colors block text-center"
                 >
-                  <span className="text-primary font-mono text-xs mr-1">
+                  <span className="text-primary font-mono text-xs mr-2">
                     0{index + 1}.
                   </span>
                   {link.name}
@@ -117,7 +117,7 @@ export default function Header() {
               </li>
             ))}
             <li
-              className={`mt-2 transform transition-all duration-300 ${
+              className={`mt-4 transform transition-all duration-300 ${
                 isMobileMenuOpen
                   ? "translate-y-0 opacity-100"
                   : "-translate-y-4 opacity-0"
@@ -129,7 +129,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-4 py-2 border border-primary text-primary rounded-md text-sm font-medium 
+                className="px-6 py-2.5 border border-primary text-primary rounded-md text-sm font-medium 
                            hover:bg-primary/10 transition-all duration-300 inline-block"
               >
                 Resume

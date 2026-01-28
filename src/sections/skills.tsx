@@ -1,19 +1,15 @@
 import { skills, education, skillsContent } from "@/config/site";
 import { GraduationCap, Code, Wrench } from "@/components/ui/icons";
-import { SectionReveal } from "@/components/ui";
+import { Section, SectionHeader, SectionReveal } from "@/components/ui";
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-0 md:px-6 bg-secondary/30">
-      <SectionReveal className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-primary font-mono text-sm mb-4">
-            {skillsContent.label}
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            {skillsContent.title}
-          </h2>
-        </div>
+    <Section id="skills" variant="accent">
+      <SectionReveal>
+        <SectionHeader
+          label={skillsContent.label}
+          title={skillsContent.title}
+        />
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Skills */}
@@ -81,6 +77,6 @@ export default function Skills() {
           </div>
         </div>
       </SectionReveal>
-    </section>
+    </Section>
   );
 }

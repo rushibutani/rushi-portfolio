@@ -19,7 +19,7 @@ export default function Projects() {
           title={projectsContent.title}
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div key={index} className="project-card flex flex-col h-full">
               {/* Project Image */}
@@ -35,9 +35,9 @@ export default function Projects() {
               </div>
 
               {/* Header */}
-              <div className="flex items-center justify-between mb-4">
-                <Folder size={32} className="text-primary" />
-                <div className="flex items-center gap-3">
+              <div className="flex items-start justify-between mb-4 gap-2">
+                <Folder size={32} className="text-primary flex-shrink-0" />
+                <div className="flex items-center gap-3 flex-shrink-0">
                   {project.repo && (
                     <IconLink
                       href={project.repo}
