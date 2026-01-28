@@ -108,11 +108,12 @@ export const personalInfo: PersonalInfo = {
  */
 export const heroContent = {
   greeting: "Frontend Engineer",
-  subtitle: "I build things for the web.",
-  description: "I focus on building responsive interfaces, writing maintainable code, and creating smooth user experiences.",
+  subtitle: "Turning complex requirements into clean, usable React interfaces.",
+  description:
+    "I focus on building responsive interfaces, writing maintainable code, and creating smooth user experiences.",
   cta: {
     primary: "View My Work",
-    secondary: "Let's Talk",
+    secondary: "Get In Touch",
   },
 };
 
@@ -127,8 +128,9 @@ export const aboutContent = {
   label: "Get To Know More",
   title: "About Me",
   paragraphs: [
-    "Hello! I'm Rushi, a passionate frontend developer who enjoys creating things that live on the internet. My interest in web development started back in 2020 when I decided to try customizing website templates — turns out hacking together HTML & CSS taught me a lot about how the web works!",
-    "Fast-forward to today, and I've had the privilege of working at a software company and collaborating with talented teams. My main focus these days is building accessible, inclusive products and digital experiences using React and modern frontend technologies.",
+    "Hi, I'm  Rushi, a frontend developer who enjoys building clean, reliable interfaces for real-world web applications. My journey into frontend development started in 2020, where experimenting with HTML and CSS helped me understand how the web works at a foundational level.",
+    ,
+    "Since then, I've worked on real client projects and production applications, which helped me move beyond tutorials and understand the importance of maintainable code, accessibility, and collaboration. Today, I focus on building user-friendly interfaces using React and modern frontend technologies while continuously improving my development practices.",
     "Here are a few technologies I've been working with recently:",
   ],
 };
@@ -155,9 +157,10 @@ export const experience: Experience[] = [
     duration: "Jan 2024 - Present",
     location: "Ahmedabad, Gujarat",
     highlights: [
-      "Built scalable React.js interfaces using modern UI libraries, improving maintainability and performance",
-      "Integrated REST APIs and improved UI performance",
-      "Worked in an Agile environment using Git for version control",
+      "Develop and maintain React-based user interfaces for banking and financial web applications",
+      "Work on feature implementation, UI improvements, and bug fixes in existing production systems",
+      "Collaborate with backend developers and product teams to integrate APIs and deliver requirements",
+      "Improve code readability and component reuse within the frontend codebase",
     ],
   },
   {
@@ -166,9 +169,10 @@ export const experience: Experience[] = [
     duration: "Oct 2023 - Jan 2024",
     location: "Remote",
     highlights: [
-      "Developed patient onboarding modules",
-      "Designed reusable UI components",
-      "Handled frontend architecture and UI workflows",
+      "Worked on frontend modules for a healthcare patient onboarding system",
+      "Implemented form screens, basic validation, and UI components using React",
+      "Collaborated with senior developers and followed existing code patterns",
+      "Gained hands-on experience working on a real client project during early career",
     ],
   },
 ];
@@ -191,23 +195,16 @@ export const projectsContent = {
  */
 export const projects: Project[] = [
   {
-    title: "Healthcare Patient Onboarding System",
+    title: "Healthcare Onboarding – Frontend Contribution",
     description:
-      "Built patient intake module for h-Case healthcare platform featuring multi-step forms with real-time validation, responsive design, and seamless user experience.",
-    stack: ["React.js", "TypeScript", "Material UI", "React Hook Form"],
+      "Contributed to frontend modules of a healthcare onboarding system during a freelance engagement, focusing on form screens, validation logic, and responsive UI under senior guidance.",
+    stack: ["React.js", "Material UI", "React Hook Form"],
     image: "/images/hcase-project.svg",
-  },
-  {
-    title: "Enterprise UI Component Library",
-    description:
-      "Developed reusable component library at Bankai Informatics with modular design system. Created 45+ components ensuring consistency and maintainability across multiple products.",
-    stack: ["React.js", "TypeScript", "Styled Components", "Storybook"],
-    image: "/images/component-library.svg",
   },
   {
     title: "Real-Time Weather Application",
     description:
-      "Built responsive weather app with real-time data fetching, location-based forecasts, and clean UI. Features include search functionality, weather icons, and detailed forecasts.",
+      "Personal project built to practice real-world API integration and state management. Implements live weather data, location-based search, and responsive UI with clear visual hierarchy.",
     stack: ["React.js", "OpenWeather API", "SCSS", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
@@ -216,7 +213,7 @@ export const projects: Project[] = [
   {
     title: "Personal Portfolio Website",
     description:
-      "Modern, responsive portfolio built with Next.js 14 featuring smooth animations, dark/light mode, optimized performance, and SEO-friendly architecture.",
+      "Designed and built my personal portfolio to showcase real project experience, focusing on clean architecture, performance, accessibility, and maintainable UI using Next.js.",
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "React"],
     repo: "https://github.com/rushibutani/portfolio",
     liveUrl: "https://rushibutani.com",

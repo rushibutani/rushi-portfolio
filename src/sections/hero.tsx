@@ -48,11 +48,7 @@ export default function Hero() {
               <Button href="#projects" variant="outline" size="lg">
                 {heroContent.cta.primary}
               </Button>
-              <Button
-                href={`mailto:${personalInfo.email}`}
-                variant="primary"
-                size="lg"
-              >
+              <Button href="#contact" variant="primary" size="lg">
                 {heroContent.cta.secondary}
               </Button>
             </div>
