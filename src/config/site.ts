@@ -195,16 +195,9 @@ export const projectsContent = {
  */
 export const projects: Project[] = [
   {
-    title: "Healthcare Onboarding – Frontend Contribution",
-    description:
-      "Contributed to frontend modules of a healthcare onboarding system during a freelance engagement, focusing on form screens, validation logic, and responsive UI under senior guidance.",
-    stack: ["React.js", "Material UI", "React Hook Form"],
-    image: "/images/hcase-project.svg",
-  },
-  {
     title: "Real-Time Weather Application",
     description:
-      "Personal project built to practice real-world API integration and state management. Implements live weather data, location-based search, and responsive UI with clear visual hierarchy.",
+      "Clean, location-based weather app demonstrating API integration and state management. Features real-time data updates, geolocation support, and responsive weather visualization.",
     stack: ["React.js", "OpenWeather API", "SCSS", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
@@ -218,6 +211,21 @@ export const projects: Project[] = [
     repo: "https://github.com/rushibutani/portfolio",
     liveUrl: "https://rushibutani.com",
     image: "/images/personal-portfolio-preview.webp",
+  },
+  {
+    title: "GitHub Profile Analytics",
+    description:
+      "Production-grade analytics dashboard transforming GitHub API data into actionable insights. Features contribution heatmaps, language distribution charts, and repository metrics with optimized data fetching.",
+    stack: [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub REST API",
+      "Recharts",
+    ],
+    repo: "https://github.com/rushibutani/github-profile-analytics",
+    liveUrl: "https://github-profile-analytics.vercel.app",
+    image: "/images/github-analytics-preview.webp",
   },
 ];
 
