@@ -1,73 +1,78 @@
 import { experience, experienceContent } from "@/config/site";
-import { MapPin, Calendar } from "@/components/ui/icons";
-import {
-  Section,
-  SectionHeader,
-  Card,
-  Badge,
-  SectionReveal,
-} from "@/components/ui";
+import { Section, SectionReveal } from "@/components/ui";
 
 export default function Experience() {
   return (
     <Section id="experience" variant="accent">
       <SectionReveal>
-        <SectionHeader
-          label={experienceContent.label}
-          title={experienceContent.title}
-        />
+        {/* Section header */}
+        <div className="mb-14">
+          <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3">
+            {experienceContent.label}
+          </p>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+            {experienceContent.title}
+          </h2>
+        </div>
 
-        <div className="space-y-8">
-          {experience.map((job, index) => (
-            <Card
-              key={index}
-              variant="glass"
-              className="p-6 md:p-8 relative overflow-hidden hover:border-primary/30 transition-all duration-200"
-            >
-              {/* Current Position Badge */}
-              {job.duration.includes("Present") && (
-                <div className="absolute top-0 right-0">
-                  <Badge
-                    variant="success"
-                    className="rounded-bl-lg rounded-tr-none shadow-lg"
-                  >
-                    Currently Working
-                  </Badge>
-                </div>
-              )}
+        {/* Timeline */}
+        <div className="relative pl-8 md:pl-12">
+          {/* Vertical line */}
+          <div className="timeline-line" />
 
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {job.role}{" "}
-                    <span className="text-primary">@ {job.company}</span>
-                  </h3>
-                  <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Calendar size={14} className="text-primary" />
+          <div className="space-y-12">
+            {experience.map((job, index) => (
+              <div key={index} className="relative">
+                {/* Timeline dot */}
+                <div className="timeline-dot" />
+
+                {/* Card */}
+                <div className="glass-card p-6 md:p-8 rounded-2xl hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl group">
+                  {/* Year chip */}
+                  <div className="inline-flex items-center gap-2 mb-4">
+                    <span className="badge-pill font-mono text-xs">
                       {job.duration}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin size={14} className="text-primary" />
-                      {job.location}
-                    </span>
+                    {job.duration.includes("Present") && (
+                      <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-500">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        Currently Here
+                      </span>
+                    )}
                   </div>
+
+                  {/* Role + Company */}
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-200">
+                    {job.role}
+                  </h3>
+                  <p className="text-primary font-semibold mb-1">
+                    {job.company}
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    {job.location}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="h-px bg-border/60 mb-6" />
+
+                  {/* Highlights */}
+                  <ul className="space-y-3">
+                    {job.highlights.map((highlight, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-muted-foreground text-sm md:text-base"
+                      >
+                        <span className="text-primary mt-0.5 leading-none text-base flex-shrink-0">
+                          ▹
+                        </span>
+                        <span className="leading-relaxed">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-
-              <ul className="space-y-3">
-                {job.highlights.map((highlight, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-muted-foreground"
-                  >
-                    <span className="text-primary mt-1">▹</span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
       </SectionReveal>
     </Section>

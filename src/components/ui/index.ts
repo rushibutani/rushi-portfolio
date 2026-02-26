@@ -7,3 +7,4 @@ export * from "./link";
 export * from "./section-reveal";
 export * from "./theme-toggle";
 export * from "./contact-form";
+export { default as TechStrip } from "./tech-strip";

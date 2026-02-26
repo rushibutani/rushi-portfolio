@@ -13,12 +13,11 @@ export function Card({
   className = "",
   hover = false,
 }: CardProps) {
-  const baseStyles = "rounded-lg transition-all duration-300";
+  const baseStyles = "rounded-2xl transition-all duration-300";
 
   const variants = {
     default: "bg-card border border-border",
-    glass:
-      "glass-card backdrop-blur-sm bg-secondary/10 border border-border/50 shadow-lg",
+    glass: "glass-card",
     bordered: "border-2 border-border hover:border-primary/50",
   };
 

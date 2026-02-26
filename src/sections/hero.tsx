@@ -8,66 +8,127 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center relative px-4 md:px-6 pt-32 md:pt-25 lg:pt-20"
+      className="relative min-h-screen flex flex-col justify-center px-4 md:px-6 pt-28 pb-16 overflow-hidden"
     >
-      <div className="container max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-[1fr,auto] gap-8 md:gap-12 items-center">
-          {/* Profile Image - Shows first on mobile, second on desktop */}
-          <div className="flex justify-center md:block animate-fade-up-delay-1 order-1 md:order-2">
-            <div className="relative w-64 h-64 md:w-96 md:h-96 lg:w-[22rem] lg:h-[22rem] rounded-2xl overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-all duration-200">
-              <Image
-                src="/images/rushi-butani-profile.png"
-                alt="Rushi Butani - Frontend Developer"
-                width={448}
-                height={448}
-                priority
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
-              />
-            </div>
-          </div>
+      {/* Decorative accent orb behind the profile card */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[-5%] top-[10%] w-[500px] h-[500px] rounded-full opacity-20 dark:opacity-10 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, hsl(262 83% 65%), transparent 70%)",
+        }}
+      />
 
-          {/* Text Content - Shows second on mobile, first on desktop */}
-          <div className="max-w-3xl order-2 md:order-1">
-            <p className="text-primary font-mono text-sm md:text-base mb-4 animate-fade-up font-semibold tracking-wider">
+      <div className="container max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* ── Left: Text Content ─────────────────────── */}
+          <div className="order-2 lg:order-1 flex flex-col gap-6">
+            {/* Label */}
+            <p className="animate-fade-up font-mono text-sm font-semibold tracking-widest text-primary uppercase">
               {heroContent.greeting}
             </p>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up-delay-1">
+            {/* Name */}
+            <h1 className="animate-fade-up-delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.0] tracking-tight">
               <span className="text-gradient">{personalInfo.name}</span>
             </h1>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-6 animate-fade-up-delay-2 leading-tight">
+            {/* Headline */}
+            <h2 className="animate-fade-up-delay-2 text-xl md:text-2xl font-semibold text-foreground leading-snug max-w-lg">
               {heroContent.subtitle}
             </h2>
 
-            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mb-8 leading-relaxed animate-fade-up-delay-3">
+            {/* Description */}
+            <p className="animate-fade-up-delay-3 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
               {heroContent.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up-delay-4">
-              <Button href="#projects" variant="outline" size="lg">
+            {/* CTAs */}
+            <div className="animate-fade-up-delay-4 flex flex-col sm:flex-row gap-3">
+              <Button href="#projects" variant="primary" size="lg">
                 {heroContent.cta.primary}
               </Button>
-              <Button href="#contact" variant="primary" size="lg">
+              <Button href="#contact" variant="outline" size="lg">
                 {heroContent.cta.secondary}
               </Button>
             </div>
 
-            <div className="animate-fade-up-delay-4">
+            {/* Social Links */}
+            <div className="animate-fade-up-delay-5">
               <SocialLinks />
+            </div>
+          </div>
+
+          {/* ── Right: Profile Glass Card ──────────────── */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="animate-fade-up-delay-2 relative">
+              {/* Glow ring */}
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-3xl blur-2xl opacity-30 dark:opacity-20 scale-105"
+                style={{ background: "hsl(262 83% 65%)" }}
+              />
+
+              {/* Glass card wrapper */}
+              <div className="relative glass-card p-3 rounded-3xl animate-float">
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/rushi-butani-profile.png"
+                    alt="Rushi Butani — Frontend Engineer"
+                    width={448}
+                    height={448}
+                    priority
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  />
+                  {/* Dark overlay at bottom */}
+                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="text-white font-semibold text-sm drop-shadow">
+                      {personalInfo.availability}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge — years of experience */}
+              <div
+                className="absolute -bottom-4 -left-6 glass-card px-4 py-3 rounded-2xl shadow-xl"
+                style={{ backdropFilter: "blur(20px)" }}
+              >
+                <p className="text-2xl font-black text-primary leading-none">
+                  2+
+                </p>
+                <p className="text-xs text-muted-foreground font-medium leading-tight">
+                  Years
+                  <br />
+                  Experience
+                </p>
+              </div>
+
+              {/* Floating badge — stack */}
+              <div
+                className="absolute -top-4 -right-4 glass-card px-4 py-3 rounded-2xl shadow-xl"
+                style={{ backdropFilter: "blur(20px)" }}
+              >
+                <p className="text-xs font-bold text-foreground">
+                  React &amp; Next.js
+                </p>
+                <p className="text-xs text-muted-foreground">Production Apps</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <a
         href="#about"
-        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground 
+        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground
                    hover:text-primary transition-colors animate-bounce"
         aria-label="Scroll to About section"
       >
-        <ArrowDown size={24} />
+        <ArrowDown size={22} />
       </a>
     </section>
   );

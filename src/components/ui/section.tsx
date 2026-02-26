@@ -62,7 +62,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`py-24 px-0 md:px-6 ${variants[variant]} ${className}`}
+      className={`py-28 md:py-32 px-0 md:px-6 ${variants[variant]} ${className}`}
     >
       <div className="container max-w-6xl mx-auto">{children}</div>
     </section>

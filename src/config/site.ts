@@ -23,9 +23,9 @@ import type {
  * Site metadata for SEO optimization
  */
 export const siteMetadata: SiteMetadata = {
-  title: "Rushi Butani | Frontend Developer",
+  title: "Rushi Butani | Frontend Engineer",
   description:
-    "Frontend Web Developer specializing in React.js, Next.js, and modern web technologies. Based in Gujarat, India. Available for freelance & collaborations.",
+    "Frontend Engineer specializing in React.js, Next.js, and scalable UI systems. Based in Gujarat, India. Available for freelance & collaborations.",
   siteUrl: "https://rushibutani.com",
   author: "Rushi Butani",
   keywords: [
@@ -107,15 +107,34 @@ export const personalInfo: PersonalInfo = {
  * Hero section content
  */
 export const heroContent = {
-  greeting: "Frontend Engineer",
-  subtitle: "Turning complex requirements into clean, usable React interfaces.",
+  greeting: "Hi, I'm Rushi — Frontend Engineer",
+  subtitle:
+    "I design and build scalable, high-performance React & Next.js applications.",
   description:
-    "I focus on building responsive interfaces, writing maintainable code, and creating smooth user experiences.",
+    "Focused on crafting clean architecture, modern UI systems, and smooth user experiences for real-world production products.",
   cta: {
     primary: "View My Work",
     secondary: "Get In Touch",
   },
 };
+
+// =============================================================================
+// TECH STRIP
+// =============================================================================
+
+/**
+ * Technology strip shown below hero
+ */
+export const techStrip: string[] = [
+  "React.js",
+  "Next.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "JavaScript",
+  "REST APIs",
+  "Git & GitHub",
+  "Production Systems",
+];
 
 // =============================================================================
 // ABOUT SECTION
@@ -125,13 +144,12 @@ export const heroContent = {
  * About section content
  */
 export const aboutContent = {
-  label: "Get To Know More",
-  title: "About Me",
+  label: "About Me",
+  title: "Building Reliable Interfaces\nfor Real Products",
   paragraphs: [
-    "Hi, I'm  Rushi, a frontend developer who enjoys building clean, reliable interfaces for real-world web applications. My journey into frontend development started in 2020, where experimenting with HTML and CSS helped me understand how the web works at a foundational level.",
-    ,
-    "Since then, I've worked on real client projects and production applications, which helped me move beyond tutorials and understand the importance of maintainable code, accessibility, and collaboration. Today, I focus on building user-friendly interfaces using React and modern frontend technologies while continuously improving my development practices.",
-    "Here are a few technologies I've been working with recently:",
+    "I'm a frontend engineer with 2+ years of experience building production-grade web applications using React and modern frontend technologies.",
+    "I specialize in scalable component architecture, performance optimization, and clean UI systems that bridge design and engineering.",
+    "Currently building financial web applications at Bankai Informatics, shipping features used by real users every day.",
   ],
 };
 
@@ -143,7 +161,7 @@ export const aboutContent = {
  * Experience section content
  */
 export const experienceContent = {
-  label: "My Professional Journey",
+  label: "Professional Journey",
   title: "Work Experience",
 };
 
@@ -187,7 +205,7 @@ export const experience: Experience[] = [
 export const projectsContent = {
   label: "Things I've Built",
   title: "Featured Projects",
-  viewMoreText: "View More on GitHub",
+  viewMoreText: "More on GitHub",
 };
 
 /**
@@ -237,7 +255,7 @@ export const projects: Project[] = [
  * Skills section content
  */
 export const skillsContent = {
-  label: "My Expertise & Learning",
+  label: "Expertise & Learning",
   title: "Skills & Education",
   sections: {
     core: "Core Technologies",
@@ -282,8 +300,8 @@ export const education: string[] = [
  */
 export const contactContent = {
   label: "What's Next?",
-  title: "Let's Work Together",
+  title: "Let's build something\nmeaningful.",
   description:
-    "I'm always open to meaningful conversations. Whether you have a question, a project idea, or just want to say hi, my inbox is always open. I'll do my best to get back to you!",
-  ctaText: "Get In Touch",
+    "Open to new opportunities, freelance projects, and interesting collaborations. If you have something in mind, I'd love to hear from you.",
+  ctaText: "Say Hello",
 };
