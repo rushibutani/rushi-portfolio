@@ -81,40 +81,7 @@ export default function Hero() {
                     priority
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   />
-                  {/* Dark overlay at bottom */}
-                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <span className="text-white font-semibold text-sm drop-shadow">
-                      {personalInfo.availability}
-                    </span>
-                  </div>
                 </div>
-              </div>
-
-              {/* Floating badge — years of experience */}
-              <div
-                className="absolute -bottom-4 -left-6 glass-card px-4 py-3 rounded-2xl shadow-xl"
-                style={{ backdropFilter: "blur(20px)" }}
-              >
-                <p className="text-2xl font-black text-primary leading-none">
-                  2+
-                </p>
-                <p className="text-xs text-muted-foreground font-medium leading-tight">
-                  Years
-                  <br />
-                  Experience
-                </p>
-              </div>
-
-              {/* Floating badge — stack */}
-              <div
-                className="absolute -top-4 -right-4 glass-card px-4 py-3 rounded-2xl shadow-xl"
-                style={{ backdropFilter: "blur(20px)" }}
-              >
-                <p className="text-xs font-bold text-foreground">
-                  React &amp; Next.js
-                </p>
-                <p className="text-xs text-muted-foreground">Production Apps</p>
               </div>
             </div>
           </div>
