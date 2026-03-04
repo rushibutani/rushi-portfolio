@@ -105,10 +105,12 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
     /* Use CSS variable injected by next/font — no FOUT, no layout shift */
     font-family:
       var(--font-inter),

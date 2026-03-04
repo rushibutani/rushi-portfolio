@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-4 md:px-6 pt-28 pb-16 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center px-0 md:px-6 pt-28 pb-16 overflow-hidden"
     >
       {/* ── Single brand glow — top-left, behind the name only ───── */}
       <div
