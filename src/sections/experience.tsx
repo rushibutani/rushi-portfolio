@@ -3,7 +3,16 @@ import { Section, SectionReveal } from "@/components/ui";
 
 export default function Experience() {
   return (
-    <Section id="experience" variant="accent">
+    <Section id="experience" variant="subtle" topBorder>
+      {/* Dead-subtle depth gradient in dark mode — darker at top, barely lighter at bottom */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-[5] hidden dark:block pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, #090909 0%, #0f0f0f 100%)",
+        }}
+      />
+
       {/* Section header reveals first */}
       <SectionReveal delay={0}>
         <div className="mb-16">

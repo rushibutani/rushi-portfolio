@@ -7,7 +7,7 @@ export default function Projects() {
   const [featured, ...rest] = projects;
 
   return (
-    <Section id="projects">
+    <Section id="projects" topBorder bottomBorder>
       {/* Section header */}
       <SectionReveal delay={0}>
         <div className="mb-14">

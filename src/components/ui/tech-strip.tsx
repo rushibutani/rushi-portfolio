@@ -31,10 +31,7 @@ export default function HeroBadges() {
   const items = [...heroBadges, ...heroBadges];
 
   return (
-    <div
-      className="relative w-full overflow-hidden border-y border-border/35 py-4"
-      style={{ background: "hsl(var(--secondary) / 0.15)" }}
-    >
+    <div className="relative w-full overflow-hidden border-y border-border/30 py-4 bg-secondary/10 dark:bg-transparent dark:border-white/[0.05]">
       {/* Left fade */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-background to-transparent" />
       {/* Right fade */}

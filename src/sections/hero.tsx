@@ -10,23 +10,15 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-4 md:px-6 pt-28 pb-16 overflow-hidden"
     >
-      {/* ── Radial gradient background wash ─────────── */}
+      {/* ── Single brand glow — top-left, behind the name only ───── */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute top-0 left-0 -z-10"
         style={{
+          width: "600px",
+          height: "600px",
           background:
-            "radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.08), transparent 50%)",
-        }}
-      />
-
-      {/* Decorative accent orb behind the profile card */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[-8%] top-[8%] w-[560px] h-[560px] rounded-full opacity-20 dark:opacity-15 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle, hsl(258 78% 65%), transparent 65%)",
+            "radial-gradient(circle at top left, rgba(124, 58, 237, 0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -73,13 +65,6 @@ export default function Hero() {
           {/* ── Right: Profile Glass Card ──────────────── */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="animate-fade-from-left relative">
-              {/* Glow ring */}
-              <div
-                aria-hidden
-                className="absolute inset-[-2px] rounded-3xl blur-2xl opacity-25 dark:opacity-20 scale-[1.06]"
-                style={{ background: "hsl(258 78% 65%)" }}
-              />
-
               {/* Glass card wrapper */}
               <div className="relative glass-card p-2.5 rounded-3xl animate-float">
                 {/* Inner highlight ring */}

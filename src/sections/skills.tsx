@@ -52,7 +52,7 @@ export default function Skills() {
   ];
 
   return (
-    <Section id="skills" variant="accent">
+    <Section id="skills" variant="surface" topBorder>
       {/* Section header */}
       <SectionReveal delay={0}>
         <div className="mb-14">

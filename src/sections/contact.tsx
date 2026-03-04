@@ -5,17 +5,30 @@ import { Mail, MapPin } from "@/components/ui/icons";
 
 export default function Contact() {
   return (
-    <Section id="contact" className="relative overflow-hidden">
-      {/* Decorative background orb — purely decorative, no animation needed */}
+    <Section id="contact" className="relative">
+      {/* ── Stage-light glow — centered behind headline ─────────────── */}
+      {/* Light: 4% opacity so it reads as a gentle brand tint on #fafafa  */}
+      {/* Dark:  10% opacity for the prescribed stage-light effect         */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 flex items-end justify-start pointer-events-none overflow-hidden opacity-0 dark:opacity-100"
-      >
-        <div
-          className="w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.05] translate-x-[-20%] translate-y-[30%]"
-          style={{ background: "hsl(var(--primary))" }}
-        />
-      </div>
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10"
+        style={{
+          width: "800px",
+          height: "800px",
+          background:
+            "radial-gradient(circle at center top, rgba(124, 58, 237, 0.04) 0%, transparent 65%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 hidden dark:block"
+        style={{
+          width: "800px",
+          height: "800px",
+          background:
+            "radial-gradient(circle at center top, rgba(124, 58, 237, 0.06) 0%, transparent 65%)",
+        }}
+      />
 
       <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
         {/* ── Left: Info — slides in from left ─────────────────────────── */}
