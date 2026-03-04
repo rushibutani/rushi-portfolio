@@ -43,7 +43,7 @@ export default function HeroBadges() {
           return (
             <div
               key={i}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-background/60 backdrop-blur-sm text-sm font-medium text-foreground/75 flex-shrink-0"
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-background/60 text-sm font-medium text-foreground/75 flex-shrink-0"
             >
               <Icon size={13} className="text-primary flex-shrink-0" />
               <span className="whitespace-nowrap">{badge}</span>

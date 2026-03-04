@@ -121,12 +121,9 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* text-wrap: balance is O(n²) — scope only to large display headings */
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h2 {
     text-wrap: balance;
   }
 
@@ -164,14 +161,11 @@
   }
 
   * {
+    /* Only theme-relevant properties — avoids compositing every element on scroll/interaction */
     transition:
       background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      fill 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Suppress CSS transitions while View Transition is actively running */
@@ -251,8 +245,8 @@
   .project-card {
     @apply rounded-2xl border border-border/60 overflow-hidden
            transition-all duration-300;
-    background: hsl(var(--card) / 0.85);
-    backdrop-filter: blur(12px) saturate(1.2);
+    /* Opaque background — no compositing layer needed (dark mode already uses flat bg) */
+    background: hsl(var(--card));
     box-shadow: var(--shadow-sm);
   }
 

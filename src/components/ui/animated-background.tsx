@@ -34,7 +34,8 @@ export default function AnimatedBackground() {
           background:
             "radial-gradient(circle, hsl(258 70% 65%), transparent 60%)",
           animation: "float-reverse 30s ease-in-out infinite",
-          willChange: "transform",
+          // No willChange — this orb is opacity-0 in light mode and barely visible
+          // in dark mode; promoting a GPU layer for it wastes VRAM
         }}
       />
 
