@@ -67,18 +67,16 @@ export default function Hero() {
             <div className="animate-fade-from-left relative">
               {/* Glass card wrapper */}
               <div className="relative glass-card p-2.5 rounded-3xl animate-float">
-                {/* Inner highlight ring */}
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-[18px] overflow-hidden ring-1 ring-white/10">
+                {/* Inner highlight ring — portrait ratio (4:5) fits a person photo well */}
+                <div className="relative w-64 h-80 sm:w-80 sm:h-[25rem] md:w-96 md:h-[30rem] rounded-[18px] overflow-hidden ring-1 ring-white/10">
                   <Image
                     src="/images/rushi-butani-profile.png"
                     alt="Rushi Butani — Frontend Developer"
                     width={448}
-                    height={448}
+                    height={560}
                     priority
-                    // Tell browser the actual rendered size at each breakpoint
-                    // so it picks the right srcset entry — avoids over-fetching on mobile
                     sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 384px"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                   />
                   {/* Subtle inner gradient overlay on image */}
                   <div
