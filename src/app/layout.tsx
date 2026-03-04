@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { Header, Footer } from "@/components/layout";
 import { siteMetadata } from "@/config/site";
@@ -9,7 +10,27 @@ import {
   generatePersonSchema,
   generateWebsiteSchema,
   generateBreadcrumbSchema,
+  generateProjectsSchema,
 } from "@/lib/structured-data";
+
+// Fonts loaded via next/font — zero render-blocking, self-hosted by Next.js
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+// Pre-compute static JSON-LD schemas once at module level (not per request)
+const personSchema = generatePersonSchema();
+const websiteSchema = generateWebsiteSchema();
+const breadcrumbSchema = generateBreadcrumbSchema();
+const projectsSchema = generateProjectsSchema();
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -24,6 +45,10 @@ export const metadata: Metadata = {
   keywords: siteMetadata.keywords,
   authors: [{ name: siteMetadata.author }],
   creator: siteMetadata.author,
+  // Canonical URL — tells search engines the authoritative URL
+  alternates: {
+    canonical: siteMetadata.siteUrl,
+  },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
@@ -39,7 +64,7 @@ export const metadata: Metadata = {
         url: siteMetadata.image,
         width: 1200,
         height: 630,
-        alt: siteMetadata.title,
+        alt: `${siteMetadata.author} — Frontend Developer Portfolio`,
       },
     ],
   },
@@ -49,6 +74,7 @@ export const metadata: Metadata = {
     description: siteMetadata.description,
     images: [siteMetadata.image],
     creator: "@rushibutani_",
+    site: "@rushibutani_",
   },
   robots: {
     index: true,
@@ -68,12 +94,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const personSchema = generatePersonSchema();
-  const websiteSchema = generateWebsiteSchema();
-  const breadcrumbSchema = generateBreadcrumbSchema();
-
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -101,6 +127,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(breadcrumbSchema),
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
         />
 
         <AnimatedBackground />

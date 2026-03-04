@@ -72,7 +72,7 @@ export default function Hero() {
 
           {/* ── Right: Profile Glass Card ──────────────── */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="animate-fade-up-delay-2 relative">
+            <div className="animate-fade-from-left relative">
               {/* Glow ring */}
               <div
                 aria-hidden
@@ -90,6 +90,9 @@ export default function Hero() {
                     width={448}
                     height={448}
                     priority
+                    // Tell browser the actual rendered size at each breakpoint
+                    // so it picks the right srcset entry — avoids over-fetching on mobile
+                    sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 384px"
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                   {/* Subtle inner gradient overlay on image */}

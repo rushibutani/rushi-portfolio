@@ -12,8 +12,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        // Reference CSS variables set by next/font/google in layout.tsx
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",

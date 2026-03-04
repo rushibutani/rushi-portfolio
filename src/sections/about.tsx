@@ -5,28 +5,32 @@ import { Section, Card, InfoItem, SectionReveal } from "@/components/ui";
 export default function About() {
   return (
     <Section id="about">
-      <SectionReveal>
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-          {/* ── Left: Bold Heading ─────────────────────── */}
-          <div className="flex flex-col gap-7">
-            <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
-              {aboutContent.label}
-            </p>
+      <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+        {/* ── Left: Heading + Skills ──────────────────── */}
+        <div className="flex flex-col gap-7">
+          {/* Label + Heading animate in from the left */}
+          <SectionReveal direction="left" delay={0}>
+            <div className="flex flex-col gap-5">
+              <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
+                {aboutContent.label}
+              </p>
+              <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-[-0.02em] text-foreground">
+                {aboutContent.title.split("\n").map((line, i) => (
+                  <span key={i}>
+                    {i === 1 ? (
+                      <span className="text-gradient">{line}</span>
+                    ) : (
+                      line
+                    )}
+                    {i === 0 && <br />}
+                  </span>
+                ))}
+              </h2>
+            </div>
+          </SectionReveal>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-[-0.02em] text-foreground">
-              {aboutContent.title.split("\n").map((line, i) => (
-                <span key={i}>
-                  {i === 1 ? (
-                    <span className="text-gradient">{line}</span>
-                  ) : (
-                    line
-                  )}
-                  {i === 0 && <br />}
-                </span>
-              ))}
-            </h2>
-
-            {/* Skills pills */}
+          {/* Skills pills stagger in after the heading */}
+          <SectionReveal direction="left" delay={200}>
             <div className="pt-1">
               <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
                 Technologies I work with
@@ -39,11 +43,13 @@ export default function About() {
                 ))}
               </ul>
             </div>
-          </div>
+          </SectionReveal>
+        </div>
 
-          {/* ── Right: Content ────────────────────────── */}
-          <div className="flex flex-col gap-8">
-            {/* Paragraphs */}
+        {/* ── Right: Bio + Info Card ─────────────────── */}
+        <div className="flex flex-col gap-8">
+          {/* Paragraphs slide in from right, slightly delayed */}
+          <SectionReveal direction="right" delay={150}>
             <div className="space-y-5">
               {aboutContent.paragraphs.map((paragraph, index) => (
                 <p
@@ -54,15 +60,15 @@ export default function About() {
                 </p>
               ))}
             </div>
+          </SectionReveal>
 
-            {/* Info Card */}
+          {/* Info card appears last */}
+          <SectionReveal direction="right" delay={340}>
             <Card
               variant="glass"
               className="p-5 space-y-3.5 rounded-2xl overflow-hidden relative"
             >
-              {/* Subtle shimmer overlay */}
               <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500 animate-shimmer" />
-
               <InfoItem
                 icon={
                   <MapPin size={15} className="text-primary flex-shrink-0" />
@@ -100,9 +106,9 @@ export default function About() {
                 </span>
               </InfoItem>
             </Card>
-          </div>
+          </SectionReveal>
         </div>
-      </SectionReveal>
+      </div>
     </Section>
   );
 }

@@ -39,7 +39,7 @@ export const siteMetadata: SiteMetadata = {
     "Next.js",
     "Portfolio",
   ],
-  image: "/images/og-image.png",
+  image: "/images/og-image.svg",
 };
 
 /**

@@ -6,20 +6,20 @@ import { Mail, MapPin } from "@/components/ui/icons";
 export default function Contact() {
   return (
     <Section id="contact" className="relative overflow-hidden">
-      <SectionReveal>
-        {/* Decorative background orb */}
+      {/* Decorative background orb — purely decorative, no animation needed */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 flex items-end justify-start pointer-events-none overflow-hidden opacity-0 dark:opacity-100"
+      >
         <div
-          aria-hidden
-          className="absolute inset-0 -z-10 flex items-end justify-start pointer-events-none overflow-hidden opacity-0 dark:opacity-100"
-        >
-          <div
-            className="w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.05] translate-x-[-20%] translate-y-[30%]"
-            style={{ background: "hsl(var(--primary))" }}
-          />
-        </div>
+          className="w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.05] translate-x-[-20%] translate-y-[30%]"
+          style={{ background: "hsl(var(--primary))" }}
+        />
+      </div>
 
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-          {/* ── Left: Info ─────────────────────────── */}
+      <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+        {/* ── Left: Info — slides in from left ─────────────────────────── */}
+        <SectionReveal direction="left" delay={0}>
           <div className="flex flex-col gap-8">
             {/* Label + Heading + Description */}
             <div className="flex flex-col gap-5">
@@ -74,8 +74,10 @@ export default function Contact() {
             {/* Social Links */}
             <SocialLinks />
           </div>
+        </SectionReveal>
 
-          {/* ── Right: Form ────────────────────────── */}
+        {/* ── Right: Form — slides in from right with delay ────────────────────────── */}
+        <SectionReveal direction="right" delay={260}>
           <div className="glass-card p-6 md:p-8 rounded-2xl">
             <div className="mb-6">
               <h3 className="text-lg font-bold text-foreground">
@@ -87,8 +89,8 @@ export default function Contact() {
             </div>
             <ContactForm />
           </div>
-        </div>
-      </SectionReveal>
+        </SectionReveal>
+      </div>
     </Section>
   );
 }

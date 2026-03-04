@@ -1,5 +1,4 @@
-"use client";
-
+// Server Component — pure CSS animations, no React state/hooks needed
 export default function AnimatedBackground() {
   return (
     <div
@@ -13,6 +12,7 @@ export default function AnimatedBackground() {
           background:
             "radial-gradient(circle at 40% 40%, hsl(258 78% 62%), transparent 65%)",
           animation: "float-slow 22s ease-in-out infinite",
+          willChange: "transform",
         }}
       />
 
@@ -23,6 +23,7 @@ export default function AnimatedBackground() {
           background:
             "radial-gradient(circle at 60% 60%, hsl(280 65% 58%), transparent 65%)",
           animation: "float-slower 26s ease-in-out infinite reverse",
+          willChange: "transform",
         }}
       />
 
@@ -33,6 +34,7 @@ export default function AnimatedBackground() {
           background:
             "radial-gradient(circle, hsl(258 70% 65%), transparent 60%)",
           animation: "float-reverse 30s ease-in-out infinite",
+          willChange: "transform",
         }}
       />
 

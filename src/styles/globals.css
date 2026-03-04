@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+/* Fonts are loaded via next/font/google in layout.tsx — no @import needed */
 
 @tailwind base;
 @tailwind components;
@@ -109,8 +109,9 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    /* Use CSS variable injected by next/font — no FOUT, no layout shift */
     font-family:
-      "Inter",
+      var(--font-inter),
       system-ui,
       -apple-system,
       sans-serif;
@@ -310,33 +311,40 @@
 
 @layer utilities {
   /* ── Fade Up Animations ──────────────────────────── */
+  /* Duration and distance match SectionReveal (850ms / 44px) */
   .animate-fade-up {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
   }
 
   .animate-fade-up-delay-1 {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
     opacity: 0;
   }
 
   .animate-fade-up-delay-2 {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s forwards;
     opacity: 0;
   }
 
   .animate-fade-up-delay-3 {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
+    animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.38s forwards;
     opacity: 0;
   }
 
   .animate-fade-up-delay-4 {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
+    animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.54s forwards;
     opacity: 0;
   }
 
   .animate-fade-up-delay-5 {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.62s forwards;
+    animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    opacity: 0;
+  }
+
+  /* Hero profile card: slides in from the right (matches direction="right" in SectionReveal) */
+  .animate-fade-from-left {
+    animation: fadeFromLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s forwards;
     opacity: 0;
   }
 
@@ -365,11 +373,22 @@
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(44px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-44px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 

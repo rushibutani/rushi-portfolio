@@ -8,8 +8,8 @@ export default function Projects() {
 
   return (
     <Section id="projects">
-      <SectionReveal>
-        {/* Section header */}
+      {/* Section header */}
+      <SectionReveal delay={0}>
         <div className="mb-14">
           <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3">
             {projectsContent.label}
@@ -18,13 +18,14 @@ export default function Projects() {
             {projectsContent.title}
           </h2>
         </div>
+      </SectionReveal>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-auto">
-          {/* Featured Project — spans full width on md+ */}
-          <article className="project-card md:col-span-2 group">
+      {/* Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-auto">
+        {/* Featured Project — full width, slides up first */}
+        <SectionReveal delay={150} className="md:col-span-2">
+          <article className="project-card group">
             <div className="flex flex-col lg:flex-row">
-              {/* Image */}
               <div className="relative w-full lg:w-[48%] flex-shrink-0 overflow-hidden bg-secondary/30">
                 <div className="aspect-[16/9] lg:aspect-auto lg:h-full min-h-[200px]">
                   <Image
@@ -36,11 +37,9 @@ export default function Projects() {
                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                   />
                 </div>
-                {/* Fade to card on large */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card/60 hidden lg:block pointer-events-none" />
               </div>
 
-              {/* Content */}
               <div className="flex flex-col justify-between p-6 md:p-8 gap-5">
                 <div className="space-y-3">
                   <span className="text-xs font-bold tracking-widest text-primary uppercase font-mono">
@@ -53,9 +52,7 @@ export default function Projects() {
                     {featured.description}
                   </p>
                 </div>
-
                 <div className="space-y-4">
-                  {/* Stack */}
                   <ul
                     className="flex flex-wrap gap-1.5"
                     aria-label="Tech stack"
@@ -66,8 +63,6 @@ export default function Projects() {
                       </li>
                     ))}
                   </ul>
-
-                  {/* Links */}
                   <div className="flex items-center gap-5 pt-1">
                     {featured.repo && (
                       <a
@@ -77,8 +72,7 @@ export default function Projects() {
                         className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
                         aria-label={`GitHub repository for ${featured.title}`}
                       >
-                        <Github size={16} />
-                        GitHub
+                        <Github size={16} /> GitHub
                       </a>
                     )}
                     {featured.liveUrl && (
@@ -89,8 +83,7 @@ export default function Projects() {
                         className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
                         aria-label={`Live demo for ${featured.title}`}
                       >
-                        <ExternalLink size={16} />
-                        Live Demo
+                        <ExternalLink size={16} /> Live Demo
                       </a>
                     )}
                   </div>
@@ -98,11 +91,17 @@ export default function Projects() {
               </div>
             </div>
           </article>
+        </SectionReveal>
 
-          {/* Remaining Projects */}
-          {rest.map((project, index) => (
-            <article key={index} className="project-card group flex flex-col">
-              {/* Image */}
+        {/* Remaining projects — alternate left/right entry with stagger */}
+        {rest.map((project, index) => (
+          <SectionReveal
+            key={index}
+            delay={320 + index * 140}
+            direction={index % 2 === 0 ? "left" : "right"}
+            distance={36}
+          >
+            <article className="project-card group flex flex-col h-full">
               <div className="relative w-full overflow-hidden flex-shrink-0 bg-secondary/30">
                 <div className="aspect-[16/9]">
                   <Image
@@ -115,8 +114,6 @@ export default function Projects() {
                   />
                 </div>
               </div>
-
-              {/* Content */}
               <div className="flex flex-col flex-1 p-5 md:p-6 gap-3">
                 <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-snug">
                   {project.title}
@@ -134,8 +131,6 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
-
-                {/* Links */}
                 <div className="flex items-center gap-5 pt-1">
                   {project.repo && (
                     <a
@@ -145,8 +140,7 @@ export default function Projects() {
                       className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
                       aria-label={`GitHub repository for ${project.title}`}
                     >
-                      <Github size={16} />
-                      GitHub
+                      <Github size={16} /> GitHub
                     </a>
                   )}
                   {project.liveUrl && (
@@ -157,17 +151,18 @@ export default function Projects() {
                       className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
                       aria-label={`Live demo for ${project.title}`}
                     >
-                      <ExternalLink size={16} />
-                      Live Demo
+                      <ExternalLink size={16} /> Live Demo
                     </a>
                   )}
                 </div>
               </div>
             </article>
-          ))}
-        </div>
+          </SectionReveal>
+        ))}
+      </div>
 
-        {/* View More */}
+      {/* View More — appears last */}
+      <SectionReveal delay={600}>
         <div className="text-center mt-12">
           <Button
             variant="outline"
