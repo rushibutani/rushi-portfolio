@@ -18,7 +18,7 @@ interface FormErrors {
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm() {
+export function ContactForm({ className = "" }: { className?: string }) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -144,13 +144,13 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-2xl mx-auto space-y-6"
+      className={`space-y-6 ${className}`}
       aria-label="Contact form"
       noValidate
     >
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
+        <label htmlFor="name" className="block text-sm font-semibold mb-2">
           <span className="flex items-center gap-2">
             <User size={16} className="text-primary" aria-hidden="true" />
             Name
@@ -166,8 +166,10 @@ export function ContactForm() {
           aria-required="true"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "name-error" : undefined}
-          className={`w-full px-4 py-3 rounded-md bg-secondary/50 border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed ${
-            errors.name ? "border-destructive" : "border-border"
+          className={`w-full px-4 py-3 rounded-xl bg-secondary/50 border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed ${
+            errors.name
+              ? "border-destructive"
+              : "border-border/60 focus-visible:border-primary/40"
           }`}
           placeholder="Your name"
         />
@@ -184,7 +186,7 @@ export function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
+        <label htmlFor="email" className="block text-sm font-semibold mb-2">
           <span className="flex items-center gap-2">
             <Mail size={16} className="text-primary" aria-hidden="true" />
             Email
@@ -200,8 +202,10 @@ export function ContactForm() {
           aria-required="true"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? "email-error" : undefined}
-          className={`w-full px-4 py-3 rounded-md bg-secondary/50 border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed ${
-            errors.email ? "border-destructive" : "border-border"
+          className={`w-full px-4 py-3 rounded-xl bg-secondary/50 border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed ${
+            errors.email
+              ? "border-destructive"
+              : "border-border/60 focus-visible:border-primary/40"
           }`}
           placeholder="your.email@example.com"
         />
@@ -218,7 +222,7 @@ export function ContactForm() {
 
       {/* Message Field */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+        <label htmlFor="message" className="block text-sm font-semibold mb-2">
           <span className="flex items-center gap-2">
             <MessageSquare
               size={16}
@@ -238,10 +242,12 @@ export function ContactForm() {
           aria-required="true"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className={`w-full px-4 py-3 rounded-md bg-secondary/50 border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed resize-none ${
-            errors.message ? "border-destructive" : "border-border"
+          className={`w-full px-4 py-3 rounded-xl bg-secondary/50 border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed resize-none ${
+            errors.message
+              ? "border-destructive"
+              : "border-border/60 focus-visible:border-primary/40"
           }`}
-          placeholder="Your message..."
+          placeholder="Tell me about your project, idea, or just say hi..."
         />
         {errors.message && (
           <p
@@ -255,13 +261,13 @@ export function ContactForm() {
       </div>
 
       {/* Submit Button */}
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col gap-3 pt-1">
         <Button
           type="submit"
           variant="primary"
           size="lg"
           disabled={status === "submitting" || status === "success"}
-          className="w-full md:w-auto min-w-[200px]"
+          className="w-full rounded-xl"
           aria-live="polite"
         >
           {status === "submitting" && (

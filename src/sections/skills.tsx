@@ -5,10 +5,10 @@ import { Section, SectionReveal } from "@/components/ui";
 export default function Skills() {
   const cards = [
     {
-      icon: <Code size={20} className="text-primary" />,
+      icon: <Code size={18} className="text-primary" />,
       label: skillsContent.sections.core,
       content: (
-        <div className="flex flex-wrap gap-2.5">
+        <div className="flex flex-wrap gap-2">
           {skills.core.map((skill) => (
             <span key={skill} className="skill-tag">
               {skill}
@@ -18,10 +18,10 @@ export default function Skills() {
       ),
     },
     {
-      icon: <Wrench size={20} className="text-primary" />,
+      icon: <Wrench size={18} className="text-primary" />,
       label: skillsContent.sections.tools,
       content: (
-        <div className="flex flex-wrap gap-2.5">
+        <div className="flex flex-wrap gap-2">
           {skills.tools.map((skill) => (
             <span key={skill} className="skill-tag">
               {skill}
@@ -31,16 +31,18 @@ export default function Skills() {
       ),
     },
     {
-      icon: <GraduationCap size={20} className="text-primary" />,
+      icon: <GraduationCap size={18} className="text-primary" />,
       label: skillsContent.sections.education,
       content: (
-        <ul className="space-y-4">
+        <ul className="space-y-3.5">
           {education.map((edu, index) => (
             <li
               key={index}
-              className="flex items-start gap-3 text-muted-foreground pb-4 border-b border-border/50 last:border-0 last:pb-0 text-sm leading-relaxed"
+              className="flex items-start gap-3 text-muted-foreground pb-3.5 border-b border-border/40 last:border-0 last:pb-0 text-sm leading-relaxed"
             >
-              <span className="text-primary mt-0.5 flex-shrink-0">▹</span>
+              <span className="text-primary mt-0.5 flex-shrink-0 font-bold text-xs">
+                ›
+              </span>
               <span>{edu}</span>
             </li>
           ))}
@@ -57,28 +59,29 @@ export default function Skills() {
           <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3">
             {skillsContent.label}
           </p>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          <h2 className="text-4xl md:text-5xl font-black tracking-[-0.02em] text-foreground">
             {skillsContent.title}
           </h2>
         </div>
 
         {/* Card grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards.map(({ icon, label, content }) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {cards.map(({ icon, label, content }, i) => (
             <div
               key={label}
-              className="glass-card p-6 rounded-2xl flex flex-col gap-5 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+              className="glass-card p-6 rounded-2xl flex flex-col gap-5 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300 group"
+              style={{ transitionDelay: `${i * 40}ms` }}
             >
               {/* Card header */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
                   {icon}
                 </div>
-                <h3 className="text-base font-bold text-foreground">{label}</h3>
+                <h3 className="text-sm font-bold text-foreground">{label}</h3>
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-border/60" />
+              <div className="h-px bg-border/50" />
 
               {/* Content */}
               {content}

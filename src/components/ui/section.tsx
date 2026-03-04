@@ -56,14 +56,20 @@ export function Section({
 }: SectionProps) {
   const variants = {
     default: "",
-    accent: "bg-secondary/30",
+    accent: "relative",
   };
 
   return (
     <section
       id={id}
-      className={`py-28 md:py-32 px-0 md:px-6 ${variants[variant]} ${className}`}
+      className={`py-28 md:py-32 px-4 md:px-6 ${variants[variant]} ${className}`}
     >
+      {variant === "accent" && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-secondary/25 dark:bg-secondary/15"
+        />
+      )}
       <div className="container max-w-6xl mx-auto">{children}</div>
     </section>
   );

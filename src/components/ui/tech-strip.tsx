@@ -1,26 +1,58 @@
-import { techStrip } from "@/config/site";
+import { heroBadges } from "@/config/site";
+import {
+  Code,
+  Layers,
+  Zap,
+  Briefcase,
+  Wrench,
+  Database,
+  Package,
+  MapPin,
+} from "@/components/ui/icons";
 
 /**
- * Scrolling technology strip shown below the hero section.
- * Renders a seamless marquee of tech names.
+ * Value-signal badge strip shown below the hero section.
+ * Badges scroll continuously right-to-left in a seamless marquee loop.
  */
-export default function TechStrip() {
-  // Duplicate items so the marquee loops seamlessly
-  const items = [...techStrip, ...techStrip];
+
+const BADGE_ICONS = [
+  Code,
+  Layers,
+  Zap,
+  Briefcase,
+  Wrench,
+  Database,
+  Package,
+  MapPin,
+];
+
+export default function HeroBadges() {
+  // Duplicate for seamless loop
+  const items = [...heroBadges, ...heroBadges];
 
   return (
-    <div className="relative w-full overflow-hidden border-y border-border/40 bg-secondary/20 backdrop-blur-sm py-4">
+    <div
+      className="relative w-full overflow-hidden border-y border-border/35 py-4"
+      style={{ background: "hsl(var(--secondary) / 0.15)" }}
+    >
       {/* Left fade */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 z-10 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-background to-transparent" />
       {/* Right fade */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 z-10 bg-gradient-to-l from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-background to-transparent" />
 
-      <div className="flex gap-4 animate-marquee w-max">
-        {items.map((tech, i) => (
-          <span key={i} className="tech-strip-item">
-            {tech}
-          </span>
-        ))}
+      <div className="flex items-center gap-3 animate-marquee w-max">
+        {items.map((badge, i) => {
+          const Icon = BADGE_ICONS[i % BADGE_ICONS.length];
+          return (
+            <div
+              key={i}
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-background/60 backdrop-blur-sm text-sm font-medium text-foreground/75 flex-shrink-0"
+            >
+              <Icon size={13} className="text-primary flex-shrink-0" />
+              <span className="whitespace-nowrap">{badge}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

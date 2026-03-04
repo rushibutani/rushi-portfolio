@@ -8,7 +8,9 @@ import { navLinks, headerLogo } from "@/config/site";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
+  // Scroll detection for header backdrop
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -24,24 +26,48 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Active section detection via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   return (
     <>
       {/* ── Header ──────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "border-b border-border/50 py-3" : "bg-transparent py-5"
+          isScrolled ? "border-b border-border/40 py-3" : "bg-transparent py-5"
         }`}
         style={
           isScrolled
             ? {
-                background: "hsl(var(--background) / 0.85)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
+                background: "hsl(var(--background) / 0.88)",
+                backdropFilter: "blur(24px) saturate(1.5)",
+                WebkitBackdropFilter: "blur(24px) saturate(1.5)",
               }
             : undefined
         }
       >
-        <nav className="container max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between">
+        <nav
+          className="container max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between"
+          aria-label="Main navigation"
+        >
           {/* Logo */}
           <a
             href="#hero"
@@ -52,28 +78,34 @@ export default function Header() {
           </a>
 
           {/* Desktop Nav Links */}
-          <ul className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="nav-link px-3 py-2 text-sm font-medium rounded-xl hover:bg-primary/5 transition-colors"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+          <ul className="hidden md:flex items-center gap-0.5" role="list">
+            {navLinks.map((link) => {
+              const sectionId = link.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+              return (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className={`nav-link px-3.5 py-2 text-sm rounded-lg hover:bg-primary/5 transition-colors ${
+                      isActive ? "nav-link-active text-foreground" : ""
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Right Actions */}
-          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
             <a
               href="/RushiButani_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-semibold text-primary border border-primary/50 rounded-xl
-                         hover:bg-primary hover:text-primary-foreground hover:border-primary
-                         transition-all duration-200"
+              className="px-4 py-2 text-sm font-semibold text-primary border border-primary/40 rounded-xl
+                         hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-sm
+                         active:scale-[0.97] transition-all duration-200"
             >
               Resume
             </a>
@@ -87,8 +119,9 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="w-9 h-9 flex items-center justify-center rounded-xl border border-border/60
                          text-muted-foreground hover:text-primary hover:border-primary/40
-                         transition-all duration-200"
-              aria-label="Toggle menu"
+                         active:scale-[0.95] transition-all duration-200"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -105,29 +138,40 @@ export default function Header() {
         }`}
         style={{
           background: "hsl(var(--background) / 0.97)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
+          backdropFilter: "blur(28px) saturate(1.4)",
+          WebkitBackdropFilter: "blur(28px) saturate(1.4)",
         }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
       >
         {/* Nav Links */}
-        <div className="h-full flex flex-col items-center justify-center gap-2 px-6 pt-20">
-          {navLinks.map((link, index) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`w-full max-w-xs text-center py-4 text-2xl font-bold text-foreground
-                         hover:text-primary border-b border-border/30 last:border-0
-                         transition-all duration-300 ${
-                           isMobileMenuOpen
-                             ? "translate-y-0 opacity-100"
-                             : "translate-y-4 opacity-0"
-                         }`}
-              style={{ transitionDelay: `${index * 60}ms` }}
-            >
-              {link.name}
-            </a>
-          ))}
+        <div className="h-full flex flex-col items-center justify-center gap-1 px-6 pt-16">
+          {navLinks.map((link, index) => {
+            const sectionId = link.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`w-full max-w-xs text-center py-4 text-2xl font-bold
+                           border-b border-border/25 last:border-0
+                           transition-all duration-300 ${
+                             isActive
+                               ? "text-primary"
+                               : "text-foreground hover:text-primary"
+                           } ${
+                             isMobileMenuOpen
+                               ? "translate-y-0 opacity-100"
+                               : "translate-y-6 opacity-0"
+                           }`}
+                style={{ transitionDelay: `${index * 55}ms` }}
+              >
+                {link.name}
+              </a>
+            );
+          })}
 
           {/* Resume CTA */}
           <a
@@ -138,12 +182,12 @@ export default function Header() {
             className={`mt-8 px-8 py-3.5 rounded-xl font-semibold text-sm
                        bg-gradient-to-r from-primary to-violet-500 text-primary-foreground
                        shadow-lg shadow-primary/25 hover:shadow-primary/40
-                       transition-all duration-300 ${
+                       active:scale-[0.97] transition-all duration-300 ${
                          isMobileMenuOpen
                            ? "translate-y-0 opacity-100"
-                           : "translate-y-4 opacity-0"
+                           : "translate-y-6 opacity-0"
                        }`}
-            style={{ transitionDelay: `${navLinks.length * 60}ms` }}
+            style={{ transitionDelay: `${navLinks.length * 55}ms` }}
           >
             View Resume
           </a>

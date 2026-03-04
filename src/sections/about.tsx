@@ -6,14 +6,14 @@ export default function About() {
   return (
     <Section id="about">
       <SectionReveal>
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
           {/* ── Left: Bold Heading ─────────────────────── */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-7">
             <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
               {aboutContent.label}
             </p>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-foreground">
+            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-[-0.02em] text-foreground">
               {aboutContent.title.split("\n").map((line, i) => (
                 <span key={i}>
                   {i === 1 ? (
@@ -27,11 +27,11 @@ export default function About() {
             </h2>
 
             {/* Skills pills */}
-            <div className="pt-2">
+            <div className="pt-1">
               <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
                 Technologies I work with
               </p>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="flex flex-wrap gap-2" aria-label="Skills list">
                 {[...skills.core, ...skills.tools].map((skill) => (
                   <li key={skill} className="skill-tag">
                     {skill}
@@ -48,7 +48,7 @@ export default function About() {
               {aboutContent.paragraphs.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-muted-foreground text-lg leading-relaxed"
+                  className="text-muted-foreground text-[1.05rem] leading-[1.8]"
                 >
                   {paragraph}
                 </p>
@@ -56,24 +56,46 @@ export default function About() {
             </div>
 
             {/* Info Card */}
-            <Card variant="glass" className="p-6 space-y-4 rounded-2xl">
-              <InfoItem icon={<MapPin size={16} className="text-primary" />}>
+            <Card
+              variant="glass"
+              className="p-5 space-y-3.5 rounded-2xl overflow-hidden relative"
+            >
+              {/* Subtle shimmer overlay */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500 animate-shimmer" />
+
+              <InfoItem
+                icon={
+                  <MapPin size={15} className="text-primary flex-shrink-0" />
+                }
+              >
                 {personalInfo.location}
               </InfoItem>
+              <div className="h-px bg-border/40" />
               <InfoItem
-                icon={<Mail size={16} className="text-primary" />}
+                icon={<Mail size={15} className="text-primary flex-shrink-0" />}
                 href={`mailto:${personalInfo.email}`}
               >
                 {personalInfo.email}
               </InfoItem>
+              <div className="h-px bg-border/40" />
               <InfoItem
-                icon={<Phone size={16} className="text-primary" />}
+                icon={
+                  <Phone size={15} className="text-primary flex-shrink-0" />
+                }
                 href={`tel:${personalInfo.phone}`}
               >
                 {personalInfo.phone}
               </InfoItem>
-              <InfoItem icon={<Briefcase size={16} className="text-primary" />}>
-                <span className="text-primary font-semibold text-sm">
+              <div className="h-px bg-border/40" />
+              <InfoItem
+                icon={
+                  <Briefcase
+                    size={15}
+                    className="text-emerald-500 flex-shrink-0"
+                  />
+                }
+              >
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-sm">
                   {personalInfo.availability}
                 </span>
               </InfoItem>

@@ -13,24 +13,24 @@ export default function Hero() {
       {/* Decorative accent orb behind the profile card */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[-5%] top-[10%] w-[500px] h-[500px] rounded-full opacity-20 dark:opacity-10 blur-3xl"
+        className="pointer-events-none absolute right-[-8%] top-[8%] w-[480px] h-[480px] rounded-full opacity-15 dark:opacity-[0.08] blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, hsl(262 83% 65%), transparent 70%)",
+            "radial-gradient(circle, hsl(258 78% 65%), transparent 65%)",
         }}
       />
 
       <div className="container max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ── Left: Text Content ─────────────────────── */}
-          <div className="order-2 lg:order-1 flex flex-col gap-6">
+          <div className="order-2 lg:order-1 flex flex-col gap-5">
             {/* Label */}
-            <p className="animate-fade-up font-mono text-sm font-semibold tracking-widest text-primary uppercase">
+            <p className="animate-fade-up-delay-1 font-mono text-sm font-semibold tracking-widest text-primary uppercase">
               {heroContent.greeting}
             </p>
 
             {/* Name */}
-            <h1 className="animate-fade-up-delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.0] tracking-tight">
+            <h1 className="animate-fade-up-delay-2 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black leading-[1.0] tracking-[-0.03em]">
               <span className="text-gradient">{personalInfo.name}</span>
             </h1>
 
@@ -45,7 +45,7 @@ export default function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className="animate-fade-up-delay-4 flex flex-col sm:flex-row gap-3">
+            <div className="animate-fade-up-delay-4 flex flex-col sm:flex-row gap-3 pt-1">
               <Button href="#projects" variant="primary" size="lg">
                 {heroContent.cta.primary}
               </Button>
@@ -55,7 +55,7 @@ export default function Hero() {
             </div>
 
             {/* Social Links */}
-            <div className="animate-fade-up-delay-5">
+            <div className="animate-fade-up-delay-5 pt-1">
               <SocialLinks />
             </div>
           </div>
@@ -66,22 +66,41 @@ export default function Hero() {
               {/* Glow ring */}
               <div
                 aria-hidden
-                className="absolute inset-0 rounded-3xl blur-2xl opacity-30 dark:opacity-20 scale-105"
-                style={{ background: "hsl(262 83% 65%)" }}
+                className="absolute inset-[-2px] rounded-3xl blur-2xl opacity-25 dark:opacity-20 scale-[1.06]"
+                style={{ background: "hsl(258 78% 65%)" }}
               />
 
               {/* Glass card wrapper */}
-              <div className="relative glass-card p-3 rounded-3xl animate-float">
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden">
+              <div className="relative glass-card p-2.5 rounded-3xl animate-float">
+                {/* Inner highlight ring */}
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-[18px] overflow-hidden ring-1 ring-white/10">
                   <Image
                     src="/images/rushi-butani-profile.png"
-                    alt="Rushi Butani — Frontend Engineer"
+                    alt="Rushi Butani — Frontend Developer"
                     width={448}
                     height={448}
                     priority
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  />
+                  {/* Subtle inner gradient overlay on image */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"
                   />
                 </div>
+              </div>
+
+              {/* Floating location badge */}
+              <div
+                className="absolute -bottom-3 -left-4 glass-card px-3 py-2 rounded-xl flex items-center gap-2 shadow-lg"
+                aria-label={`Location: ${personalInfo.location}`}
+              >
+                <span className="text-base" aria-hidden>
+                  📍
+                </span>
+                <span className="text-xs font-semibold text-foreground whitespace-nowrap">
+                  {personalInfo.location}
+                </span>
               </div>
             </div>
           </div>
@@ -91,11 +110,14 @@ export default function Hero() {
       {/* Scroll indicator */}
       <a
         href="#about"
-        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground
-                   hover:text-primary transition-colors animate-bounce"
+        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5
+                   text-muted-foreground hover:text-primary transition-colors group"
         aria-label="Scroll to About section"
       >
-        <ArrowDown size={22} />
+        <span className="text-[10px] font-mono tracking-widest uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+          scroll
+        </span>
+        <ArrowDown size={16} className="animate-bounce" />
       </a>
     </section>
   );

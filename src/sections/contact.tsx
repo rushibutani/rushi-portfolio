@@ -1,52 +1,98 @@
 import { personalInfo, contactContent } from "@/config/site";
 import SocialLinks from "@/components/layout/social-links";
-import { Section, SectionReveal, Button } from "@/components/ui";
+import { Section, SectionReveal, ContactForm } from "@/components/ui";
+import { Mail, MapPin } from "@/components/ui/icons";
 
 export default function Contact() {
   return (
-    <Section id="contact">
+    <Section id="contact" className="relative overflow-hidden">
       <SectionReveal>
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-10">
-          {/* Label */}
-          <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
-            {contactContent.label}
-          </p>
+        {/* Decorative background orb */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 flex items-end justify-start pointer-events-none overflow-hidden opacity-0 dark:opacity-100"
+        >
+          <div
+            className="w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.05] translate-x-[-20%] translate-y-[30%]"
+            style={{ background: "hsl(var(--primary))" }}
+          />
+        </div>
 
-          {/* Big heading */}
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-foreground">
-            {contactContent.title.split("\n").map((line, i) => (
-              <span key={i}>
-                {i === 1 ? <span className="text-gradient">{line}</span> : line}
-                {i === 0 && <br />}
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          {/* ── Left: Info ─────────────────────────── */}
+          <div className="flex flex-col gap-8">
+            {/* Label + Heading + Description */}
+            <div className="flex flex-col gap-5">
+              <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
+                {contactContent.label}
+              </p>
+
+              <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-[-0.03em] leading-[1.08] text-foreground">
+                {contactContent.title.split("\n").map((line, i) => (
+                  <span key={i}>
+                    {i === 1 ? (
+                      <span className="text-gradient">{line}</span>
+                    ) : (
+                      line
+                    )}
+                    {i === 0 && <br />}
+                  </span>
+                ))}
+              </h2>
+
+              <p className="text-lg text-muted-foreground leading-[1.7] max-w-md">
+                {contactContent.description}
+              </p>
+            </div>
+
+            {/* Availability badge */}
+            <div className="inline-flex items-center gap-2.5 self-start bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2">
+              <span
+                className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"
+                aria-hidden
+              />
+              <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                {personalInfo.availability}
               </span>
-            ))}
-          </h2>
+            </div>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
-            {contactContent.description}
-          </p>
+            {/* Contact details */}
+            <div className="flex flex-col gap-3">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group w-fit"
+              >
+                <Mail
+                  size={16}
+                  className="text-primary flex-shrink-0 group-hover:-translate-y-0.5 transition-transform duration-200"
+                />
+                <span className="text-sm font-mono">{personalInfo.email}</span>
+              </a>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <MapPin size={16} className="text-primary flex-shrink-0" />
+                <span className="text-sm">{personalInfo.location}</span>
+              </div>
+            </div>
 
-          {/* CTA */}
-          <Button
-            href={`mailto:${personalInfo.email}`}
-            variant="primary"
-            size="lg"
-            className="rounded-2xl px-12 py-5 text-lg font-semibold shadow-xl hover:shadow-primary/25 transition-shadow"
-          >
-            {contactContent.ctaText}
-          </Button>
+            {/* Divider */}
+            <div className="w-12 h-px bg-border/60" />
 
-          {/* Email visible link */}
-          <a
-            href={`mailto:${personalInfo.email}`}
-            className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
-          >
-            {personalInfo.email}
-          </a>
+            {/* Social Links */}
+            <SocialLinks />
+          </div>
 
-          {/* Social Links */}
-          <SocialLinks />
+          {/* ── Right: Form ────────────────────────── */}
+          <div className="glass-card p-6 md:p-8 rounded-2xl">
+            <div className="mb-6">
+              <h3 className="text-lg font-bold text-foreground">
+                Send a Message
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1">
+                I usually respond within 24 hours.
+              </p>
+            </div>
+            <ContactForm />
+          </div>
         </div>
       </SectionReveal>
     </Section>

@@ -4,6 +4,7 @@ import { Header, Footer } from "@/components/layout";
 import { siteMetadata } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
 import AnimatedBackground from "@/components/ui/animated-background";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import {
   generatePersonSchema,
   generateWebsiteSchema,
@@ -107,6 +108,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen relative z-10">{children}</main>
         <Footer />
+        <ScrollToTop />
         <Analytics />
       </body>
     </html>

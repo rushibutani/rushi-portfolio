@@ -23,14 +23,14 @@ import type {
  * Site metadata for SEO optimization
  */
 export const siteMetadata: SiteMetadata = {
-  title: "Rushi Butani | Frontend Engineer",
+  title: "Rushi Butani | Frontend Developer",
   description:
-    "Frontend Engineer specializing in React.js, Next.js, and scalable UI systems. Based in Gujarat, India. Available for freelance & collaborations.",
+    "Frontend Developer specializing in React.js, Next.js, and scalable UI systems. Based in Gujarat, India. Available for freelance & collaborations.",
   siteUrl: "https://rushibutani.com",
   author: "Rushi Butani",
   keywords: [
     "Frontend Developer",
-    "Frontend Engineer",
+    "Frontend Developer",
     "React.js Developer",
     "React Developer",
     "Next.js Developer",
@@ -40,7 +40,7 @@ export const siteMetadata: SiteMetadata = {
     "Next.js",
     "Portfolio",
   ],
-  image: "/images/og-image.svg",
+  image: "/images/og-image.png",
 };
 
 /**
@@ -107,7 +107,7 @@ export const personalInfo: PersonalInfo = {
  * Hero section content
  */
 export const heroContent = {
-  greeting: "Hi, I'm Rushi — Frontend Engineer",
+  greeting: "Hi, I'm Rushi — Frontend Developer",
   subtitle:
     "I design and build scalable, high-performance React & Next.js applications.",
   description:
@@ -119,21 +119,21 @@ export const heroContent = {
 };
 
 // =============================================================================
-// TECH STRIP
+// HERO BADGES
 // =============================================================================
 
 /**
- * Technology strip shown below hero
+ * Value-signal badges shown below the hero section.
+ * Each badge communicates credibility, domain, focus, or availability.
  */
-export const techStrip: string[] = [
-  "React.js",
-  "Next.js",
-  "TypeScript",
-  "Tailwind CSS",
-  "JavaScript",
-  "REST APIs",
-  "Git & GitHub",
-  "Production Systems",
+export const heroBadges: string[] = [
+  "2+ Years React Experience",
+  "Production Fintech Applications",
+  "Next.js + Performance Focus",
+  "Available for Freelance",
+  "Clean Code · Scalable Architecture",
+  "TypeScript · Tailwind CSS",
+  "UI Systems · Component Design",
 ];
 
 // =============================================================================
@@ -147,7 +147,7 @@ export const aboutContent = {
   label: "About Me",
   title: "Building Reliable Interfaces\nfor Real Products",
   paragraphs: [
-    "I'm a frontend engineer with 2+ years of experience building production-grade web applications using React and modern frontend technologies.",
+    "I'm a frontend developer with 2+ years of experience building production-grade web applications using React and modern frontend technologies.",
     "I specialize in scalable component architecture, performance optimization, and clean UI systems that bridge design and engineering.",
     "Currently building financial web applications at Bankai Informatics, shipping features used by real users every day.",
   ],
