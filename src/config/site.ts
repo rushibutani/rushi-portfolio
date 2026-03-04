@@ -109,9 +109,9 @@ export const personalInfo: PersonalInfo = {
 export const heroContent = {
   greeting: "Hi, I'm Rushi — Frontend Developer",
   subtitle:
-    "I design and build scalable, high-performance React & Next.js applications.",
+    "Frontend Developer building fast, scalable React & Next.js products.",
   description:
-    "Focused on crafting clean architecture, modern UI systems, and smooth user experiences for real-world production products.",
+    "I focus on performance, clean architecture, and intuitive user interfaces used by real users.",
   cta: {
     primary: "View My Work",
     secondary: "Get In Touch",
@@ -148,8 +148,8 @@ export const aboutContent = {
   title: "Building Reliable Interfaces\nfor Real Products",
   paragraphs: [
     "I'm a frontend developer with 2+ years of experience building production-grade web applications using React and modern frontend technologies.",
-    "I specialize in scalable component architecture, performance optimization, and clean UI systems that bridge design and engineering.",
-    "Currently building financial web applications at Bankai Informatics, shipping features used by real users every day.",
+    "I specialize in building scalable UI architectures, optimizing performance, and delivering smooth user experiences for real-world products.",
+    "Currently building production-grade fintech applications at Bankai Informatics.",
   ],
 };
 
@@ -162,7 +162,7 @@ export const aboutContent = {
  */
 export const experienceContent = {
   label: "Professional Journey",
-  title: "Work Experience",
+  title: "Professional Experience",
 };
 
 /**
@@ -300,7 +300,7 @@ export const education: string[] = [
  */
 export const contactContent = {
   label: "What's Next?",
-  title: "Let's build something\nmeaningful.",
+  title: "Let's build something\ngreat together.",
   description:
     "Open to new opportunities, freelance projects, and interesting collaborations. If you have something in mind, I'd love to hear from you.",
   ctaText: "Say Hello",

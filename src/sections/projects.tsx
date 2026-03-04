@@ -74,13 +74,10 @@ export default function Projects() {
                         href={featured.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors group/link"
+                        className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
                         aria-label={`GitHub repository for ${featured.title}`}
                       >
-                        <Github
-                          size={16}
-                          className="group-hover/link:-translate-y-0.5 transition-transform"
-                        />
+                        <Github size={16} />
                         GitHub
                       </a>
                     )}
@@ -89,13 +86,10 @@ export default function Projects() {
                         href={featured.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors group/link"
+                        className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
                         aria-label={`Live demo for ${featured.title}`}
                       >
-                        <ExternalLink
-                          size={16}
-                          className="group-hover/link:-translate-y-0.5 transition-transform"
-                        />
+                        <ExternalLink size={16} />
                         Live Demo
                       </a>
                     )}
@@ -120,34 +114,6 @@ export default function Projects() {
                     className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"
                   />
                 </div>
-                {/* Overlay with links */}
-                <div
-                  className="absolute inset-0 bg-black/55 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4"
-                  aria-hidden
-                >
-                  {project.repo && (
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-white/12 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:-translate-y-0.5 transition-all"
-                      aria-label={`GitHub for ${project.title}`}
-                    >
-                      <Github size={18} />
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-white/12 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:-translate-y-0.5 transition-all"
-                      aria-label={`Live demo for ${project.title}`}
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
-                </div>
               </div>
 
               {/* Content */}
@@ -168,6 +134,34 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Links */}
+                <div className="flex items-center gap-5 pt-1">
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={`GitHub repository for ${project.title}`}
+                    >
+                      <Github size={16} />
+                      GitHub
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={`Live demo for ${project.title}`}
+                    >
+                      <ExternalLink size={16} />
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}

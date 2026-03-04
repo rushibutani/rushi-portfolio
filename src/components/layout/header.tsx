@@ -58,8 +58,8 @@ export default function Header() {
           isScrolled
             ? {
                 background: "hsl(var(--background) / 0.88)",
-                backdropFilter: "blur(24px) saturate(1.5)",
-                WebkitBackdropFilter: "blur(24px) saturate(1.5)",
+                backdropFilter: "blur(28px) saturate(1.6)",
+                WebkitBackdropFilter: "blur(28px) saturate(1.6)",
               }
             : undefined
         }
@@ -87,7 +87,7 @@ export default function Header() {
                   <a
                     href={link.href}
                     className={`nav-link px-3.5 py-2 text-sm rounded-lg hover:bg-primary/5 transition-colors ${
-                      isActive ? "nav-link-active text-foreground" : ""
+                      isActive ? "nav-link-active" : ""
                     }`}
                   >
                     {link.name}

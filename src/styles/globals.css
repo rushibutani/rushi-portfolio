@@ -206,17 +206,17 @@
   }
 
   .nav-link-active {
-    @apply text-foreground;
+    @apply text-primary;
   }
 
   .nav-link::after {
     content: "";
-    @apply absolute left-0 -bottom-1 w-0 h-[1.5px] bg-primary transition-all duration-200 rounded-full;
+    @apply absolute left-1/2 -translate-x-1/2 -bottom-0.5 w-0 h-[2px] bg-primary transition-all duration-300 rounded-full;
   }
 
   .nav-link:hover::after,
   .nav-link-active::after {
-    @apply w-full;
+    @apply w-3/4;
   }
 
   /* ── Skill Tag ────────────────────────────────────── */
@@ -416,6 +416,29 @@
     }
     50% {
       opacity: 0.9;
+    }
+  }
+
+  /* ── Tech Icon Float ────────────────────────────── */
+  .animate-tech-float {
+    animation: techFloat 4s ease-in-out infinite;
+  }
+
+  .animate-tech-float-2 {
+    animation: techFloat 4.5s ease-in-out 0.6s infinite;
+  }
+
+  .animate-tech-float-3 {
+    animation: techFloat 3.8s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes techFloat {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-7px) rotate(1deg);
     }
   }
 

@@ -10,10 +10,20 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-4 md:px-6 pt-28 pb-16 overflow-hidden"
     >
+      {/* ── Radial gradient background wash ─────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent 40%), radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.08), transparent 50%)",
+        }}
+      />
+
       {/* Decorative accent orb behind the profile card */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-[-8%] top-[8%] w-[480px] h-[480px] rounded-full opacity-15 dark:opacity-[0.08] blur-3xl"
+        className="pointer-events-none absolute right-[-8%] top-[8%] w-[560px] h-[560px] rounded-full opacity-20 dark:opacity-15 blur-3xl"
         style={{
           background:
             "radial-gradient(circle, hsl(258 78% 65%), transparent 65%)",

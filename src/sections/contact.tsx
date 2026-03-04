@@ -62,10 +62,7 @@ export default function Contact() {
                 href={`mailto:${personalInfo.email}`}
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group w-fit"
               >
-                <Mail
-                  size={16}
-                  className="text-primary flex-shrink-0 group-hover:-translate-y-0.5 transition-transform duration-200"
-                />
+                <Mail size={16} className="text-primary flex-shrink-0" />
                 <span className="text-sm font-mono">{personalInfo.email}</span>
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
@@ -73,9 +70,6 @@ export default function Contact() {
                 <span className="text-sm">{personalInfo.location}</span>
               </div>
             </div>
-
-            {/* Divider */}
-            <div className="w-12 h-px bg-border/60" />
 
             {/* Social Links */}
             <SocialLinks />
