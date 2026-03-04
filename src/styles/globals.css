@@ -350,11 +350,6 @@
     animation: marquee 30s linear infinite;
   }
 
-  /* ── Pulse Glow ──────────────────────────────────── */
-  .animate-pulse-glow {
-    animation: pulseGlow 3s ease-in-out infinite;
-  }
-
   /* ── Shimmer ──────────────────────────────────────── */
   .animate-shimmer {
     background: linear-gradient(
@@ -406,39 +401,6 @@
     }
     100% {
       transform: translateX(-50%);
-    }
-  }
-
-  @keyframes pulseGlow {
-    0%,
-    100% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.9;
-    }
-  }
-
-  /* ── Tech Icon Float ────────────────────────────── */
-  .animate-tech-float {
-    animation: techFloat 4s ease-in-out infinite;
-  }
-
-  .animate-tech-float-2 {
-    animation: techFloat 4.5s ease-in-out 0.6s infinite;
-  }
-
-  .animate-tech-float-3 {
-    animation: techFloat 3.8s ease-in-out 1.2s infinite;
-  }
-
-  @keyframes techFloat {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(-1deg);
-    }
-    50% {
-      transform: translateY(-7px) rotate(1deg);
     }
   }
 

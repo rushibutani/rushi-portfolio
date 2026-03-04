@@ -6,26 +6,6 @@
  */
 
 // =============================================================================
-// UI COMPONENT TYPES
-// =============================================================================
-
-/**
- * Base props for all components
- */
-export interface BaseComponentProps {
-  className?: string;
-  children?: React.ReactNode;
-}
-
-/**
- * Props for icon components
- */
-export interface IconProps {
-  size?: number;
-  className?: string;
-}
-
-// =============================================================================
 // SITE CONFIGURATION TYPES
 // =============================================================================
 

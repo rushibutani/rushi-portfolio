@@ -30,7 +30,6 @@ export const siteMetadata: SiteMetadata = {
   author: "Rushi Butani",
   keywords: [
     "Frontend Developer",
-    "Frontend Developer",
     "React.js Developer",
     "React Developer",
     "Next.js Developer",

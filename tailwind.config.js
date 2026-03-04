@@ -56,14 +56,6 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
         "float-slow": {
           "0%, 100%": { transform: "translate(0, 0) scale(1)" },
           "50%": { transform: "translate(25px, -25px) scale(1.03)" },
@@ -76,35 +68,12 @@ module.exports = {
           "0%, 100%": { transform: "translate(0, 0) scale(1)" },
           "50%": { transform: "translate(30px, -15px) scale(1.04)" },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        "slide-up": {
-          from: { opacity: "0", transform: "translateY(16px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         "float-slow": "float-slow 30s ease-in-out infinite",
         "float-slower": "float-slower 35s ease-in-out infinite",
         "float-reverse": "float-reverse 32s ease-in-out infinite",
         shimmer: "shimmer 2.5s linear infinite",
-        "fade-in": "fade-in 0.5s ease forwards",
-        "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-      },
-      boxShadow: {
-        glow: "0 0 40px -6px hsl(var(--shadow-glow))",
-        "glow-lg": "0 0 70px -10px hsl(var(--shadow-glow-lg))",
-      },
-      transitionTimingFunction: {
-        spring: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

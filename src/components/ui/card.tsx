@@ -33,34 +33,3 @@ export function Card({
     </div>
   );
 }
-
-interface CardHeaderProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export function CardHeader({ children, className = "" }: CardHeaderProps) {
-  return <div className={`p-6 ${className}`}>{children}</div>;
-}
-
-interface CardBodyProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export function CardBody({ children, className = "" }: CardBodyProps) {
-  return <div className={`px-6 pb-6 ${className}`}>{children}</div>;
-}
-
-interface CardFooterProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export function CardFooter({ children, className = "" }: CardFooterProps) {
-  return (
-    <div className={`px-6 pb-6 pt-4 border-t border-border/50 ${className}`}>
-      {children}
-    </div>
-  );
-}
