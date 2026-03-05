@@ -1,25 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
-// Environment validation
-if (!process.env.RESEND_API_KEY) {
-  throw new Error(
-    "RESEND_API_KEY is not defined. Please add it to your .env.local file.",
-  );
-}
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Upstash Redis-backed rate limiter.
+// Requires UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN in .env.local
+// (or Vercel environment variables). Free tier is sufficient for portfolio traffic.
+// See: https://console.upstash.com → Create Database → copy REST URL + token.
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(5, "15 m"),
+  analytics: false,
+});
 
 interface ContactFormData {
   name: string;
   email: string;
   message: string;
 }
-
-// Rate limiting: Map of IP -> array of timestamps
-const rateLimitMap = new Map<string, number[]>();
-const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
-const MAX_REQUESTS = 5;
 
 // HTML sanitization helper
 function escapeHtml(text: string): string {
@@ -31,26 +29,6 @@ function escapeHtml(text: string): string {
     "'": "&#039;",
   };
   return text.replace(/[&<>"']/g, (char) => map[char]);
-}
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const requests = rateLimitMap.get(ip) || [];
-
-  // Filter out requests outside the window
-  const recentRequests = requests.filter(
-    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW,
-  );
-
-  if (recentRequests.length >= MAX_REQUESTS) {
-    return false;
-  }
-
-  // Add current request
-  recentRequests.push(now);
-  rateLimitMap.set(ip, recentRequests);
-
-  return true;
 }
 
 // Server-side validation
@@ -92,13 +70,26 @@ function validateContactForm(data: ContactFormData): {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
+    // Environment validation — done inside the handler so a missing key returns
+    // a proper 503 instead of crashing the entire route module at load time.
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not defined");
+      return NextResponse.json(
+        { success: false, message: "Email service is not configured." },
+        { status: 503 },
+      );
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    // Rate limiting via Upstash Redis — works correctly across all Vercel
+    // serverless instances and cold starts (unlike an in-memory Map).
     const ip =
       request.headers.get("x-forwarded-for")?.split(",")[0] ||
       request.headers.get("x-real-ip") ||
-      "unknown";
+      "anonymous";
 
-    if (!checkRateLimit(ip)) {
+    const { success: allowed } = await ratelimit.limit(ip);
+    if (!allowed) {
       return NextResponse.json(
         {
           success: false,

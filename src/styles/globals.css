@@ -162,17 +162,20 @@
     @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background rounded-sm;
   }
 
-  * {
-    /* Only theme-relevant properties — avoids compositing every element on scroll/interaction */
+  /* Scope theme-switch transitions to root elements only.
+     Interactive components declare their own transitions via Tailwind utilities. */
+  html,
+  body {
     transition:
       background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Suppress CSS transitions while View Transition is actively running */
   /* Prevents double-animation: clip-reveal + independent bg-color transitions */
-  html.vt-running * {
+  html.vt-running *,
+  html.vt-running html,
+  html.vt-running body {
     transition: none !important;
   }
 }
@@ -187,6 +190,10 @@
     box-shadow:
       var(--shadow-card),
       inset 0 1px 0 hsl(0 0% 100% / 0.07);
+    /* Explicit theme-switch transitions (not covered by html/body scope above) */
+    transition:
+      background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark .glass-card {
@@ -273,15 +280,6 @@
     box-shadow: none;
   }
 
-  /* ── Timeline ─────────────────────────────────────── */
-  .timeline-line {
-    @apply absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-border to-transparent;
-  }
-
-  .timeline-dot {
-    @apply absolute -left-[5px] top-1 w-[10px] h-[10px] rounded-full bg-primary ring-4 ring-background;
-  }
-
   /* ── Tech Strip ──────────────────────────────────── */
   .tech-strip-item {
     @apply px-4 py-1.5 rounded-full text-sm font-medium text-muted-foreground
@@ -294,19 +292,6 @@
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
            tracking-wide font-mono
            bg-primary/10 text-primary border border-primary/20;
-  }
-
-  /* ── Section Base ────────────────────────────────── */
-  .section-heading {
-    @apply text-2xl md:text-3xl font-bold text-foreground mb-8;
-  }
-
-  .section-label {
-    @apply font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3;
-  }
-
-  .section-title {
-    @apply text-4xl md:text-5xl font-black tracking-tight text-foreground;
   }
 
   /* ── Glow utilities ──────────────────────────────── */

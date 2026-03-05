@@ -106,7 +106,7 @@ export const personalInfo: PersonalInfo = {
  * Hero section content
  */
 export const heroContent = {
-  greeting: "Hi, I'm Rushi — Frontend Developer",
+  greeting: "Crafting Modern Web Interfaces",
   subtitle:
     "Frontend Developer building fast, scalable React & Next.js products.",
   description:
@@ -267,15 +267,13 @@ export const skillsContent = {
  * Technical skills - core technologies and tools/frameworks
  */
 export const skills: Skills = {
-  core: ["HTML", "CSS", "JavaScript"],
+  core: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
   tools: [
-    "React.js",
-    "Next.js",
     "Tailwind CSS",
     "Material UI (MUI)",
+    "SCSS (Sass)",
     "Git",
     "GitHub",
-    "SCSS (Sass)",
     "jQuery",
     "Responsive Design",
   ],

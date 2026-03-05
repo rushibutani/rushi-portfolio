@@ -7,8 +7,8 @@ export default function Contact() {
   return (
     <Section id="contact" className="relative">
       {/* ── Stage-light glow — centered behind headline ─────────────── */}
-      {/* Light: 4% opacity so it reads as a gentle brand tint on #fafafa  */}
-      {/* Dark:  10% opacity for the prescribed stage-light effect         */}
+      {/* 5% opacity reads as a gentle brand tint in light mode and a      */}
+      {/* visible stage-light effect in dark mode — one div, both themes.  */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10"
@@ -16,17 +16,7 @@ export default function Contact() {
           width: "800px",
           height: "800px",
           background:
-            "radial-gradient(circle at center top, rgba(124, 58, 237, 0.04) 0%, transparent 65%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 hidden dark:block"
-        style={{
-          width: "800px",
-          height: "800px",
-          background:
-            "radial-gradient(circle at center top, rgba(124, 58, 237, 0.06) 0%, transparent 65%)",
+            "radial-gradient(circle at center top, rgba(124, 58, 237, 0.05) 0%, transparent 65%)",
         }}
       />
 

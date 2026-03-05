@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "@/components/ui/icons";
 import { ThemeToggle } from "@/components/ui";
 import { navLinks, headerLogo } from "@/config/site";
@@ -9,6 +9,10 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+
+  // Refs for focus management
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuDialogRef = useRef<HTMLDivElement>(null);
 
   // Scroll detection for header backdrop
   useEffect(() => {
@@ -46,6 +50,52 @@ export default function Header() {
 
     return () => observer.disconnect();
   }, []);
+
+  // Escape key + focus trap for mobile nav
+  useEffect(() => {
+    const dialog = menuDialogRef.current;
+    if (!dialog || !isMobileMenuOpen) return;
+
+    // Move focus into the dialog when it opens
+    const focusableSelector =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const getFocusable = () =>
+      Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector));
+
+    getFocusable()[0]?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const focusable = getFocusable();
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // On cleanup (menu closes): remove listener and return focus to trigger button
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      menuButtonRef.current?.focus();
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -116,12 +166,14 @@ export default function Header() {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
+              ref={menuButtonRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="w-9 h-9 flex items-center justify-center rounded-xl border border-border/60
                          text-muted-foreground hover:text-primary hover:border-primary/40
                          active:scale-[0.95] transition-all duration-200"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-dialog"
             >
               {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -131,6 +183,8 @@ export default function Header() {
 
       {/* ── Mobile Navigation Overlay ───────────────── */}
       <div
+        ref={menuDialogRef}
+        id="mobile-nav-dialog"
         className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
           isMobileMenuOpen
             ? "opacity-100 visible"

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: "primary" | "secondary" | "outline" | "ghost";
+  variant?: "primary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
   href?: string;
@@ -27,8 +27,6 @@ export function Button({
   const variants = {
     primary:
       "bg-gradient-to-r from-primary to-violet-500 text-primary-foreground shadow-sm hover:shadow-md hover:shadow-primary/25 hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
-    secondary:
-      "bg-secondary text-foreground border border-border/60 hover:bg-secondary/70 hover:border-border hover:shadow-sm active:scale-[0.98]",
     outline:
       "border border-primary/50 text-primary hover:bg-primary/5 hover:border-primary hover:-translate-y-0.5 active:translate-y-0",
     ghost:

@@ -162,7 +162,7 @@ export default function Projects() {
       </div>
 
       {/* View More — appears last */}
-      <SectionReveal delay={600}>
+      <SectionReveal delay={300}>
         <div className="text-center mt-12">
           <Button
             variant="outline"

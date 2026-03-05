@@ -1,51 +1,10 @@
 import type { ReactNode } from "react";
 
-interface SectionHeaderProps {
-  label?: string;
-  title: string;
-  description?: string;
-  align?: "left" | "center" | "right";
-  className?: string;
-}
-
-export function SectionHeader({
-  label,
-  title,
-  description,
-  align = "center",
-  className = "",
-}: SectionHeaderProps) {
-  const alignmentClasses = {
-    left: "text-left",
-    center: "text-center",
-    right: "text-right",
-  };
-
-  return (
-    <div className={`mb-12 ${alignmentClasses[align]} ${className}`}>
-      {label && (
-        <p className="text-primary font-mono text-sm mb-4 font-semibold tracking-wider uppercase">
-          {label}
-        </p>
-      )}
-      <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 relative inline-block">
-        <span className="relative z-10">{title}</span>
-        <span className="absolute -bottom-2 left-0 w-1/3 h-0.5 bg-primary opacity-70" />
-      </h2>
-      {description && (
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed mt-6">
-          {description}
-        </p>
-      )}
-    </div>
-  );
-}
-
 interface SectionProps {
   children: ReactNode;
   id?: string;
   className?: string;
-  variant?: "default" | "accent" | "subtle" | "surface";
+  variant?: "default" | "subtle" | "surface";
   /** Adds a 1px #ffffff08 hairline at the very top of the section */
   topBorder?: boolean;
   /** Adds a 1px #ffffff06 hairline at the very bottom of the section */
@@ -68,12 +27,6 @@ export function Section({
       className={`py-28 md:py-32 px-0 md:px-6 ${needsRelative ? "relative" : ""} ${className}`}
     >
       {/* ── Background layer ───────────────────────── */}
-      {variant === "accent" && (
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-[#efefef] dark:bg-[#111111]"
-        />
-      )}
       {variant === "subtle" && (
         <div
           aria-hidden
