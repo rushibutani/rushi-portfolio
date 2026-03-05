@@ -7,11 +7,26 @@ import { Redis } from "@upstash/redis";
 // Requires UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN in .env.local
 // (or Vercel environment variables). Free tier is sufficient for portfolio traffic.
 // See: https://console.upstash.com → Create Database → copy REST URL + token.
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(5, "15 m"),
-  analytics: false,
-});
+//
+// Initialized lazily inside the handler so a missing env var returns a clean
+// 503 instead of crashing the entire route module at load time.
+let ratelimit: Ratelimit | null = null;
+
+function getRatelimit(): Ratelimit | null {
+  if (ratelimit) return ratelimit;
+  if (
+    !process.env.UPSTASH_REDIS_REST_URL ||
+    !process.env.UPSTASH_REDIS_REST_TOKEN
+  ) {
+    return null;
+  }
+  ratelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(5, "15 m"),
+    analytics: false,
+  });
+  return ratelimit;
+}
 
 interface ContactFormData {
   name: string;
@@ -40,7 +55,9 @@ function validateContactForm(data: ContactFormData): {
   const email = data.email?.trim() || "";
   const message = data.message?.trim() || "";
 
-  if (name.length < 2) {
+  if (name.length === 0) {
+    errors.name = "Name is required";
+  } else if (name.length < 2) {
     errors.name = "Name must be at least 2 characters";
   } else if (name.length > 100) {
     errors.name = "Name must not exceed 100 characters";
@@ -68,6 +85,14 @@ function validateContactForm(data: ContactFormData): {
 
 export async function POST(request: NextRequest) {
   try {
+    // Reject non-JSON bodies early to avoid an opaque SyntaxError in the catch.
+    if (!request.headers.get("content-type")?.includes("application/json")) {
+      return NextResponse.json(
+        { success: false, message: "Content-Type must be application/json." },
+        { status: 415 },
+      );
+    }
+
     // Environment validation — done inside the handler so a missing key returns
     // a proper 503 instead of crashing the entire route module at load time.
     if (!process.env.RESEND_API_KEY) {
@@ -81,12 +106,23 @@ export async function POST(request: NextRequest) {
 
     // Rate limiting via Upstash Redis — works correctly across all Vercel
     // serverless instances and cold starts (unlike an in-memory Map).
+    const limiter = getRatelimit();
+    if (!limiter) {
+      console.error(
+        "UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN is not defined",
+      );
+      return NextResponse.json(
+        { success: false, message: "Rate limiting service is not configured." },
+        { status: 503 },
+      );
+    }
+
     const ip =
       request.headers.get("x-forwarded-for")?.split(",")[0] ||
       request.headers.get("x-real-ip") ||
       "anonymous";
 
-    const { success: allowed } = await ratelimit.limit(ip);
+    const { success: allowed } = await limiter.limit(ip);
     if (!allowed) {
       return NextResponse.json(
         {
@@ -192,7 +228,7 @@ export async function POST(request: NextRequest) {
 `,
     });
 
-    console.log("Contact form submitted successfully from:", body.email.trim());
+    console.log("Contact form submission received");
 
     return NextResponse.json({
       success: true,
