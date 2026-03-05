@@ -19,7 +19,6 @@ interface ContactFormData {
   message: string;
 }
 
-// HTML sanitization helper
 function escapeHtml(text: string): string {
   const map: Record<string, string> = {
     "&": "&amp;",
@@ -31,7 +30,6 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (char) => map[char]);
 }
 
-// Server-side validation
 function validateContactForm(data: ContactFormData): {
   isValid: boolean;
   errors: Record<string, string>;
@@ -101,7 +99,6 @@ export async function POST(request: NextRequest) {
 
     const body: ContactFormData = await request.json();
 
-    // Server-side validation
     const validation = validateContactForm(body);
     if (!validation.isValid) {
       return NextResponse.json(
@@ -114,12 +111,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Sanitize inputs for HTML
     const safeName = escapeHtml(body.name.trim());
     const safeEmail = escapeHtml(body.email.trim());
     const safeMessage = escapeHtml(body.message.trim());
 
-    // Send email using Resend
     await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: "rushibutani@gmail.com",
@@ -137,7 +132,6 @@ export async function POST(request: NextRequest) {
       box-shadow:0 10px 25px rgba(0,0,0,0.05);
     ">
 
-      <!-- Header -->
       <div style="
         background:#6366f1;
         padding:20px 24px;
@@ -151,7 +145,6 @@ export async function POST(request: NextRequest) {
         </p>
       </div>
 
-      <!-- Content -->
       <div style="padding:24px;">
         <div style="margin-bottom:20px;">
           <p style="margin:0;font-size:14px;color:#6b7280;">
@@ -208,7 +201,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Contact form error:", error);
 
-    // Check for specific Resend errors
     if (error instanceof Error) {
       if (error.message.includes("API key")) {
         return NextResponse.json(

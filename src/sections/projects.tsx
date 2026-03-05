@@ -8,7 +8,6 @@ export default function Projects() {
 
   return (
     <Section id="projects" topBorder bottomBorder>
-      {/* Section header */}
       <SectionReveal delay={0}>
         <div className="mb-14">
           <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3">
@@ -20,9 +19,7 @@ export default function Projects() {
         </div>
       </SectionReveal>
 
-      {/* Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-auto">
-        {/* Featured Project — full width, slides up first */}
         <SectionReveal delay={150} className="md:col-span-2">
           <article className="project-card group">
             <div className="flex flex-col lg:flex-row">
@@ -93,7 +90,6 @@ export default function Projects() {
           </article>
         </SectionReveal>
 
-        {/* Remaining projects — alternate left/right entry with stagger */}
         {rest.map((project, index) => (
           <SectionReveal
             key={index}
@@ -161,7 +157,6 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* View More — appears last */}
       <SectionReveal delay={300}>
         <div className="text-center mt-12">
           <Button

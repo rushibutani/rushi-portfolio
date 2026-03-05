@@ -26,7 +26,6 @@ export function Section({
       id={id}
       className={`py-28 md:py-32 px-0 md:px-6 ${needsRelative ? "relative" : ""} ${className}`}
     >
-      {/* ── Background layer ───────────────────────── */}
       {variant === "subtle" && (
         <div
           aria-hidden
@@ -40,7 +39,6 @@ export function Section({
         />
       )}
 
-      {/* ── Separator hairlines — theme-aware ──────────── */}
       {topBorder && (
         <div
           aria-hidden

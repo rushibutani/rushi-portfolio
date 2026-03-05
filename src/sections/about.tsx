@@ -6,9 +6,8 @@ export default function About() {
   return (
     <Section id="about">
       <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-        {/* ── Left: Heading + Skills ──────────────────── */}
+
         <div className="flex flex-col gap-7">
-          {/* Label + Heading animate in from the left */}
           <SectionReveal direction="left" delay={0}>
             <div className="flex flex-col gap-5">
               <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
@@ -29,7 +28,6 @@ export default function About() {
             </div>
           </SectionReveal>
 
-          {/* Skills pills stagger in after the heading */}
           <SectionReveal direction="left" delay={200}>
             <div className="pt-1">
               <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
@@ -46,9 +44,7 @@ export default function About() {
           </SectionReveal>
         </div>
 
-        {/* ── Right: Bio + Info Card ─────────────────── */}
         <div className="flex flex-col gap-8">
-          {/* Paragraphs slide in from right, slightly delayed */}
           <SectionReveal direction="right" delay={150}>
             <div className="space-y-5">
               {aboutContent.paragraphs.map((paragraph, index) => (
@@ -62,7 +58,6 @@ export default function About() {
             </div>
           </SectionReveal>
 
-          {/* Info card appears last */}
           <SectionReveal direction="right" delay={340}>
             <Card
               variant="glass"

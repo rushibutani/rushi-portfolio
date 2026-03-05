@@ -5,7 +5,6 @@ export default function AnimatedBackground() {
       className="fixed inset-0 -z-10 overflow-hidden pointer-events-none"
       aria-hidden
     >
-      {/* Primary top-left violet orb */}
       <div
         className="absolute -top-[15%] -left-[8%] w-[55vw] h-[55vw] max-w-[680px] max-h-[680px] rounded-full opacity-[0.11] dark:opacity-[0.07]"
         style={{
@@ -16,7 +15,6 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Secondary bottom-right purple orb */}
       <div
         className="absolute -bottom-[18%] -right-[8%] w-[50vw] h-[50vw] max-w-[620px] max-h-[620px] rounded-full opacity-[0.08] dark:opacity-[0.06]"
         style={{
@@ -27,7 +25,6 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Accent mid-right orb (dark mode accent) */}
       <div
         className="absolute top-[40%] -right-[15%] w-[40vw] h-[40vw] max-w-[480px] max-h-[480px] rounded-full opacity-0 dark:opacity-[0.05]"
         style={{
@@ -39,7 +36,6 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Fine dot grid — light */}
       <div
         className="absolute inset-0 opacity-[0.022] dark:opacity-0"
         style={{
@@ -48,7 +44,6 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Fine dot grid — dark */}
       <div
         className="absolute inset-0 opacity-0 dark:opacity-[0.038]"
         style={{
@@ -57,7 +52,6 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Subtle vignette */}
       <div
         className="absolute inset-0 opacity-0 dark:opacity-100"
         style={{

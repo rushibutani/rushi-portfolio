@@ -53,7 +53,6 @@ export default function Skills() {
 
   return (
     <Section id="skills" variant="surface" topBorder>
-      {/* Section header */}
       <SectionReveal delay={0}>
         <div className="mb-14">
           <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3">
@@ -65,12 +64,10 @@ export default function Skills() {
         </div>
       </SectionReveal>
 
-      {/* Cards stagger in one by one */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {cards.map(({ icon, label, content }, i) => (
           <SectionReveal key={label} delay={i * 160} direction="up">
             <div className="glass-card p-6 rounded-2xl flex flex-col gap-5 h-full hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300 group">
-              {/* Card header */}
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
                   {icon}

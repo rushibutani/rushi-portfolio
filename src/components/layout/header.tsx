@@ -10,11 +10,9 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  // Refs for focus management
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuDialogRef = useRef<HTMLDivElement>(null);
 
-  // Scroll detection for header backdrop
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -56,7 +54,6 @@ export default function Header() {
     const dialog = menuDialogRef.current;
     if (!dialog || !isMobileMenuOpen) return;
 
-    // Move focus into the dialog when it opens
     const focusableSelector =
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
     const getFocusable = () =>
@@ -99,7 +96,6 @@ export default function Header() {
 
   return (
     <>
-      {/* ── Header ──────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "border-b border-border/40 py-3" : "bg-transparent py-5"
@@ -118,7 +114,6 @@ export default function Header() {
           className="container max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between"
           aria-label="Main navigation"
         >
-          {/* Logo */}
           <a
             href="#hero"
             className="font-mono font-black text-xl tracking-tight text-gradient hover:opacity-80 transition-opacity flex-shrink-0"
@@ -127,7 +122,6 @@ export default function Header() {
             {headerLogo}
           </a>
 
-          {/* Desktop Nav Links */}
           <ul className="hidden md:flex items-center gap-0.5" role="list">
             {navLinks.map((link) => {
               const sectionId = link.href.replace("#", "");
@@ -147,7 +141,6 @@ export default function Header() {
             })}
           </ul>
 
-          {/* Right Actions */}
           <div className="hidden md:flex items-center gap-2 flex-shrink-0">
             <a
               href="/RushiButani_Resume.pdf"
@@ -162,7 +155,6 @@ export default function Header() {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Actions */}
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
@@ -181,8 +173,7 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* ── Mobile Navigation Overlay ───────────────── */}
-      <div
+        <div
         ref={menuDialogRef}
         id="mobile-nav-dialog"
         className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
@@ -199,7 +190,6 @@ export default function Header() {
         aria-modal="true"
         aria-label="Mobile navigation"
       >
-        {/* Nav Links */}
         <div className="h-full flex flex-col items-center justify-center gap-1 px-6 pt-16">
           {navLinks.map((link, index) => {
             const sectionId = link.href.replace("#", "");
@@ -227,7 +217,6 @@ export default function Header() {
             );
           })}
 
-          {/* Resume CTA */}
           <a
             href="/RushiButani_Resume.pdf"
             target="_blank"

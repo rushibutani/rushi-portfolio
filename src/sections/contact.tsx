@@ -6,9 +6,6 @@ import { Mail, MapPin } from "@/components/ui/icons";
 export default function Contact() {
   return (
     <Section id="contact" className="relative">
-      {/* ── Stage-light glow — centered behind headline ─────────────── */}
-      {/* 5% opacity reads as a gentle brand tint in light mode and a      */}
-      {/* visible stage-light effect in dark mode — one div, both themes.  */}
       <div
         aria-hidden
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10"
@@ -21,10 +18,9 @@ export default function Contact() {
       />
 
       <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-        {/* ── Left: Info — slides in from left ─────────────────────────── */}
+
         <SectionReveal direction="left" delay={0}>
           <div className="flex flex-col gap-8">
-            {/* Label + Heading + Description */}
             <div className="flex flex-col gap-5">
               <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
                 {contactContent.label}
@@ -48,7 +44,6 @@ export default function Contact() {
               </p>
             </div>
 
-            {/* Availability badge */}
             <div className="inline-flex items-center gap-2.5 self-start bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2">
               <span
                 className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"
@@ -59,7 +54,6 @@ export default function Contact() {
               </span>
             </div>
 
-            {/* Contact details */}
             <div className="flex flex-col gap-3">
               <a
                 href={`mailto:${personalInfo.email}`}
@@ -74,12 +68,11 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social Links */}
             <SocialLinks />
           </div>
         </SectionReveal>
 
-        {/* ── Right: Form — slides in from right with delay ────────────────────────── */}
+
         <SectionReveal direction="right" delay={260}>
           <div className="glass-card p-6 md:p-8 rounded-2xl">
             <div className="mb-6">

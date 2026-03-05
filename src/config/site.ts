@@ -1,10 +1,3 @@
-/**
- * =============================================================================
- * SITE CONFIGURATION & PORTFOLIO DATA
- * Central data store for all portfolio content and site configuration
- * =============================================================================
- */
-
 import type {
   PersonalInfo,
   Skills,
@@ -15,13 +8,6 @@ import type {
   SocialLinks,
 } from "@/types";
 
-// =============================================================================
-// SITE METADATA & BRANDING
-// =============================================================================
-
-/**
- * Site metadata for SEO optimization
- */
 export const siteMetadata: SiteMetadata = {
   title: "Rushi Butani | Frontend Developer",
   description:
@@ -42,26 +28,13 @@ export const siteMetadata: SiteMetadata = {
   image: "/images/og-image.svg",
 };
 
-/**
- * Header logo text
- */
 export const headerLogo = "<RB />";
 
-/**
- * Footer content
- */
 export const footerContent = {
   text: "Designed & Built with",
   author: "Rushi Butani",
 };
 
-// =============================================================================
-// NAVIGATION
-// =============================================================================
-
-/**
- * Main navigation menu items
- */
 export const navLinks: NavItem[] = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
@@ -71,9 +44,6 @@ export const navLinks: NavItem[] = [
   { name: "Contact", href: "#contact" },
 ];
 
-/**
- * Social media profile links
- */
 export const socialLinks: SocialLinks = {
   linkedin: "https://in.linkedin.com/in/rushibutani",
   github: "https://github.com/rushibutani",
@@ -82,13 +52,6 @@ export const socialLinks: SocialLinks = {
   facebook: "https://www.facebook.com/rushibutani",
 };
 
-// =============================================================================
-// PERSONAL INFORMATION
-// =============================================================================
-
-/**
- * Personal contact details and bio
- */
 export const personalInfo: PersonalInfo = {
   name: "Rushi Butani",
   location: "Gujarat, India",
@@ -98,13 +61,6 @@ export const personalInfo: PersonalInfo = {
   availability: "Open to Interesting Projects & Collaborations",
 };
 
-// =============================================================================
-// HERO SECTION
-// =============================================================================
-
-/**
- * Hero section content
- */
 export const heroContent = {
   greeting: "Crafting Modern Web Interfaces",
   subtitle:
@@ -117,14 +73,6 @@ export const heroContent = {
   },
 };
 
-// =============================================================================
-// HERO BADGES
-// =============================================================================
-
-/**
- * Value-signal badges shown below the hero section.
- * Each badge communicates credibility, domain, focus, or availability.
- */
 export const heroBadges: string[] = [
   "2+ Years React Experience",
   "Production Fintech Applications",
@@ -135,13 +83,6 @@ export const heroBadges: string[] = [
   "UI Systems · Component Design",
 ];
 
-// =============================================================================
-// ABOUT SECTION
-// =============================================================================
-
-/**
- * About section content
- */
 export const aboutContent = {
   label: "About Me",
   title: "Building Reliable Interfaces\nfor Real Products",
@@ -152,21 +93,12 @@ export const aboutContent = {
   ],
 };
 
-// =============================================================================
-// EXPERIENCE SECTION
-// =============================================================================
-
-/**
- * Experience section content
- */
 export const experienceContent = {
   label: "Professional Journey",
   title: "Professional Experience",
 };
 
-/**
- * Professional work history (most recent first)
- */
+// Most recent first
 export const experience: Experience[] = [
   {
     role: "Software Developer",
@@ -194,22 +126,12 @@ export const experience: Experience[] = [
   },
 ];
 
-// =============================================================================
-// PROJECTS SECTION
-// =============================================================================
-
-/**
- * Projects section content
- */
 export const projectsContent = {
   label: "Things I've Built",
   title: "Featured Projects",
   viewMoreText: "More on GitHub",
 };
 
-/**
- * Featured projects showcase (display order)
- */
 export const projects: Project[] = [
   {
     title: "Real-Time Weather Application",
@@ -246,13 +168,6 @@ export const projects: Project[] = [
   },
 ];
 
-// =============================================================================
-// SKILLS SECTION
-// =============================================================================
-
-/**
- * Skills section content
- */
 export const skillsContent = {
   label: "Expertise & Learning",
   title: "Skills & Education",
@@ -263,9 +178,6 @@ export const skillsContent = {
   },
 };
 
-/**
- * Technical skills - core technologies and tools/frameworks
- */
 export const skills: Skills = {
   core: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
   tools: [
@@ -279,22 +191,12 @@ export const skills: Skills = {
   ],
 };
 
-/**
- * Educational background and certifications
- */
 export const education: string[] = [
   "Front-End Web Development Course in React.js - TOPS Technologies (2023)",
   "Complete Front-End Web Development Course - Udemy (2023)",
   "M.Sc. in Organic Chemistry - CCSIT College (2018 - 2020)",
 ];
 
-// =============================================================================
-// CONTACT SECTION
-// =============================================================================
-
-/**
- * Contact section content
- */
 export const contactContent = {
   label: "What's Next?",
   title: "Let's build something\ngreat together.",

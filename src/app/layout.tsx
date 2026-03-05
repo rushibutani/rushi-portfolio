@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   keywords: siteMetadata.keywords,
   authors: [{ name: siteMetadata.author }],
   creator: siteMetadata.author,
-  // Canonical URL — tells search engines the authoritative URL
+
   alternates: {
     canonical: siteMetadata.siteUrl,
   },
@@ -113,7 +113,6 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
-        {/* Structured Data for SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}

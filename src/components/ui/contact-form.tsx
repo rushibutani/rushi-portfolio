@@ -28,11 +28,9 @@ export function ContactForm({ className = "" }: { className?: string }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  // Refs for cleanup
   const successTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const errorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (successTimeoutRef.current) clearTimeout(successTimeoutRef.current);
@@ -83,7 +81,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
     setStatus("submitting");
     setErrorMessage("");
 
-    // Clear any existing timeouts
     if (successTimeoutRef.current) clearTimeout(successTimeoutRef.current);
     if (errorTimeoutRef.current) clearTimeout(errorTimeoutRef.current);
 
@@ -112,7 +109,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
 
-      // Reset to idle after 5 seconds
       successTimeoutRef.current = setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       setStatus("error");
@@ -122,7 +118,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
           : "Something went wrong. Please try again or email me directly.",
       );
 
-      // Reset error state after 8 seconds
       errorTimeoutRef.current = setTimeout(() => {
         setStatus("idle");
         setErrorMessage("");
@@ -135,7 +130,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -148,7 +142,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
       aria-label="Contact form"
       noValidate
     >
-      {/* Name Field */}
       <div>
         <label htmlFor="name" className="block text-sm font-semibold mb-2">
           <span className="flex items-center gap-2">
@@ -184,7 +177,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
         )}
       </div>
 
-      {/* Email Field */}
       <div>
         <label htmlFor="email" className="block text-sm font-semibold mb-2">
           <span className="flex items-center gap-2">
@@ -220,7 +212,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
         )}
       </div>
 
-      {/* Message Field */}
       <div>
         <label htmlFor="message" className="block text-sm font-semibold mb-2">
           <span className="flex items-center gap-2">
@@ -260,7 +251,6 @@ export function ContactForm({ className = "" }: { className?: string }) {
         )}
       </div>
 
-      {/* Submit Button */}
       <div className="flex flex-col gap-3 pt-1">
         <Button
           type="submit"

@@ -1,7 +1,6 @@
 export default function Footer() {
   return (
     <footer className="relative py-8 px-4 md:px-6 border-t border-border/40">
-      {/* Subtle top glow */}
       <div
         aria-hidden
         className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px"

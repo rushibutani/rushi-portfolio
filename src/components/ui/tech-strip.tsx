@@ -32,9 +32,7 @@ export default function HeroBadges() {
 
   return (
     <div className="relative w-full overflow-hidden border-y border-border/30 py-4 bg-secondary/10 dark:bg-transparent dark:border-white/[0.05]">
-      {/* Left fade */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-background to-transparent" />
-      {/* Right fade */}
       <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-background to-transparent" />
 
       <div className="flex items-center gap-3 animate-marquee w-max">
