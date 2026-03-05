@@ -1,54 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <!-- Background -->
-  <rect width="1200" height="630" fill="hsl(222, 47%, 11%)"/>
-  
-  <!-- Subtle Grid Pattern -->
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(222, 30%, 25%)" stroke-width="0.5" opacity="0.3"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e1b4b" stroke-width="0.5" opacity="0.5"/>
     </pattern>
-    
+
     <!-- Glow Effect -->
     <radialGradient id="glow" cx="50%" cy="50%">
-      <stop offset="0%" style="stop-color:hsl(172, 66%, 50%);stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:hsl(172, 66%, 50%);stop-opacity:0" />
+      <stop offset="0%"   stop-color="#6366f1" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
     </radialGradient>
+
+    <!-- Logo text gradient (matches .dark .text-gradient) -->
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#c4b5fd"/>
+      <stop offset="50%"  stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#d8b4fe"/>
+    </linearGradient>
   </defs>
-  
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f172a"/>
+
   <!-- Grid Background -->
   <rect width="1200" height="630" fill="url(#grid)"/>
-  
+
   <!-- Glow Circle -->
   <circle cx="600" cy="315" r="400" fill="url(#glow)"/>
-  
+
   <!-- Decorative Accent Line Top -->
-  <rect x="100" y="120" width="60" height="3" fill="hsl(172, 66%, 50%)" rx="1.5"/>
-  
+  <rect x="100" y="120" width="60" height="3" fill="#6366f1" rx="1.5"/>
+
   <!-- Logo/Monogram -->
-  <text x="100" y="180" font-family="ui-monospace, monospace" font-size="48" font-weight="bold" fill="hsl(172, 66%, 50%)">&lt;RB /&gt;</text>
-  
+  <text x="100" y="180" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="48" font-weight="900" fill="url(#logoGrad)">&lt;RB /&gt;</text>
+
   <!-- Main Name -->
   <text x="100" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="hsl(210, 40%, 98%)">Rushi Butani</text>
-  
+
   <!-- Title -->
   <text x="100" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="hsl(215, 20%, 65%)">Frontend Developer</text>
-  
+
   <!-- Tech Stack Tags -->
   <g transform="translate(100, 420)">
-    <rect width="90" height="32" rx="6" fill="hsl(222, 47%, 18%)" stroke="hsl(172, 66%, 50%)" stroke-width="1"/>
-    <text x="45" y="21" font-family="ui-monospace, monospace" font-size="14" fill="hsl(172, 66%, 50%)" text-anchor="middle">React.js</text>
+    <rect width="90" height="32" rx="6" fill="rgba(99,102,241,0.12)" stroke="#6366f1" stroke-width="1"/>
+    <text x="45" y="21" font-family="ui-monospace, monospace" font-size="14" fill="#a5b4fc" text-anchor="middle">React.js</text>
   </g>
-  
-  <g transform="translate(195, 420)">
-    <rect width="90" height="32" rx="6" fill="hsl(222, 47%, 18%)" stroke="hsl(172, 66%, 50%)" stroke-width="1"/>
-    <text x="45" y="21" font-family="ui-monospace, monospace" font-size="14" fill="hsl(172, 66%, 50%)" text-anchor="middle">Next.js</text>
+
+  <g transform="translate(198, 420)">
+    <rect width="90" height="32" rx="6" fill="rgba(99,102,241,0.12)" stroke="#6366f1" stroke-width="1"/>
+    <text x="45" y="21" font-family="ui-monospace, monospace" font-size="14" fill="#a5b4fc" text-anchor="middle">Next.js</text>
   </g>
-  
-  <g transform="translate(300, 420)">
-    <rect width="110" height="32" rx="6" fill="hsl(222, 47%, 18%)" stroke="hsl(172, 66%, 50%)" stroke-width="1"/>
-    <text x="55" y="21" font-family="ui-monospace, monospace" font-size="14" fill="hsl(172, 66%, 50%)" text-anchor="middle">JavaScript</text>
+
+  <g transform="translate(296, 420)">
+    <rect width="110" height="32" rx="6" fill="rgba(99,102,241,0.12)" stroke="#6366f1" stroke-width="1"/>
+    <text x="55" y="21" font-family="ui-monospace, monospace" font-size="14" fill="#a5b4fc" text-anchor="middle">JavaScript</text>
   </g>
-  
+
   <!-- Decorative Accent Line Bottom -->
-  <rect x="100" y="500" width="200" height="2" fill="hsl(172, 66%, 50%)" opacity="0.5" rx="1"/>
+  <rect x="100" y="500" width="200" height="2" fill="#6366f1" opacity="0.6" rx="1"/>
 </svg>

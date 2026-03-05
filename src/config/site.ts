@@ -164,7 +164,7 @@ export const projects: Project[] = [
     ],
     repo: "https://github.com/rushibutani/github-profile-analytics",
     liveUrl: "https://github-profile-analytics.vercel.app",
-    image: "/images/github-analytics-preview.webp",
+    image: "/images/github-profile-analytics-preview.webp",
   },
 ];
 
