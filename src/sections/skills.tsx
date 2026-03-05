@@ -1,86 +1,85 @@
 import { skills, education, skillsContent } from "@/config/site";
 import { GraduationCap, Code, Wrench } from "@/components/ui/icons";
-import { SectionReveal } from "@/components/ui";
+import { Section, SectionReveal } from "@/components/ui";
 
 export default function Skills() {
+  const cards = [
+    {
+      icon: <Code size={18} className="text-primary" />,
+      label: skillsContent.sections.core,
+      content: (
+        <div className="flex flex-wrap gap-2">
+          {skills.core.map((skill) => (
+            <span key={skill} className="skill-tag">
+              {skill}
+            </span>
+          ))}
+        </div>
+      ),
+    },
+    {
+      icon: <Wrench size={18} className="text-primary" />,
+      label: skillsContent.sections.tools,
+      content: (
+        <div className="flex flex-wrap gap-2">
+          {skills.tools.map((skill) => (
+            <span key={skill} className="skill-tag">
+              {skill}
+            </span>
+          ))}
+        </div>
+      ),
+    },
+    {
+      icon: <GraduationCap size={18} className="text-primary" />,
+      label: skillsContent.sections.education,
+      content: (
+        <ul className="space-y-3.5">
+          {education.map((edu, index) => (
+            <li
+              key={index}
+              className="flex items-start gap-3 text-muted-foreground pb-3.5 border-b border-border/40 last:border-0 last:pb-0 text-sm leading-relaxed"
+            >
+              <span className="text-primary mt-0.5 flex-shrink-0 font-bold text-xs">
+                ›
+              </span>
+              <span>{edu}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+  ];
+
   return (
-    <section id="skills" className="py-24 px-0 md:px-6 bg-secondary/30">
-      <SectionReveal className="container max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-primary font-mono text-sm mb-4">
+    <Section id="skills" variant="surface" topBorder>
+      <SectionReveal delay={0}>
+        <div className="mb-14">
+          <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase mb-3">
             {skillsContent.label}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          <h2 className="text-4xl md:text-5xl font-black tracking-[-0.02em] text-foreground">
             {skillsContent.title}
           </h2>
         </div>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Skills */}
-          <div className="space-y-8">
-            {/* Core Skills */}
-            <div className="glass-card p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <Code size={20} className="text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground">
-                  {skillsContent.sections.core}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {skills.core.map((skill) => (
-                  <span key={skill} className="skill-tag">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Tools & Frameworks */}
-            <div className="glass-card p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <Wrench size={20} className="text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground">
-                  {skillsContent.sections.tools}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {skills.tools.map((skill) => (
-                  <span key={skill} className="skill-tag">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Education */}
-          <div className="glass-card p-6 h-fit">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <GraduationCap size={20} className="text-primary" />
-              </div>
-              <h3 className="text-lg font-bold text-foreground">
-                {skillsContent.sections.education}
-              </h3>
-            </div>
-            <ul className="space-y-4">
-              {education.map((edu, index) => (
-                <li
-                  key={index}
-                  className="flex items-start gap-3 text-muted-foreground pb-4 border-b border-border/50 last:border-0 last:pb-0"
-                >
-                  <span className="text-primary mt-1">▹</span>
-                  <span className="leading-relaxed">{edu}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
       </SectionReveal>
-    </section>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {cards.map(({ icon, label, content }, i) => (
+          <SectionReveal key={label} delay={i * 160} direction="up">
+            <div className="glass-card p-6 rounded-2xl flex flex-col gap-5 h-full hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300 group">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-200">
+                  {icon}
+                </div>
+                <h3 className="text-sm font-bold text-foreground">{label}</h3>
+              </div>
+              <div className="h-px bg-border/50" />
+              {content}
+            </div>
+          </SectionReveal>
+        ))}
+      </div>
+    </Section>
   );
 }

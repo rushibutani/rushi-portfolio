@@ -1,58 +1,92 @@
 import { personalInfo, contactContent } from "@/config/site";
-import { Mail, MapPin, Phone } from "@/components/ui/icons";
 import SocialLinks from "@/components/layout/social-links";
-import { Section, Button, InfoItem, SectionReveal } from "@/components/ui";
+import { Section, SectionReveal, ContactForm } from "@/components/ui";
+import { Mail, MapPin } from "@/components/ui/icons";
 
 export default function Contact() {
   return (
-    <Section id="contact" className="text-center">
-      <SectionReveal className="max-w-4xl mx-auto">
-        <p className="text-primary font-mono text-sm mb-4">
-          {contactContent.label}
-        </p>
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-          {contactContent.title}
-        </h2>
-        <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-12 leading-relaxed">
-          {contactContent.description}
-        </p>
+    <Section id="contact" className="relative">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10"
+        style={{
+          width: "800px",
+          height: "800px",
+          background:
+            "radial-gradient(circle at center top, rgba(124, 58, 237, 0.05) 0%, transparent 65%)",
+        }}
+      />
 
-        {/* Contact Info */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-5 mb-12">
-          <InfoItem
-            icon={<Mail size={20} className="text-primary" />}
-            href={`mailto:${personalInfo.email}`}
-          >
-            {personalInfo.email}
-          </InfoItem>
-          <span className="hidden md:block w-px h-6 bg-border" />
-          <InfoItem
-            icon={<Phone size={20} className="text-primary" />}
-            href={`tel:${personalInfo.phone}`}
-          >
-            {personalInfo.phone}
-          </InfoItem>
-          <span className="hidden md:block w-px h-6 bg-border" />
-          <InfoItem icon={<MapPin size={20} className="text-primary" />}>
-            {personalInfo.location}
-          </InfoItem>
-        </div>
+      <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
-        {/* CTA Button */}
-        <Button
-          variant="primary"
-          size="lg"
-          href={`mailto:${personalInfo.email}`}
-          className="mb-12"
-        >
-          {contactContent.ctaText}
-        </Button>
+        <SectionReveal direction="left" delay={0}>
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-5">
+              <p className="font-mono text-sm font-semibold tracking-widest text-primary uppercase">
+                {contactContent.label}
+              </p>
 
-        {/* Social Links */}
-        <div className="flex justify-center">
-          <SocialLinks />
-        </div>
-      </SectionReveal>
+              <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black tracking-[-0.03em] leading-[1.08] text-foreground">
+                {contactContent.title.split("\n").map((line, i) => (
+                  <span key={i}>
+                    {i === 1 ? (
+                      <span className="text-gradient">{line}</span>
+                    ) : (
+                      line
+                    )}
+                    {i === 0 && <br />}
+                  </span>
+                ))}
+              </h2>
+
+              <p className="text-lg text-muted-foreground leading-[1.7] max-w-md">
+                {contactContent.description}
+              </p>
+            </div>
+
+            <div className="inline-flex items-center gap-2.5 self-start bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2">
+              <span
+                className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"
+                aria-hidden
+              />
+              <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                {personalInfo.availability}
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group w-fit"
+              >
+                <Mail size={16} className="text-primary flex-shrink-0" />
+                <span className="text-sm font-mono">{personalInfo.email}</span>
+              </a>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <MapPin size={16} className="text-primary flex-shrink-0" />
+                <span className="text-sm">{personalInfo.location}</span>
+              </div>
+            </div>
+
+            <SocialLinks />
+          </div>
+        </SectionReveal>
+
+
+        <SectionReveal direction="right" delay={260}>
+          <div className="glass-card p-6 md:p-8 rounded-2xl">
+            <div className="mb-6">
+              <h3 className="text-lg font-bold text-foreground">
+                Send a Message
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1">
+                I usually respond within 24 hours.
+              </p>
+            </div>
+            <ContactForm />
+          </div>
+        </SectionReveal>
+      </div>
     </Section>
   );
 }

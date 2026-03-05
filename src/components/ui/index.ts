@@ -1,8 +1,10 @@
 export * from "./icons";
 export * from "./button";
 export * from "./card";
-export * from "./badge";
 export * from "./section";
 export * from "./link";
 export * from "./section-reveal";
 export * from "./theme-toggle";
+export * from "./contact-form";
+export * from "./scroll-to-top";
+export { default as TechStrip } from "./tech-strip";

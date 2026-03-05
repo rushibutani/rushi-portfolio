@@ -1,10 +1,3 @@
-/**
- * =============================================================================
- * SITE CONFIGURATION & PORTFOLIO DATA
- * Central data store for all portfolio content and site configuration
- * =============================================================================
- */
-
 import type {
   PersonalInfo,
   Skills,
@@ -15,22 +8,14 @@ import type {
   SocialLinks,
 } from "@/types";
 
-// =============================================================================
-// SITE METADATA & BRANDING
-// =============================================================================
-
-/**
- * Site metadata for SEO optimization
- */
 export const siteMetadata: SiteMetadata = {
   title: "Rushi Butani | Frontend Developer",
   description:
-    "Frontend Web Developer specializing in React.js, Next.js, and modern web technologies. Based in Gujarat, India. Available for freelance & collaborations.",
+    "Frontend Developer specializing in React.js, Next.js, and scalable UI systems. Based in Gujarat, India. Available for freelance & collaborations.",
   siteUrl: "https://rushibutani.com",
   author: "Rushi Butani",
   keywords: [
     "Frontend Developer",
-    "Frontend Engineer",
     "React.js Developer",
     "React Developer",
     "Next.js Developer",
@@ -43,26 +28,13 @@ export const siteMetadata: SiteMetadata = {
   image: "/images/og-image.svg",
 };
 
-/**
- * Header logo text
- */
 export const headerLogo = "<RB />";
 
-/**
- * Footer content
- */
 export const footerContent = {
   text: "Designed & Built with",
   author: "Rushi Butani",
 };
 
-// =============================================================================
-// NAVIGATION
-// =============================================================================
-
-/**
- * Main navigation menu items
- */
 export const navLinks: NavItem[] = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
@@ -72,9 +44,6 @@ export const navLinks: NavItem[] = [
   { name: "Contact", href: "#contact" },
 ];
 
-/**
- * Social media profile links
- */
 export const socialLinks: SocialLinks = {
   linkedin: "https://in.linkedin.com/in/rushibutani",
   github: "https://github.com/rushibutani",
@@ -83,72 +52,53 @@ export const socialLinks: SocialLinks = {
   facebook: "https://www.facebook.com/rushibutani",
 };
 
-// =============================================================================
-// PERSONAL INFORMATION
-// =============================================================================
-
-/**
- * Personal contact details and bio
- */
 export const personalInfo: PersonalInfo = {
   name: "Rushi Butani",
   location: "Gujarat, India",
   email: "rushibutani@gmail.com",
   phone: "+91 9638293911",
-  bio: `Hi, I'm Rushi Butani, a Frontend Web Developer based in Gujarat, India.
-I build fast, responsive, and SEO-friendly web applications using React,
-Next.js, and modern frontend technologies.`,
-  availability: "Available for freelance & collaborations",
+  bio: `Frontend developer with 2+ years building web applications with React. I enjoy crafting clean interfaces, writing maintainable code, and solving real problems through thoughtful design and engineering.`,
+  availability: "Open to Interesting Projects & Collaborations",
 };
 
-// =============================================================================
-// HERO SECTION
-// =============================================================================
-
-/**
- * Hero section content
- */
 export const heroContent = {
-  greeting: "Hi, my name is",
-  subtitle: "I build things for the web.",
+  greeting: "Crafting Modern Web Interfaces",
+  subtitle:
+    "Frontend Developer building fast, scalable React & Next.js products.",
+  description:
+    "I focus on performance, clean architecture, and intuitive user interfaces used by real users.",
   cta: {
-    primary: "Check out my work!",
+    primary: "View My Work",
     secondary: "Get In Touch",
   },
 };
 
-// =============================================================================
-// ABOUT SECTION
-// =============================================================================
+export const heroBadges: string[] = [
+  "2+ Years React Experience",
+  "Production Fintech Applications",
+  "Next.js + Performance Focus",
+  "Available for Freelance",
+  "Clean Code · Scalable Architecture",
+  "TypeScript · Tailwind CSS",
+  "UI Systems · Component Design",
+];
 
-/**
- * About section content
- */
 export const aboutContent = {
-  label: "Get To Know More",
-  title: "About Me",
+  label: "About Me",
+  title: "Building Reliable Interfaces\nfor Real Products",
   paragraphs: [
-    "Hello! I'm Rushi, a passionate frontend developer who enjoys creating things that live on the internet. My interest in web development started back in 2020 when I decided to try customizing website templates — turns out hacking together HTML & CSS taught me a lot about how the web works!",
-    "Fast-forward to today, and I've had the privilege of working at a software company and collaborating with talented teams. My main focus these days is building accessible, inclusive products and digital experiences using React and modern frontend technologies.",
-    "Here are a few technologies I've been working with recently:",
+    "I'm a frontend developer with 2+ years of experience building production-grade web applications using React and modern frontend technologies.",
+    "I specialize in building scalable UI architectures, optimizing performance, and delivering smooth user experiences for real-world products.",
+    "Currently building production-grade fintech applications at Bankai Informatics.",
   ],
 };
 
-// =============================================================================
-// EXPERIENCE SECTION
-// =============================================================================
-
-/**
- * Experience section content
- */
 export const experienceContent = {
-  label: "My Professional Journey",
-  title: "Work Experience",
+  label: "Professional Journey",
+  title: "Professional Experience",
 };
 
-/**
- * Professional work history (most recent first)
- */
+// Most recent first
 export const experience: Experience[] = [
   {
     role: "Software Developer",
@@ -156,9 +106,10 @@ export const experience: Experience[] = [
     duration: "Jan 2024 - Present",
     location: "Ahmedabad, Gujarat",
     highlights: [
-      "Built scalable React.js interfaces using modern UI libraries, improving maintainability and performance",
-      "Integrated REST APIs and improved UI performance",
-      "Worked in an Agile environment using Git for version control",
+      "Develop and maintain React-based user interfaces for banking and financial web applications",
+      "Work on feature implementation, UI improvements, and bug fixes in existing production systems",
+      "Collaborate with backend developers and product teams to integrate APIs and deliver requirements",
+      "Improve code readability and component reuse within the frontend codebase",
     ],
   },
   {
@@ -167,82 +118,58 @@ export const experience: Experience[] = [
     duration: "Oct 2023 - Jan 2024",
     location: "Remote",
     highlights: [
-      "Developed patient onboarding modules",
-      "Designed reusable UI components",
-      "Handled frontend architecture and UI workflows",
+      "Worked on frontend modules for a healthcare patient onboarding system",
+      "Implemented form screens, basic validation, and UI components using React",
+      "Collaborated with senior developers and followed existing code patterns",
+      "Gained hands-on experience working on a real client project during early career",
     ],
   },
 ];
 
-// =============================================================================
-// PROJECTS SECTION
-// =============================================================================
-
-/**
- * Projects section content
- */
 export const projectsContent = {
   label: "Things I've Built",
   title: "Featured Projects",
-  viewMoreText: "View More on GitHub",
+  viewMoreText: "More on GitHub",
 };
 
-/**
- * Featured projects showcase (display order)
- */
 export const projects: Project[] = [
   {
-    title: "Personal Portfolio",
+    title: "Real-Time Weather Application",
     description:
-      "A modern, responsive portfolio website showcasing my skills and projects.",
-    stack: ["React.js", "Next.js", "Tailwind CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/portfolio",
-    liveUrl: "https://rushibutani.github.io/portfolio/",
-    image: "/images/personal-portfolio-preview.webp",
-  },
-  {
-    title: "Weather App",
-    description:
-      "Real-time weather application with search functionality, responsive UI, and optimized API handling.",
-    stack: ["React.js", "SCSS (Sass)", "JavaScript"],
+      "Clean, location-based weather app demonstrating API integration and state management. Features real-time data updates, geolocation support, and responsive weather visualization.",
+    stack: ["React.js", "OpenWeather API", "SCSS", "JavaScript"],
     repo: "https://github.com/rushibutani/weather-app",
     liveUrl: "https://rushibutani.github.io/weather-app/",
     image: "/images/weather-app-preview.webp",
   },
   {
-    title: "iEducate Website",
+    title: "Personal Portfolio Website",
     description:
-      "Educational website clone built with clean HTML, CSS, and JavaScript.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/iEducate%20Website",
-    image: "/images/ieducate-website-preview.webp",
+      "Designed and built my personal portfolio to showcase real project experience, focusing on clean architecture, performance, accessibility, and maintainable UI using Next.js.",
+    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "React"],
+    repo: "https://github.com/rushibutani/portfolio",
+    liveUrl: "https://rushibutani.com",
+    image: "/images/personal-portfolio-preview.webp",
   },
   {
-    title: "Veterinary PSD Clone",
-    description: "Converted PSD design into responsive HTML/CSS layout.",
-    stack: ["HTML", "CSS"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Veterinarian%20Psd%20Clone",
-    image: "/images/veterinary-psd-clone-preview.webp",
-  },
-  {
-    title: "Tesla Website Clone",
+    title: "GitHub Profile Analytics",
     description:
-      "Tesla website clone focusing on responsive layouts and UI accuracy.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/Website-Clone-Projects/tree/main/Tesla%20Website%20Clone",
-    image: "/images/tesla-website-clone-preview.webp",
+      "Production-grade analytics dashboard transforming GitHub API data into actionable insights. Features contribution heatmaps, language distribution charts, and repository metrics with optimized data fetching.",
+    stack: [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub REST API",
+      "Recharts",
+    ],
+    repo: "https://github.com/rushibutani/github-profile-analytics",
+    liveUrl: "https://github-profile-analytics.vercel.app",
+    image: "/images/github-profile-analytics-preview.webp",
   },
 ];
 
-// =============================================================================
-// SKILLS SECTION
-// =============================================================================
-
-/**
- * Skills section content
- */
 export const skillsContent = {
-  label: "My Expertise & Learning",
+  label: "Expertise & Learning",
   title: "Skills & Education",
   sections: {
     core: "Core Technologies",
@@ -251,44 +178,29 @@ export const skillsContent = {
   },
 };
 
-/**
- * Technical skills - core technologies and tools/frameworks
- */
 export const skills: Skills = {
-  core: ["HTML", "CSS", "JavaScript"],
+  core: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
   tools: [
-    "React.js",
-    "Next.js",
     "Tailwind CSS",
     "Material UI (MUI)",
+    "SCSS (Sass)",
     "Git",
     "GitHub",
-    "SCSS (Sass)",
     "jQuery",
     "Responsive Design",
   ],
 };
 
-/**
- * Educational background and certifications
- */
 export const education: string[] = [
   "Front-End Web Development Course in React.js - TOPS Technologies (2023)",
   "Complete Front-End Web Development Course - Udemy (2023)",
   "M.Sc. in Organic Chemistry - CCSIT College (2018 - 2020)",
 ];
 
-// =============================================================================
-// CONTACT SECTION
-// =============================================================================
-
-/**
- * Contact section content
- */
 export const contactContent = {
   label: "What's Next?",
-  title: "Get In Touch",
+  title: "Let's build something\ngreat together.",
   description:
-    "I'm always open to meaningful conversations. Whether you have a question, a project idea, or just want to say hi, my inbox is always open. I'll do my best to get back to you!",
+    "Open to new opportunities, freelance projects, and interesting collaborations. If you have something in mind, I'd love to hear from you.",
   ctaText: "Say Hello",
 };

@@ -10,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Frontend Web Developer specializing in React.js and modern web technologies",
     start_url: "/",
     display: "standalone",
-    background_color: "#1a202e",
-    theme_color: "#2dd4bf",
+    background_color: "#14151f",
+    theme_color: "#6366f1",
     icons: [
       {
         src: "/icon.svg",

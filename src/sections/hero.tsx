@@ -2,81 +2,106 @@ import Image from "next/image";
 import { ArrowDown } from "@/components/ui/icons";
 import { personalInfo, heroContent } from "@/config/site";
 import SocialLinks from "@/components/layout/social-links";
+import { Button } from "@/components/ui";
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center relative px-4 md:px-6 pt-32 md:pt-25 lg:pt-20"
+      className="relative min-h-screen flex flex-col justify-center px-0 md:px-6 pt-28 pb-16 overflow-hidden"
     >
-      <div className="container max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-[1fr,auto] gap-8 md:gap-12 items-center">
-          {/* Profile Image - Shows first on mobile, second on desktop */}
-          <div className="flex justify-center md:block animate-fade-up-delay-1 order-1 md:order-2">
-            <div className="relative">
-              <div className="relative w-64 h-64 md:w-96 md:h-96 grayscale lg:w-[22rem] lg:h-[22rem] rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/rushi-butani-profile.png"
-                  alt="Rushi Butani - Frontend Developer"
-                  width={448}
-                  height={448}
-                  priority
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 -z-10"
+        style={{
+          width: "600px",
+          height: "600px",
+          background:
+            "radial-gradient(circle at top left, rgba(124, 58, 237, 0.06) 0%, transparent 70%)",
+        }}
+      />
 
-          {/* Text Content - Shows second on mobile, first on desktop */}
-          <div className="max-w-3xl order-2 md:order-1">
-            <p className="text-primary font-mono text-sm md:text-base mb-4 animate-fade-up">
+      <div className="container max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <div className="order-2 lg:order-1 flex flex-col gap-5">
+            <p className="animate-fade-up-delay-1 font-mono text-sm font-semibold tracking-widest text-primary uppercase">
               {heroContent.greeting}
             </p>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 animate-fade-up-delay-1">
-              {personalInfo.name}.
+            <h1 className="animate-fade-up-delay-2 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black leading-[1.0] tracking-[-0.03em]">
+              <span className="text-gradient">{personalInfo.name}</span>
             </h1>
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-muted-foreground mb-6 animate-fade-up-delay-2">
+            <h2 className="animate-fade-up-delay-2 text-xl md:text-2xl font-semibold text-foreground leading-snug max-w-lg">
               {heroContent.subtitle}
             </h2>
 
-            <p className="text-muted-foreground text-lg md:text-xl max-w-xl mb-8 leading-relaxed animate-fade-up-delay-3">
-              {personalInfo.bio}
+            <p className="animate-fade-up-delay-3 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
+              {heroContent.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-up-delay-4">
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary/10 border border-primary 
-                         text-primary rounded-md font-medium hover:bg-primary/20 transition-all duration-300"
-              >
+            <div className="animate-fade-up-delay-4 flex flex-col sm:flex-row gap-3 pt-1">
+              <Button href="#projects" variant="primary" size="lg">
                 {heroContent.cta.primary}
-              </a>
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground 
-                         rounded-md font-medium hover:bg-primary/90 transition-all duration-300"
-              >
+              </Button>
+              <Button href="#contact" variant="outline" size="lg">
                 {heroContent.cta.secondary}
-              </a>
+              </Button>
             </div>
 
-            <div className="animate-fade-up-delay-4">
+            <div className="animate-fade-up-delay-5 pt-1">
               <SocialLinks />
+            </div>
+          </div>
+
+
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="animate-fade-from-left relative">
+              <div className="relative glass-card p-2.5 rounded-3xl animate-float">
+                <div className="relative w-64 h-80 sm:w-80 sm:h-[25rem] md:w-96 md:h-[30rem] rounded-[18px] overflow-hidden ring-1 ring-white/10">
+                  <Image
+                    src="/images/rushi-butani-profile.png"
+                    alt="Rushi Butani — Frontend Developer"
+                    width={448}
+                    height={560}
+                    priority
+                    sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 384px"
+                    className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"
+                  />
+                </div>
+              </div>
+
+              <div
+                className="absolute -bottom-3 -left-4 glass-card px-3 py-2 rounded-xl flex items-center gap-2 shadow-lg"
+                aria-label={`Location: ${personalInfo.location}`}
+              >
+                <span className="text-base" aria-hidden>
+                  📍
+                </span>
+                <span className="text-xs font-semibold text-foreground whitespace-nowrap">
+                  {personalInfo.location}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <a
         href="#about"
-        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground 
-                   hover:text-primary transition-colors animate-bounce"
+        className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5
+                   text-muted-foreground hover:text-primary transition-colors group"
         aria-label="Scroll to About section"
       >
-        <ArrowDown size={24} />
+        <span className="text-[10px] font-mono tracking-widest uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+          scroll
+        </span>
+        <ArrowDown size={16} className="animate-bounce" />
       </a>
     </section>
   );

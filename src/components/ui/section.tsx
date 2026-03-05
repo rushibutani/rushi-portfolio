@@ -1,46 +1,14 @@
 import type { ReactNode } from "react";
 
-interface SectionHeaderProps {
-  label?: string;
-  title: string;
-  description?: string;
-  align?: "left" | "center" | "right";
-  className?: string;
-}
-
-export function SectionHeader({
-  label,
-  title,
-  description,
-  align = "center",
-  className = "",
-}: SectionHeaderProps) {
-  const alignmentClasses = {
-    left: "text-left",
-    center: "text-center",
-    right: "text-right",
-  };
-
-  return (
-    <div className={`mb-12 ${alignmentClasses[align]} ${className}`}>
-      {label && <p className="text-primary font-mono text-sm mb-4">{label}</p>}
-      <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-          {description}
-        </p>
-      )}
-    </div>
-  );
-}
-
 interface SectionProps {
   children: ReactNode;
   id?: string;
   className?: string;
-  variant?: "default" | "accent";
+  variant?: "default" | "subtle" | "surface";
+  /** Adds a 1px #ffffff08 hairline at the very top of the section */
+  topBorder?: boolean;
+  /** Adds a 1px #ffffff06 hairline at the very bottom of the section */
+  bottomBorder?: boolean;
 }
 
 export function Section({
@@ -48,17 +16,42 @@ export function Section({
   id,
   className = "",
   variant = "default",
+  topBorder = false,
+  bottomBorder = false,
 }: SectionProps) {
-  const variants = {
-    default: "",
-    accent: "bg-secondary/30",
-  };
+  const needsRelative = variant !== "default" || topBorder || bottomBorder;
 
   return (
     <section
       id={id}
-      className={`py-24 px-0 md:px-6 ${variants[variant]} ${className}`}
+      className={`py-28 md:py-32 px-0 md:px-6 ${needsRelative ? "relative" : ""} ${className}`}
     >
+      {variant === "subtle" && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-[#f4f4f4] dark:bg-[#0f0f0f]"
+        />
+      )}
+      {variant === "surface" && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-white dark:bg-[#111111]"
+        />
+      )}
+
+      {topBorder && (
+        <div
+          aria-hidden
+          className="absolute top-0 inset-x-0 h-px pointer-events-none bg-black/[0.06] dark:bg-white/[0.031]"
+        />
+      )}
+      {bottomBorder && (
+        <div
+          aria-hidden
+          className="absolute bottom-0 inset-x-0 h-px pointer-events-none bg-black/[0.05] dark:bg-white/[0.024]"
+        />
+      )}
+
       <div className="container max-w-6xl mx-auto">{children}</div>
     </section>
   );

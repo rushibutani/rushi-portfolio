@@ -1,13 +1,41 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { Header, Footer } from "@/components/layout";
 import { siteMetadata } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
+import AnimatedBackground from "@/components/ui/animated-background";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import {
+  generatePersonSchema,
+  generateWebsiteSchema,
+  generateBreadcrumbSchema,
+  generateProjectsSchema,
+} from "@/lib/structured-data";
+
+// Fonts loaded via next/font — zero render-blocking, self-hosted by Next.js
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+// Pre-compute static JSON-LD schemas once at module level (not per request)
+const personSchema = generatePersonSchema();
+const websiteSchema = generateWebsiteSchema();
+const breadcrumbSchema = generateBreadcrumbSchema();
+const projectsSchema = generateProjectsSchema();
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1a202e",
+  themeColor: "#6366f1",
 };
 
 export const metadata: Metadata = {
@@ -17,6 +45,10 @@ export const metadata: Metadata = {
   keywords: siteMetadata.keywords,
   authors: [{ name: siteMetadata.author }],
   creator: siteMetadata.author,
+
+  alternates: {
+    canonical: siteMetadata.siteUrl,
+  },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
@@ -32,7 +64,7 @@ export const metadata: Metadata = {
         url: siteMetadata.image,
         width: 1200,
         height: 630,
-        alt: siteMetadata.title,
+        alt: `${siteMetadata.author} — Frontend Developer Portfolio`,
       },
     ],
   },
@@ -42,6 +74,7 @@ export const metadata: Metadata = {
     description: siteMetadata.description,
     images: [siteMetadata.image],
     creator: "@rushibutani_",
+    site: "@rushibutani_",
   },
   robots: {
     index: true,
@@ -61,32 +94,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Rushi Butani",
-    url: "https://rushibutani.com",
-    image: "https://rushibutani.com/images/og-image.jpg",
-    jobTitle: "Frontend Developer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Bankai Informatics Pvt. Ltd.",
-    },
-    sameAs: [
-      "https://github.com/rushibutani",
-      "https://in.linkedin.com/in/rushibutani",
-      "https://twitter.com/rushibutani_",
-    ],
-    knowsAbout: [
-      "React",
-      "JavaScript",
-      "Frontend Development",
-      "Web Development",
-    ],
-  };
-
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -99,14 +112,32 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
+        />
+
+        <AnimatedBackground />
+
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen relative z-10">{children}</main>
         <Footer />
+        <ScrollToTop />
         <Analytics />
       </body>
     </html>

@@ -1,17 +1,24 @@
-import { Heart } from "@/components/ui/icons";
-import { footerContent } from "@/config/site";
-
 export default function Footer() {
   return (
-    <footer className="py-8 px-4 md:px-6 border-t border-border/50">
-      <div className="container max-w-6xl mx-auto text-center">
-        <p className="text-muted-foreground text-sm flex items-center justify-center gap-2">
-          {footerContent.text}{" "}
-          <Heart size={14} className="text-primary fill-primary" /> by{" "}
-          {footerContent.author}
+    <footer className="relative py-8 px-4 md:px-6 border-t border-border/40">
+      <div
+        aria-hidden
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent)",
+        }}
+      />
+
+      <div className="container max-w-6xl mx-auto text-center space-y-1.5">
+        <p className="text-sm font-medium text-foreground">
+          © {new Date().getFullYear()} Rushi Butani
         </p>
-        <p className="text-muted-foreground/60 text-xs mt-2 font-mono">
-          © {new Date().getFullYear()} All Rights Reserved
+        <p className="text-xs text-muted-foreground">
+          Frontend Developer • React • Next.js
+        </p>
+        <p className="text-xs text-muted-foreground/60 font-mono">
+          Built with Next.js + Tailwind
         </p>
       </div>
     </footer>

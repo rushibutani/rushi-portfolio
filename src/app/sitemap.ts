@@ -2,13 +2,16 @@ import { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
+const BASE_URL = "https://rushibutani.com";
+const LAST_MODIFIED = new Date();
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://rushibutani.com",
-      lastModified: new Date(),
+      url: BASE_URL,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
-      priority: 1,
+      priority: 1.0,
     },
   ];
 }
