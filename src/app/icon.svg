@@ -1,32 +1,26 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <!-- Matches header .dark .text-gradient: from-violet-200 via-primary to-purple-300 -->
     <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#ddd6fe"/>
-      <stop offset="50%"  stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#d8b4fe"/>
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#c084fc"/>
     </linearGradient>
-    <!-- Border gradient -->
     <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#8b5cf6"/>
-      <stop offset="100%" stop-color="#6366f1"/>
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
   </defs>
-
-  <!-- Background -->
-  <rect width="64" height="64" rx="12" fill="#0f172a"/>
-
-  <!-- Accent border -->
-  <rect x="2" y="2" width="60" height="60" rx="10" stroke="url(#borderGrad)" stroke-width="2" fill="none"/>
-
-  <!-- RB Text — font-mono font-black tracking-tight, same as header logo -->
+  <!-- Gradient border ring -->
+  <rect width="100" height="100" rx="22" ry="22" fill="url(#borderGrad)"/>
+  <!-- Light violet-tinted inner background -->
+  <rect x="3" y="3" width="94" height="94" rx="19.5" ry="19.5" fill="#f5f3ff"/>
+  <!-- Bold gradient RB matching hero text-gradient -->
   <text
-    x="32" y="45"
-    font-family="'Courier New',ui-monospace,monospace"
-    font-size="36"
+    x="50"
+    y="72"
+    font-family="system-ui, -apple-system, 'Inter', sans-serif"
     font-weight="900"
-    letter-spacing="-1"
-    fill="url(#textGrad)"
+    font-size="56"
     text-anchor="middle"
-  >RB</text>
+    fill="url(#textGrad)">RB</text>
 </svg>
