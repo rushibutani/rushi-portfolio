@@ -147,8 +147,8 @@ export const projects: Project[] = [
     description:
       "Designed and built my personal portfolio to showcase real project experience, focusing on clean architecture, performance, accessibility, and maintainable UI using Next.js.",
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "React"],
-    repo: "https://github.com/rushibutani/portfolio",
-    liveUrl: "https://rushibutani.com",
+    repo: "https://github.com/rushibutani/rushi-portfolio",
+    liveUrl: "https://rushibutani.vercel.app/",
     image: "/images/personal-portfolio-preview.webp",
   },
   {
