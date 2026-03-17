@@ -1,6 +1,6 @@
 # Rushi Butani - Portfolio Website
 
-A modern, high-performance personal portfolio website built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, high-performance personal portfolio website built with Next.js 14, TypeScript, and Tailwind CSS..
 
 ## 🚀 Features
 
