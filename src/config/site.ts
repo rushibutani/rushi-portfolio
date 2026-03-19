@@ -148,7 +148,7 @@ export const projects: Project[] = [
       "Designed and built my personal portfolio to showcase real project experience, focusing on clean architecture, performance, accessibility, and maintainable UI using Next.js.",
     stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "React"],
     repo: "https://github.com/rushibutani/rushi-portfolio",
-    liveUrl: "https://rushibutani.vercel.app/",
+    liveUrl: "https://www.rushibutani.me/",
     image: "/images/personal-portfolio-preview.webp",
   },
   {
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       "Recharts",
     ],
     repo: "https://github.com/rushibutani/github-profile-analytics",
-    liveUrl: "https://github-profile-analytics.vercel.app",
+    liveUrl: "https://rushi-github-analytics.vercel.app/",
     image: "/images/github-profile-analytics-preview.webp",
   },
 ];
