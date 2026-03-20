@@ -12,9 +12,11 @@ export const siteMetadata: SiteMetadata = {
   title: "Rushi Butani | Frontend Developer",
   description:
     "Frontend Developer specializing in React.js, Next.js, and scalable UI systems. Based in Gujarat, India. Available for freelance & collaborations.",
-  siteUrl: "https://rushibutani.com",
+  siteUrl: "https://www.rushibutani.me",
   author: "Rushi Butani",
   keywords: [
+    "Rushi Butani",
+    "rushibutani",
     "Frontend Developer",
     "React.js Developer",
     "React Developer",
@@ -24,6 +26,8 @@ export const siteMetadata: SiteMetadata = {
     "React.js",
     "Next.js",
     "Portfolio",
+    "Rushi Butani Portfolio",
+    "Rushi Butani Developer",
   ],
   image: "/images/og-image.svg",
 };
