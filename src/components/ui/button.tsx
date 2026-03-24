@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { trackEvent, type AnalyticsProperties } from "@/lib/analytics";
 
 interface ButtonProps {
   children: ReactNode;
@@ -9,6 +12,8 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  analyticsEvent?: string;
+  analyticsProperties?: AnalyticsProperties;
 }
 
 export function Button({
@@ -20,6 +25,8 @@ export function Button({
   onClick,
   type = "button",
   disabled = false,
+  analyticsEvent,
+  analyticsProperties,
 }: ButtonProps) {
   const baseStyles =
     "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -41,10 +48,18 @@ export function Button({
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
+  const handleClick = () => {
+    onClick?.();
+    if (analyticsEvent) {
+      trackEvent(analyticsEvent, analyticsProperties);
+    }
+  };
+
   if (href) {
     return (
       <a
         href={href}
+        onClick={handleClick}
         className={classes}
         target={href.startsWith("http") ? "_blank" : undefined}
         rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
@@ -57,7 +72,7 @@ export function Button({
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled}
       className={classes}
     >
