@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { projects, projectsContent, socialLinks } from "@/config/site";
 import { ExternalLink, Github } from "@/components/ui/icons";
-import { Section, Button, SectionReveal, TrackedLink } from "@/components/ui";
+import { Section, Button, SectionReveal } from "@/components/ui";
 
 export default function Projects() {
   const [featured, ...rest] = projects;
@@ -62,38 +62,26 @@ export default function Projects() {
                   </ul>
                   <div className="flex items-center gap-5 pt-1">
                     {featured.repo && (
-                      <TrackedLink
+                      <a
                         href={featured.repo}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-                        ariaLabel={`GitHub repository for ${featured.title}`}
-                        analyticsEvent="project_click"
-                        analyticsProperties={{
-                          project: featured.title,
-                          target: "repo",
-                          section: "featured",
-                        }}
+                        aria-label={`GitHub repository for ${featured.title}`}
                       >
                         <Github size={16} /> GitHub
-                      </TrackedLink>
+                      </a>
                     )}
                     {featured.liveUrl && (
-                      <TrackedLink
+                      <a
                         href={featured.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-                        ariaLabel={`Live demo for ${featured.title}`}
-                        analyticsEvent="project_click"
-                        analyticsProperties={{
-                          project: featured.title,
-                          target: "live_demo",
-                          section: "featured",
-                        }}
+                        aria-label={`Live demo for ${featured.title}`}
                       >
                         <ExternalLink size={16} /> Live Demo
-                      </TrackedLink>
+                      </a>
                     )}
                   </div>
                 </div>
@@ -141,38 +129,26 @@ export default function Projects() {
                 </ul>
                 <div className="flex items-center gap-5 pt-1">
                   {project.repo && (
-                    <TrackedLink
+                    <a
                       href={project.repo}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-                      ariaLabel={`GitHub repository for ${project.title}`}
-                      analyticsEvent="project_click"
-                      analyticsProperties={{
-                        project: project.title,
-                        target: "repo",
-                        section: "grid",
-                      }}
+                      aria-label={`GitHub repository for ${project.title}`}
                     >
                       <Github size={16} /> GitHub
-                    </TrackedLink>
+                    </a>
                   )}
                   {project.liveUrl && (
-                    <TrackedLink
+                    <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-                      ariaLabel={`Live demo for ${project.title}`}
-                      analyticsEvent="project_click"
-                      analyticsProperties={{
-                        project: project.title,
-                        target: "live_demo",
-                        section: "grid",
-                      }}
+                      aria-label={`Live demo for ${project.title}`}
                     >
                       <ExternalLink size={16} /> Live Demo
-                    </TrackedLink>
+                    </a>
                   )}
                 </div>
               </div>
@@ -188,12 +164,6 @@ export default function Projects() {
             size="lg"
             href={socialLinks.github}
             className="gap-2 rounded-xl"
-            analyticsEvent="project_click"
-            analyticsProperties={{
-              project: "all_projects",
-              target: "github_profile",
-              section: "projects_footer",
-            }}
           >
             <Github size={18} />
             {projectsContent.viewMoreText}

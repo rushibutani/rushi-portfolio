@@ -1,6 +1,6 @@
 import { personalInfo, contactContent } from "@/config/site";
 import SocialLinks from "@/components/layout/social-links";
-import { Section, SectionReveal, ContactForm, TrackedLink } from "@/components/ui";
+import { Section, SectionReveal, ContactForm } from "@/components/ui";
 import { Mail, MapPin } from "@/components/ui/icons";
 
 export default function Contact() {
@@ -18,7 +18,6 @@ export default function Contact() {
       />
 
       <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-
         <SectionReveal direction="left" delay={0}>
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-5">
@@ -55,27 +54,22 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <TrackedLink
+              <a
                 href={`mailto:${personalInfo.email}`}
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group w-fit"
-                analyticsEvent="contact_email_click"
-                analyticsProperties={{
-                  source: "contact_section",
-                }}
               >
                 <Mail size={16} className="text-primary flex-shrink-0" />
                 <span className="text-sm font-mono">{personalInfo.email}</span>
-              </TrackedLink>
+              </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin size={16} className="text-primary flex-shrink-0" />
                 <span className="text-sm">{personalInfo.location}</span>
               </div>
             </div>
 
-            <SocialLinks location="contact" />
+            <SocialLinks />
           </div>
         </SectionReveal>
-
 
         <SectionReveal direction="right" delay={260}>
           <div className="glass-card p-6 md:p-8 rounded-2xl">

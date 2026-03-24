@@ -7,5 +7,4 @@ export * from "./section-reveal";
 export * from "./theme-toggle";
 export * from "./contact-form";
 export * from "./scroll-to-top";
-export * from "./tracked-link";
 export { default as TechStrip } from "./tech-strip";

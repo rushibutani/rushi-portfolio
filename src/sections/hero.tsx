@@ -23,7 +23,6 @@ export default function Hero() {
 
       <div className="container max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
           <div className="order-2 lg:order-1 flex flex-col gap-5">
             <p className="animate-fade-up-delay-1 font-mono text-sm font-semibold tracking-widest text-primary uppercase">
               {heroContent.greeting}
@@ -42,37 +41,18 @@ export default function Hero() {
             </p>
 
             <div className="animate-fade-up-delay-4 flex flex-col sm:flex-row gap-3 pt-1">
-              <Button
-                href="#projects"
-                variant="primary"
-                size="lg"
-                analyticsEvent="hero_cta_click"
-                analyticsProperties={{
-                  cta: "primary",
-                  destination: "projects",
-                }}
-              >
+              <Button href="#projects" variant="primary" size="lg">
                 {heroContent.cta.primary}
               </Button>
-              <Button
-                href="#contact"
-                variant="outline"
-                size="lg"
-                analyticsEvent="hero_cta_click"
-                analyticsProperties={{
-                  cta: "secondary",
-                  destination: "contact",
-                }}
-              >
+              <Button href="#contact" variant="outline" size="lg">
                 {heroContent.cta.secondary}
               </Button>
             </div>
 
             <div className="animate-fade-up-delay-5 pt-1">
-              <SocialLinks location="hero" />
+              <SocialLinks />
             </div>
           </div>
-
 
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="animate-fade-from-left relative">

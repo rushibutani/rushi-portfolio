@@ -5,14 +5,9 @@ import {
   Twitter,
   Facebook,
 } from "@/components/ui/icons";
-import { TrackedLink } from "@/components/ui";
 import { socialLinks } from "@/config/site";
 
-interface SocialLinksProps {
-  location?: "hero" | "contact" | "footer";
-}
-
-export default function SocialLinks({ location = "hero" }: SocialLinksProps) {
+export default function SocialLinks() {
   const links = [
     { icon: Github, href: socialLinks.github, label: "GitHub" },
     { icon: Linkedin, href: socialLinks.linkedin, label: "LinkedIn" },
@@ -24,21 +19,16 @@ export default function SocialLinks({ location = "hero" }: SocialLinksProps) {
   return (
     <div className="flex items-center gap-4">
       {links.map(({ icon: Icon, href, label }) => (
-        <TrackedLink
+        <a
           key={label}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon"
-          ariaLabel={label}
-          analyticsEvent="social_click"
-          analyticsProperties={{
-            platform: label.toLowerCase(),
-            location,
-          }}
+          aria-label={label}
         >
           <Icon size={20} />
-        </TrackedLink>
+        </a>
       ))}
     </div>
   );
