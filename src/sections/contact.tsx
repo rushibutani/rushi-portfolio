@@ -1,6 +1,6 @@
 import { personalInfo, contactContent } from "@/config/site";
 import SocialLinks from "@/components/layout/social-links";
-import { Section, SectionReveal, ContactForm } from "@/components/ui";
+import { Section, SectionReveal, ContactForm, TrackedLink } from "@/components/ui";
 import { Mail, MapPin } from "@/components/ui/icons";
 
 export default function Contact() {
@@ -55,20 +55,24 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <a
+              <TrackedLink
                 href={`mailto:${personalInfo.email}`}
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group w-fit"
+                analyticsEvent="contact_email_click"
+                analyticsProperties={{
+                  source: "contact_section",
+                }}
               >
                 <Mail size={16} className="text-primary flex-shrink-0" />
                 <span className="text-sm font-mono">{personalInfo.email}</span>
-              </a>
+              </TrackedLink>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin size={16} className="text-primary flex-shrink-0" />
                 <span className="text-sm">{personalInfo.location}</span>
               </div>
             </div>
 
-            <SocialLinks />
+            <SocialLinks location="contact" />
           </div>
         </SectionReveal>
 

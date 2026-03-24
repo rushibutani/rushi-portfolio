@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "./button";
 import { Mail, User, MessageSquare, Loader2, CheckCircle } from "./icons";
+import { trackEvent } from "@/lib/analytics";
 
 interface FormData {
   name: string;
@@ -76,7 +77,12 @@ export function ContactForm({ className = "" }: { className?: string }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      trackEvent("contact_submit_error", {
+        stage: "client_validation",
+      });
+      return;
+    }
 
     setStatus("submitting");
     setErrorMessage("");
@@ -103,15 +109,25 @@ export function ContactForm({ className = "" }: { className?: string }) {
         if (data.errors) {
           setErrors(data.errors);
         }
+        trackEvent("contact_submit_error", {
+          stage: "api_response",
+          status: response.status,
+        });
         throw new Error(data.message || "Failed to send message");
       }
 
       setStatus("success");
+      trackEvent("contact_submit_success", {
+        source: "contact_form",
+      });
       setFormData({ name: "", email: "", message: "" });
 
       successTimeoutRef.current = setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       setStatus("error");
+      trackEvent("contact_submit_error", {
+        stage: "exception",
+      });
       setErrorMessage(
         error instanceof Error
           ? error.message

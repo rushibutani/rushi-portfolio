@@ -42,16 +42,34 @@ export default function Hero() {
             </p>
 
             <div className="animate-fade-up-delay-4 flex flex-col sm:flex-row gap-3 pt-1">
-              <Button href="#projects" variant="primary" size="lg">
+              <Button
+                href="#projects"
+                variant="primary"
+                size="lg"
+                analyticsEvent="hero_cta_click"
+                analyticsProperties={{
+                  cta: "primary",
+                  destination: "projects",
+                }}
+              >
                 {heroContent.cta.primary}
               </Button>
-              <Button href="#contact" variant="outline" size="lg">
+              <Button
+                href="#contact"
+                variant="outline"
+                size="lg"
+                analyticsEvent="hero_cta_click"
+                analyticsProperties={{
+                  cta: "secondary",
+                  destination: "contact",
+                }}
+              >
                 {heroContent.cta.secondary}
               </Button>
             </div>
 
             <div className="animate-fade-up-delay-5 pt-1">
-              <SocialLinks />
+              <SocialLinks location="hero" />
             </div>
           </div>
 
