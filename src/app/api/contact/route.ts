@@ -1,31 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
 
-// Upstash Redis-backed rate limiter.
-// Requires UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN in .env.local
-// (or Vercel environment variables). Free tier is sufficient for portfolio traffic.
-// See: https://console.upstash.com → Create Database → copy REST URL + token.
-//
-// Initialized lazily inside the handler so a missing env var returns a clean
-// 503 instead of crashing the entire route module at load time.
-let ratelimit: Ratelimit | null = null;
+// ---------------------------------------------------------------------------
+// In-memory rate limiter (sliding window)
+// Allows 5 submissions per IP per 15 minutes.
+// Works fine for a portfolio site. No external service required.
+// ---------------------------------------------------------------------------
+const rateLimitMap = new Map<string, number[]>();
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 
-function getRatelimit(): Ratelimit | null {
-  if (ratelimit) return ratelimit;
-  if (
-    !process.env.UPSTASH_REDIS_REST_URL ||
-    !process.env.UPSTASH_REDIS_REST_TOKEN
-  ) {
-    return null;
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+
+  const timestamps = (rateLimitMap.get(ip) ?? []).filter(
+    (t) => t > windowStart,
+  );
+
+  if (timestamps.length >= RATE_LIMIT_MAX) {
+    return false; // not allowed
   }
-  ratelimit = new Ratelimit({
-    redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(5, "15 m"),
-    analytics: false,
-  });
-  return ratelimit;
+
+  timestamps.push(now);
+  rateLimitMap.set(ip, timestamps);
+  return true; // allowed
 }
 
 interface ContactFormData {
@@ -93,8 +92,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Environment validation — done inside the handler so a missing key returns
-    // a proper 503 instead of crashing the entire route module at load time.
+    // Environment validation
     if (!process.env.RESEND_API_KEY) {
       console.error("RESEND_API_KEY is not defined");
       return NextResponse.json(
@@ -102,28 +100,14 @@ export async function POST(request: NextRequest) {
         { status: 503 },
       );
     }
-    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // Rate limiting via Upstash Redis — works correctly across all Vercel
-    // serverless instances and cold starts (unlike an in-memory Map).
-    const limiter = getRatelimit();
-    if (!limiter) {
-      console.error(
-        "UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN is not defined",
-      );
-      return NextResponse.json(
-        { success: false, message: "Rate limiting service is not configured." },
-        { status: 503 },
-      );
-    }
-
+    // Rate limiting — in-memory sliding window (5 requests / 15 min per IP)
     const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0] ||
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       request.headers.get("x-real-ip") ||
       "anonymous";
 
-    const { success: allowed } = await limiter.limit(ip);
-    if (!allowed) {
+    if (!checkRateLimit(ip)) {
       return NextResponse.json(
         {
           success: false,
@@ -151,7 +135,9 @@ export async function POST(request: NextRequest) {
     const safeEmail = escapeHtml(body.email.trim());
     const safeMessage = escapeHtml(body.message.trim());
 
-    await resend.emails.send({
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const { error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: "rushibutani@gmail.com",
       replyTo: body.email.trim(),
@@ -228,7 +214,19 @@ export async function POST(request: NextRequest) {
 `,
     });
 
-    console.log("Contact form submission received");
+    if (error) {
+      console.error("Resend API error:", error);
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Failed to send message. Please try again or email me directly at rushibutani@gmail.com",
+        },
+        { status: 500 },
+      );
+    }
+
+    console.log("Contact form submission received from:", ip);
 
     return NextResponse.json({
       success: true,
@@ -237,17 +235,14 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Contact form error:", error);
 
-    if (error instanceof Error) {
-      if (error.message.includes("API key")) {
-        return NextResponse.json(
-          {
-            success: false,
-            message:
-              "Email service configuration error. Please try again later.",
-          },
-          { status: 500 },
-        );
-      }
+    if (error instanceof Error && error.message.includes("API key")) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Email service configuration error. Please try again later.",
+        },
+        { status: 500 },
+      );
     }
 
     return NextResponse.json(
