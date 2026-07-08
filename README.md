@@ -121,7 +121,7 @@ Edit `src/config/site.ts` to update your personal information, experience, proje
 ### Modify Styling
 
 - **Colors:** Update the color palette in `tailwind.config.js`
-- **Global Styles:** Modify `src/styles/globals.css` for global styling changes
+- **Global Styles:** Modify `src/styles/globals.css` for global styling changes.
 - **Component Styles:** Individual component styles are in their respective files
 
 ### Add Images
