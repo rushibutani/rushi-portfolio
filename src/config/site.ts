@@ -138,13 +138,13 @@ export const projectsContent = {
 
 export const projects: Project[] = [
   {
-    title: "Real-Time Weather Application",
+    title: "Atmos",
     description:
-      "Clean, location-based weather app demonstrating API integration and state management. Features real-time data updates, geolocation support, and responsive weather visualization.",
-    stack: ["React.js", "OpenWeather API", "SCSS", "JavaScript"],
-    repo: "https://github.com/rushibutani/weather-app",
-    liveUrl: "https://rushibutani.github.io/weather-app/",
-    image: "/images/weather-app-preview.webp",
+      "Modern weather experience with city search, geolocation, unit controls, and responsive forecasts. Atmos presents current conditions and hourly insights through a polished, intuitive interface.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Weather API"],
+    repo: "https://github.com/rushibutani/atmos-weather",
+    liveUrl: "https://atmos-sky.vercel.app/",
+    image: "/images/atmos-preview.webp",
   },
   {
     title: "Personal Portfolio Website",
