@@ -156,9 +156,9 @@ export const projects: Project[] = [
     image: "/images/personal-portfolio-preview.webp",
   },
   {
-    title: "GitHub Profile Analytics",
+    title: "GitScope - Developer Insights",
     description:
-      "Production-grade analytics dashboard transforming GitHub API data into actionable insights. Features contribution heatmaps, language distribution charts, and repository metrics with optimized data fetching.",
+      "Developer insights platform that turns public GitHub data into a clear profile overview. Explore activity patterns, language usage, and repositories ranked by stars, forks, and recency.",
     stack: [
       "Next.js 14",
       "TypeScript",
@@ -166,9 +166,9 @@ export const projects: Project[] = [
       "GitHub REST API",
       "Recharts",
     ],
-    repo: "https://github.com/rushibutani/github-profile-analytics",
-    liveUrl: "https://rushi-github-analytics.vercel.app/",
-    image: "/images/github-profile-analytics-preview.webp",
+    repo: "https://github.com/rushibutani/gitscope",
+    liveUrl: "https://gitscope-insights.vercel.app/",
+    image: "/images/gitscope-preview.webp",
   },
 ];
 
