@@ -12,6 +12,22 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  /*
+   * This portfolio has moved to https://www.rushibutani.me. Production sends every path there
+   * with a permanent (308) redirect, keeping the path and query, so old links and search
+   * results land on the current site. Local development and preview deployments are left
+   * alone, so the old design can still be opened for reference.
+   */
+  async redirects() {
+    if (process.env.VERCEL_ENV !== "production") return [];
+    return [
+      {
+        source: "/:path*",
+        destination: "https://www.rushibutani.me/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     // Content-Security-Policy:
     //   - script-src needs 'unsafe-inline' because Next.js injects inline scripts
